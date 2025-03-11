@@ -28,8 +28,17 @@ addLayer("f", {
     upgrades: {
 	11: {
 	    title: "More Bees",
-	    description: "Double Bees.",
+	    description: "Boost Bees by *10",
 	    cost: new OmegaNum(1)
+	},
+  12: {
+
+	    title: "Even More Bees",
+
+	    description: "Boost Bees by ^10",
+
+	    cost: new OmegaNum("15")
+
 	},
     },
 })

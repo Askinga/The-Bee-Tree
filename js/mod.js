@@ -43,7 +43,8 @@ function getPointGen() {
 		return new OmegaNum(0)
 
 	let gain = new OmegaNum(1)
-	if(hasUpgrade('f', 11)) gain = gain.times(2)
+	if(hasUpgrade('f', 11)) gain = gain.times(10)
+  if(hasUpgrade('f', 12)) gain = gain.pow(10)
 	return gain
 }
 
