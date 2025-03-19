@@ -16,6 +16,8 @@ addLayer("f", {
     if(hasUpgrade('f',24)) p = p.times(10)
     if(hasUpgrade('f',31)) p = p.times(1000)
     if(hasUpgrade('f',42)) p = p.times(1e6)
+    if(hasUpgrade('f',43)) p = p.times(upgradeEffect('f', 43))
+    if(hasUpgrade('f',44)) p = p.times(upgradeEffect('f', 44))
     return p
   },
   color: "#86AEF3",
@@ -319,6 +321,48 @@ addLayer("f", {
 	    description: "Make flower generation x1e6 quicker and x1e6 Flowers.",
 
 	    cost: new OmegaNum("1e70")
+
+    },
+    43: {
+
+      title: "Even More Flower Generation",
+
+      description: "Boost Flowers generation based on Flowers again",
+
+      cost: new OmegaNum("1e90"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(2);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 43));
+
+      },
+
+    },
+    44: {
+
+      title: "Even More Flower Generation 2",
+
+      description: "Boost Flowers generation based on Flowers again",
+
+      cost: new OmegaNum("1e98"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(1.5);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 44));
+
+      },
 
     },
    },
