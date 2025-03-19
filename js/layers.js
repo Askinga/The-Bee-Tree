@@ -28,6 +28,8 @@ addLayer("f", {
     mult = new OmegaNum(1);
     if(hasUpgrade('f',14)) mult = mult.times(3)
     if(hasUpgrade('f',15)) mult = mult.times(5)
+    if(hasUpgrade('f',21)) mult = mult.times(upgradeEffect('f', 21))
+    if(hasUpgrade('f',22)) mult = mult.times(upgradeEffect('f', 22))
     return mult;
   },
   gainExp() {
@@ -91,6 +93,46 @@ addLayer("f", {
 
 	    cost: new OmegaNum("6000")
 
+    },
+    21: {
+
+      title: "More Flowers",
+
+      description: "Boost Flowers based on Flowers",
+
+      cost: new OmegaNum("50000"),
+
+      effect() {
+
+        return player.f.points.pow(0.2);
+
+      },
+
+      effectDescription() {
+
+        return "x" + format(upgradeEffect("f", 21));
+
+      },
+  },
+  22: {
+
+      title: "Even More Flowers",
+
+      description: "Boost Flowers based on Flowers again but weaker",
+
+      cost: new OmegaNum("5e5"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(1.25);
+
+      },
+
+      effectDescription() {
+
+        return "x" + format(upgradeEffect("f", 22));
+
+      },
     },
   },
 });
