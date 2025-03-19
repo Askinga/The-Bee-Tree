@@ -15,6 +15,7 @@ addLayer("f", {
     if(hasUpgrade('f',23)) p = p.times(upgradeEffect('f', 23))
     if(hasUpgrade('f',24)) p = p.times(10)
     if(hasUpgrade('f',31)) p = p.times(1000)
+    if(hasUpgrade('f',42)) p = p.times(1e6)
     return p
   },
   color: "#86AEF3",
@@ -39,6 +40,9 @@ addLayer("f", {
     if(hasUpgrade('f',32)) mult = mult.times(upgradeEffect('f', 32))
     if(hasUpgrade('f',33)) mult = mult.times(upgradeEffect('f', 33))
     if(hasUpgrade('f',34)) mult = mult.times(upgradeEffect('f', 34))
+    if(hasUpgrade('f',35)) mult = mult.times(upgradeEffect('f', 35))
+    if(hasUpgrade('f',41)) mult = mult.times(upgradeEffect('f', 41))
+    if(hasUpgrade('f',42)) mult = mult.times(1e6)
     return mult;
   },
   gainExp() {
@@ -213,7 +217,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(player.f.points.pow(0.01));
+        return player.f.points.log(10).pow(5);
 
       },
 
@@ -264,6 +268,57 @@ addLayer("f", {
         return "x" + format(upgradeEffect("f", 34));
 
       },
+
+    },
+    35: {
+
+      title: "Even More Flowers 6",
+
+      description: "Boost Flowers based on Flowers again",
+
+      cost: new OmegaNum("1.5e43"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(1.25);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 35));
+
+      },
+
+    },
+    41: {
+
+      title: "Even More Flowers Final",
+
+      description: "Boost Flowers based on Flowers again",
+
+      cost: new OmegaNum("1e49"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(4);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 41));
+
+      },
+
+    },
+    42: {
+
+	    title: "The God Bees",
+
+	    description: "Make flower generation x1e6 quicker and x1e6 Flowers.",
+
+	    cost: new OmegaNum("1e70")
 
     },
    },
