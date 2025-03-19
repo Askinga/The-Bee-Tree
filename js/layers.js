@@ -18,6 +18,7 @@ addLayer("f", {
     if(hasUpgrade('f',42)) p = p.times(1e6)
     if(hasUpgrade('f',43)) p = p.times(upgradeEffect('f', 43))
     if(hasUpgrade('f',44)) p = p.times(upgradeEffect('f', 44))
+    if(hasUpgrade('f',52)) p = p.times(upgradeEffect('f', 52))
     return p
   },
   color: "#86AEF3",
@@ -410,7 +411,7 @@ addLayer("f", {
       },
 
     },
-    43: {
+    52: {
 
       title: "Even More Flower Generation 3",
 
