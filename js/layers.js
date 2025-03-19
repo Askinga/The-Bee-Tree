@@ -19,6 +19,8 @@ addLayer("f", {
     if (hasUpgrade("f", 43)) p = p.times(upgradeEffect("f", 43));
     if (hasUpgrade("f", 44)) p = p.times(upgradeEffect("f", 44));
     if (hasUpgrade("f", 52)) p = p.times(upgradeEffect("f", 52));
+    if (hasUpgrade("f", 53)) p = p.times(1e6)
+    if (hasUpgrade("f", 54)) p = p.times(1e10)
     return p;
   },
   color: "#86AEF3",
@@ -51,7 +53,10 @@ addLayer("f", {
   },
   gainExp() {
     // Calculate the exponent on main currency from bonuses
-    return new OmegaNum(1);
+    let exp = new OmegaNum(1);
+    if (hasUpgrade('f', 53)) exp = exp.times(1.05)
+    if (hasUpgrade('f', 54)) exp = exp.times(1.1)
+    return exp
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
   hotkeys: [
@@ -88,6 +93,7 @@ addLayer("f", {
       effect() {
         let tetPow = new OmegaNum(0.1);
         if (hasUpgrade("f", 45)) tetPow = tetPow.times(upgradeEffect("f", 45));
+        if (hasUpgrade("f", 55)) tetPow = tetPow.times(upgradeEffect("f", 55));
         return new OmegaNum(10).tetrate(player.f.points.add(1).pow(tetPow));
       },
 
@@ -346,7 +352,37 @@ addLayer("f", {
 
       description: "Make flower generation x1e6 quicker and ^1.05 Flowers.",
 
-      cost: new OmegaNum("1e700"),
+      cost: new OmegaNum("2e149"),
+
+    },
+    54: {
+
+      title: "God Flowers",
+
+      description: "Make flower generation x1e10 quicker and ^1.1 Flowers.",
+
+      cost: new OmegaNum("1e173"),
+
+    },
+    55: {
+
+      title: "New Layer!",
+
+      description: "Boost Upgrade 3 based on Flowers again but stronger and unlock a new layer.",
+
+      cost: new OmegaNum("2.5e223"),
+
+      effect() {
+
+        return player.f.points.add(1).pow(0.001);
+
+      },
+
+      effectDisplay() {
+
+        return "Tetration Power x" + format(upgradeEffect("f", 55));
+
+      },
 
     },
   },
