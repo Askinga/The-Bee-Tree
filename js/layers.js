@@ -9,7 +9,9 @@ addLayer("f", {
     };
   },
   passiveGeneration() {
-    return 1;
+    let p = new OmegaNum(1)
+    if(hasUpgrade('f',14)) p = p.times(5)
+    return p
   },
   color: "#86AEF3",
   requires: new OmegaNum(10), // Can be a function that takes requirement increases into account
@@ -62,12 +64,21 @@ addLayer("f", {
 
       cost: new OmegaNum("100"),
       effect() {
-        return new Decimal(10).tetrate(player.f.points.pow(0.1));
+        return new OmegaNum(10).tetrate(player.f.points.pow(0.1));
       },
 
       effectDescription() {
         return "10^^" + format(upgradeEffect("f", 13));
       },
+    },
+      14: {
+
+	    title: "Faster",
+
+	    description: "Make flower generation x5 quicker",
+
+	    cost: new OmegaNum("500")
+
     },
   },
 });
