@@ -13,7 +13,8 @@ addLayer("f", {
     if(hasUpgrade('f',14)) p = p.times(5)
     if(hasUpgrade('f',15)) p = p.times(2)
     if(hasUpgrade('f',23)) p = p.times(upgradeEffect('f', 23))
-    if(hasUpgrade('f',2)) p = p.times(10)
+    if(hasUpgrade('f',24)) p = p.times(10)
+    if(hasUpgrade('f',31)) p = p.times(1000)
     return p
   },
   color: "#86AEF3",
@@ -34,6 +35,8 @@ addLayer("f", {
     if(hasUpgrade('f',22)) mult = mult.times(upgradeEffect('f', 22))
     if(hasUpgrade('f',24)) mult = mult.times(10)
     if(hasUpgrade('f',25)) mult = mult.times(upgradeEffect('f', 25))
+    if(hasUpgrade('f',31)) mult = mult.times(2.5)
+    if(hasUpgrade('f',32)) mult = mult.times(upgradeEffect('f', 32))
     return mult;
   },
   gainExp() {
@@ -185,6 +188,36 @@ addLayer("f", {
       effectDisplay() {
 
         return "x" + format(upgradeEffect("f", 25));
+
+      },
+
+    },
+    31: {
+
+	    title: "The Holy Bees",
+
+	    description: "Make flower generation x1000 quicker and x2.5 Flowers.",
+
+	    cost: new OmegaNum("1e15")
+
+    },
+    32: {
+
+      title: "Even More Flowers 3",
+
+      description: "Boost Flowers based on Flowers again",
+
+      cost: new OmegaNum("1e22"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(player.f.points.pow(0.01));
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 32));
 
       },
 
