@@ -37,6 +37,8 @@ addLayer("f", {
     if(hasUpgrade('f',25)) mult = mult.times(upgradeEffect('f', 25))
     if(hasUpgrade('f',31)) mult = mult.times(2.5)
     if(hasUpgrade('f',32)) mult = mult.times(upgradeEffect('f', 32))
+    if(hasUpgrade('f',33)) mult = mult.times(upgradeEffect('f', 33))
+    if(hasUpgrade('f',34)) mult = mult.times(upgradeEffect('f', 34))
     return mult;
   },
   gainExp() {
@@ -222,5 +224,47 @@ addLayer("f", {
       },
 
     },
-  },
+    33: {
+
+      title: "Even More Flowers 4",
+
+      description: "Boost Flowers based on Flowers again",
+
+      cost: new OmegaNum("1e27"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(3);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 33));
+
+      },
+
+    },
+    34: {
+
+      title: "Even More Flowers 5",
+
+      description: "Boost Flowers based on Flowers again",
+
+      cost: new OmegaNum("2e37"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(1.5);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 34));
+
+      },
+
+    },
+   },
 });
