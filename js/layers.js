@@ -45,6 +45,7 @@ addLayer("f", {
     if(hasUpgrade('f',35)) mult = mult.times(upgradeEffect('f', 35))
     if(hasUpgrade('f',41)) mult = mult.times(upgradeEffect('f', 41))
     if(hasUpgrade('f',42)) mult = mult.times(1e6)
+    if(hasUpgrade('f',51)) mult = mult.times(upgradeEffect('f', 51))
     return mult;
   },
   gainExp() {
@@ -86,7 +87,7 @@ addLayer("f", {
       effect() {
         let tetPow = new OmegaNum(0.1)
         if(hasUpgrade('f', 45)) tetPow = tetPow.times(upgradeEffect('f',45))
-        return new OmegaNum(10).tetrate(player.f.points.pow(tetPow));
+        return new OmegaNum(10).tetrate(player.f.points.add(1).pow(tetPow));
       },
 
       effectDisplay() {
@@ -121,7 +122,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.pow(0.2);
+        return player.f.points.add(1).pow(0.2);
 
       },
 
@@ -141,7 +142,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(1.25);
+        return player.f.points.add(1).log(10).add(1).pow(1.25);
 
       },
 
@@ -161,7 +162,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.pow(0.1);
+        return player.f.points.add(1).pow(0.1);
 
       },
 
@@ -191,7 +192,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(2);
+        return player.f.points.add(1).log(10).add(1).pow(2);
 
       },
 
@@ -221,7 +222,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(5);
+        return player.f.points.add(1).log(10).add(1).pow(5);
 
       },
 
@@ -242,7 +243,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(3);
+        return player.f.points.add(1).log(10).add(1).pow(3);
 
       },
 
@@ -263,7 +264,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(1.5);
+        return player.f.points.add(1).log(10).add(1).pow(1.5);
 
       },
 
@@ -284,7 +285,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(1.25);
+        return player.f.points.add(1).log(10).add(1).pow(1.25);
 
       },
 
@@ -305,7 +306,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(4);
+        return player.f.points.add(1).log(10).add(1).pow(4);
 
       },
 
@@ -335,7 +336,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(2);
+        return player.f.points.add(1).log(10).add(1).pow(2);
 
       },
 
@@ -356,7 +357,7 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.log(10).pow(1.5);
+        return player.f.points.add(1).log(10).add(1).pow(1.5);
 
       },
 
@@ -377,13 +378,34 @@ addLayer("f", {
 
       effect() {
 
-        return player.f.points.pow(0.00065);
+        return player.f.points.add(1).pow(0.00065);
 
       },
 
       effectDisplay() {
 
         return "Tetraton Power x" + format(upgradeEffect("f", 45));
+
+      },
+
+    },
+    51: {
+
+      title: "Yet More Flowers",
+
+      description: "Boost Flowers based on Flowers",
+
+      cost: new OmegaNum("2e103"),
+
+      effect() {
+
+        return player.f.points.add(1).pow(0.1);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 51));
 
       },
 
