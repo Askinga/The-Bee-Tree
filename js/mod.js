@@ -45,6 +45,7 @@ function getPointGen() {
 	let gain = new OmegaNum(1)
 	if(hasUpgrade('f', 11)) gain = gain.times(10)
   if(hasUpgrade('f', 12)) gain = gain.pow(10)
+  if(hasUpgrade('f', 13)) gain = gain.tetrate(upgradeEffect('f', 13))
 	return gain
 }
 

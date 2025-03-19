@@ -1,44 +1,73 @@
 addLayer("f", {
-    name: "Flowers", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    startData() { return {
-        unlocked: true,
-		points: new OmegaNum(0),
-    }},
-    color: "#86AEF3",
-    requires: new OmegaNum(10), // Can be a function that takes requirement increases into account
-    resource: "Flowers", // Name of prestige currency
-    baseResource: "points", // Name of resource prestige is based on
-    baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new OmegaNum(1)
-        return mult
+  name: "Flowers", // This is optional, only used in a few places, If absent it just uses the layer id.
+  symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
+  position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+  startData() {
+    return {
+      unlocked: true,
+      points: new OmegaNum(0),
+    };
+  },
+  passiveGeneration() {
+    return 1;
+  },
+  color: "#86AEF3",
+  requires: new OmegaNum(10), // Can be a function that takes requirement increases into account
+  resource: "Flowers", // Name of prestige currency
+  baseResource: "points", // Name of resource prestige is based on
+  baseAmount() {
+    return player.points;
+  }, // Get the current amount of baseResource
+  type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+  exponent: 1e-10000000000000000000000000, // Prestige currency exponent
+  gainMult() {
+    // Calculate the multiplier for main currency from bonuses
+    mult = new OmegaNum(1);
+    return mult;
+  },
+  gainExp() {
+    // Calculate the exponent on main currency from bonuses
+    return new OmegaNum(1);
+  },
+  row: 0, // Row the layer is in on the tree (0 is the first row)
+  hotkeys: [
+    {
+      key: "f",
+      description: "F: Reset for flowers",
+      onPress() {
+        if (canReset(this.layer)) doReset(this.layer);
+      },
     },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        return new OmegaNum(1)
+  ],
+  layerShown() {
+    return true;
+  },
+  upgrades: {
+    11: {
+      title: "More Bees",
+      description: "Boost Bees by *10",
+      cost: new OmegaNum(1),
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "f", description: "F: Reset for flowers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
-    layerShown(){return true},
-    upgrades: {
-	11: {
-	    title: "More Bees",
-	    description: "Boost Bees by *10",
-	    cost: new OmegaNum(1)
-	},
-  12: {
+    12: {
+      title: "Even More Bees",
 
-	    title: "Even More Bees",
+      description: "Boost Bees by ^10",
 
-	    description: "Boost Bees by ^10",
-
-	    cost: new OmegaNum("15")
-
-	},
+      cost: new OmegaNum("15"),
     },
-})
+    13: {
+      title: "Even More Bees",
+
+      description: "Boost Bees based on Flowers",
+
+      cost: new OmegaNum("100"),
+      effect() {
+        return new Decimal(10).tetrate(player.f.points.pow(0.1));
+      },
+
+      effectDescription() {
+        return "10^^" + format(upgradeEffect("f", 13));
+      },
+    },
+  },
+});
