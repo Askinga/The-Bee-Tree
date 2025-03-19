@@ -84,7 +84,9 @@ addLayer("f", {
 
       cost: new OmegaNum("100"),
       effect() {
-        return new OmegaNum(10).tetrate(player.f.points.pow(0.1));
+        let tetPow = new OmegaNum(0.1)
+        if(hasUpgrade('f', 45)) tetPow = tetPow.times(upgradeEffect('f',45))
+        return new OmegaNum(10).tetrate(player.f.points.pow(tetPow));
       },
 
       effectDisplay() {
@@ -361,6 +363,27 @@ addLayer("f", {
       effectDisplay() {
 
         return "x" + format(upgradeEffect("f", 44));
+
+      },
+
+    },
+    45: {
+
+      title: "Get past the FF1e10 range",
+
+      description: "Boost Upgrade 3 based on Flowers",
+
+      cost: new OmegaNum("1.5e103"),
+
+      effect() {
+
+        return player.f.points.pow(0.00065);
+
+      },
+
+      effectDisplay() {
+
+        return "Tetraton Power x" + format(upgradeEffect("f", 45));
 
       },
 
