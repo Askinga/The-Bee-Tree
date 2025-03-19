@@ -32,7 +32,8 @@ addLayer("f", {
     if(hasUpgrade('f',15)) mult = mult.times(5)
     if(hasUpgrade('f',21)) mult = mult.times(upgradeEffect('f', 21))
     if(hasUpgrade('f',22)) mult = mult.times(upgradeEffect('f', 22))
-    if(hasUpgrade('f',)) mult = mult.times(5)
+    if(hasUpgrade('f',24)) mult = mult.times(10)
+    if(hasUpgrade('f',25)) mult = mult.times(upgradeEffect('f', 25))
     return mult;
   },
   gainExp() {
@@ -75,7 +76,7 @@ addLayer("f", {
         return new OmegaNum(10).tetrate(player.f.points.pow(0.1));
       },
 
-      effectDescription() {
+      effectDisplay() {
         return "10^^" + format(upgradeEffect("f", 13));
       },
     },
@@ -111,7 +112,7 @@ addLayer("f", {
 
       },
 
-      effectDescription() {
+      effectDisplay() {
 
         return "x" + format(upgradeEffect("f", 21));
 
@@ -131,7 +132,7 @@ addLayer("f", {
 
       },
 
-      effectDescription() {
+      effectDisplay() {
 
         return "x" + format(upgradeEffect("f", 22));
 
@@ -151,7 +152,7 @@ addLayer("f", {
 
       },
 
-      effectDescription() {
+      effectDisplay() {
 
         return "x" + format(upgradeEffect("f", 23));
 
@@ -165,6 +166,27 @@ addLayer("f", {
 	    description: "Make flower generation x10 quicker and x10 Flowers.",
 
 	    cost: new OmegaNum("1e9")
+
+    },
+    25: {
+
+      title: "Even More Flowers 2",
+
+      description: "Boost Flowers based on Flowers again",
+
+      cost: new OmegaNum("2e10"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(2);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 25));
+
+      },
 
     },
   },
