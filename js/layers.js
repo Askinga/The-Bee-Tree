@@ -10,7 +10,7 @@ addLayer("f", {
   },
   passiveGeneration() {
     let p = new OmegaNum(1)
-    if(hasUpgrade('f',14)) p = p.times(5)
+    if(hasUpgrade('f',14)) p = p.times(6.5)
     if(hasUpgrade('f',15)) p = p.times(2)
     if(hasUpgrade('f',23)) p = p.times(upgradeEffect('f', 23))
     if(hasUpgrade('f',24)) p = p.times(10)
@@ -32,7 +32,7 @@ addLayer("f", {
   gainMult() {
     // Calculate the multiplier for main currency from bonuses
     mult = new OmegaNum(1);
-    if(hasUpgrade('f',14)) mult = mult.times(3)
+    if(hasUpgrade('f',14)) mult = mult.times(3.5)
     if(hasUpgrade('f',15)) mult = mult.times(5)
     if(hasUpgrade('f',21)) mult = mult.times(upgradeEffect('f', 21))
     if(hasUpgrade('f',22)) mult = mult.times(upgradeEffect('f', 22))
@@ -98,7 +98,7 @@ addLayer("f", {
 
 	    title: "Faster",
 
-	    description: "Make flower generation x5 quicker and x3 Flowers.",
+	    description: "Make flower generation x6.5 quicker and x3.5 Flowers.",
 
 	    cost: new OmegaNum("500")
 
