@@ -410,5 +410,26 @@ addLayer("f", {
       },
 
     },
+    43: {
+
+      title: "Even More Flower Generation 3",
+
+      description: "Boost Flowers generation based on Flowers again",
+
+      cost: new OmegaNum("1e124"),
+
+      effect() {
+
+        return player.f.points.log(10).pow(3.5);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 52));
+
+      },
+
+    },
    },
 });
