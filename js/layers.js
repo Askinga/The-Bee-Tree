@@ -117,7 +117,7 @@ addLayer("f", {
       cost: new OmegaNum("50000"),
 
       effect() {
-        return player.f.points.add(1).pow(0.2);
+        return player.f.points.add(1).pow(0.27);
       },
 
       effectDisplay() {
@@ -307,7 +307,7 @@ addLayer("f", {
       },
 
       effectDisplay() {
-        return "Tetraton Power x" + format(upgradeEffect("f", 45));
+        return "Tetration Power x" + format(upgradeEffect("f", 45));
       },
     },
     51: {
@@ -318,7 +318,7 @@ addLayer("f", {
       cost: new OmegaNum("2e103"),
 
       effect() {
-        return player.f.points.add(1).log(10).add(1).pow(1.1);
+        return player.f.points.pow(0.14);
       },
 
       effectDisplay() {
@@ -339,6 +339,15 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 52));
       },
+    },
+    53: {
+
+      title: "Holy Flowers",
+
+      description: "Make flower generation x1e6 quicker and ^1.05 Flowers.",
+
+      cost: new OmegaNum("1e700"),
+
     },
   },
 });
