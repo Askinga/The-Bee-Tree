@@ -12,6 +12,8 @@ addLayer("f", {
     let p = new OmegaNum(1)
     if(hasUpgrade('f',14)) p = p.times(5)
     if(hasUpgrade('f',15)) p = p.times(2)
+    if(hasUpgrade('f',23)) p = p.times(upgradeEffect('f', 23))
+    if(hasUpgrade('f',2)) p = p.times(10)
     return p
   },
   color: "#86AEF3",
@@ -30,6 +32,7 @@ addLayer("f", {
     if(hasUpgrade('f',15)) mult = mult.times(5)
     if(hasUpgrade('f',21)) mult = mult.times(upgradeEffect('f', 21))
     if(hasUpgrade('f',22)) mult = mult.times(upgradeEffect('f', 22))
+    if(hasUpgrade('f',)) mult = mult.times(5)
     return mult;
   },
   gainExp() {
@@ -133,6 +136,36 @@ addLayer("f", {
         return "x" + format(upgradeEffect("f", 22));
 
       },
+    },
+    23: {
+
+      title: "More Flower Generation",
+
+      description: "Boost Flowers generation based on Flowers",
+
+      cost: new OmegaNum("2.5e7"),
+
+      effect() {
+
+        return player.f.points.pow(0.1);
+
+      },
+
+      effectDescription() {
+
+        return "x" + format(upgradeEffect("f", 23));
+
+      },
+
+    },
+    24: {
+
+	    title: "Faster^2",
+
+	    description: "Make flower generation x10 quicker and x10 Flowers.",
+
+	    cost: new OmegaNum("1e9")
+
     },
   },
 });
