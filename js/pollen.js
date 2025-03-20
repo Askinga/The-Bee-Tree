@@ -15,7 +15,10 @@ addLayer("p", {
     color: "#FFFFE0",
 
     passiveGeneration(){
-      let p = new 
+      let p = new OmegaNum(0)
+      if(hasUpgrade('p',21)) p = p.add(1)
+      return p
+    },
   
     requires: new OmegaNum("10^^10^^4e52"), // Can be a function that takes requirement increases into account
 
@@ -35,7 +38,7 @@ addLayer("p", {
         if(hasUpgrade('p',13)) mult = mult.times(2)
         if(hasUpgrade('p',14)) mult = mult.times(3)
         if(hasUpgrade('p',15)) mult = mult.times(2.5)
-        if(hasUpgrade('p',21)) mult = mult.times(upgradeEffect('p',21)
+        if(hasUpgrade('p',21)) mult = mult.times(upgradeEffect('p',21))
         return mult
 
     },
