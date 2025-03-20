@@ -98,7 +98,7 @@ addLayer("f", {
       },
 
       effectDisplay() {
-        return "10^^" + format(upgradeEffect("f", 13));
+        return "10^^" + format(upgradeEffect("f", 13))+"x";
       },
     },
     14: {

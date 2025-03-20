@@ -1,6 +1,6 @@
 addLayer("p", {
 
-    name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "pollen", // This is optional, only used in a few places, If absent it just uses the layer id.
 
     symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
 
@@ -14,17 +14,17 @@ addLayer("p", {
 
     color: "#FFFFE0",
 
-    requires: new OmegaNum(10), // Can be a function that takes requirement increases into account
+    requires: new OmegaNum("10^^10^^4e52"), // Can be a function that takes requirement increases into account
 
-    resource: "prestige points", // Name of prestige currency
+    resource: "pollen", // Name of prestige currency
 
-    baseResource: "points", // Name of resource prestige is based on
+    baseResource: "bees", // Name of resource prestige is based on
 
     baseAmount() {return player.points}, // Get the current amount of baseResource
 
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 
-    exponent: 0.5, // Prestige currency exponent
+    exponent: 0, // Prestige currency exponent
 
     gainMult() { // Calculate the multiplier for main currency from bonuses
 
@@ -40,7 +40,9 @@ addLayer("p", {
 
     },
 
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+  
+    branches: ["f"],
 
     hotkeys: [
 
@@ -48,6 +50,6 @@ addLayer("p", {
 
     ],
 
-    layerShown(){return true}
+    layerShown(){return (hasUpgrade('f', 55) || player.p.unlocked)}
 
 })
