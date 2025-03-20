@@ -30,6 +30,8 @@ addLayer("p", {
 
         mult = new OmegaNum(1)	
         if(hasUpgrade('p',13)) mult = mult.times(2)
+        if(hasUpgrade('p',14)) mult = mult.times(3)
+        if(hasUpgrade('p',15)) mult = mult.times(2.5)
         return mult
 
     },
@@ -80,5 +82,34 @@ addLayer("p", {
       cost: new OmegaNum(2),
 
     },
+    14: {
+
+      title: "More Pollen and Flowers",
+
+      description: "Boost Flowers based on Pollen and x3 Pollen",
+
+      cost: new OmegaNum("4"),
+
+      effect() {
+
+        return player.p.points.add(1).pow(1.5);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 14));
+
+      },
    },
+    15: {
+
+      title: "Faster 2",
+
+      description: "Boost Flowers by x10 and x2.5 Pollen.",
+
+      cost: new OmegaNum(100),
+
+    },
+    },
 })
