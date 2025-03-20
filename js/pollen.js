@@ -71,6 +71,8 @@ addLayer("p", {
       description: "Boost Flowers by x4 and auto buy Flower upgrades.",
 
       cost: new OmegaNum(1),
+      
+      unlocked(){ return hasUpgrade('p',11)}
 
     },
     13: {
@@ -80,6 +82,8 @@ addLayer("p", {
       description: "Boost Flowers by x4 and x2 Pollen.",
 
       cost: new OmegaNum(2),
+      
+      unlocked(){ return hasUpgrade('p',12)}
 
     },
     14: {
@@ -101,6 +105,8 @@ addLayer("p", {
         return "x" + format(upgradeEffect("p", 14));
 
       },
+      
+      unlocked(){ return hasUpgrade('p',13)}
    },
     15: {
 
@@ -110,6 +116,7 @@ addLayer("p", {
 
       cost: new OmegaNum(100),
 
+      unlocked(){ return hasUpgrade('p',14)}
     },
     },
 })

@@ -89,6 +89,8 @@ addLayer("f", {
       description: "Boost Bees by ^10",
 
       cost: new OmegaNum("15"),
+      
+      unlocked(){ return hasUpgrade('f',11)}
     },
     13: {
       title: "Even More Bees",
@@ -106,6 +108,8 @@ addLayer("f", {
       effectDisplay() {
         return "10^^" + format(upgradeEffect("f", 13))+"x";
       },
+      
+      unlocked(){ return hasUpgrade('f',12)}
     },
     14: {
       title: "Faster",
@@ -113,6 +117,8 @@ addLayer("f", {
       description: "Make flower generation x6.5 quicker and x3.5 Flowers.",
 
       cost: new OmegaNum("500"),
+      
+      unlocked(){ return hasUpgrade('f',13)}
     },
     15: {
       title: "Even Faster",
@@ -120,6 +126,8 @@ addLayer("f", {
       description: "Make flower generation x2 quicker and x5 Flowers.",
 
       cost: new OmegaNum("6000"),
+      
+      unlocked(){ return hasUpgrade('f',14)}
     },
     21: {
       title: "More Flowers",
@@ -135,6 +143,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 21));
       },
+      
+      unlocked(){ return hasUpgrade('f',15)}
     },
     22: {
       title: "Even More Flowers",
@@ -150,6 +160,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 22));
       },
+      
+      unlocked(){ return hasUpgrade('f',21)}
     },
     23: {
       title: "More Flower Generation",
@@ -165,6 +177,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 23));
       },
+      
+      unlocked(){ return hasUpgrade('f',22)}
     },
     24: {
       title: "Faster^2",
@@ -172,6 +186,8 @@ addLayer("f", {
       description: "Make flower generation x10 quicker and x10 Flowers.",
 
       cost: new OmegaNum("1e9"),
+      
+      unlocked(){ return hasUpgrade('f',23)}
     },
     25: {
       title: "Even More Flowers 2",
@@ -187,6 +203,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 25));
       },
+      
+      unlocked(){ return hasUpgrade('f',24)}
     },
     31: {
       title: "The Holy Bees",
@@ -194,6 +212,8 @@ addLayer("f", {
       description: "Make flower generation x1000 quicker and x2.5 Flowers.",
 
       cost: new OmegaNum("1e15"),
+      
+      unlocked(){ return hasUpgrade('f',25)}
     },
     32: {
       title: "Even More Flowers 3",
@@ -209,6 +229,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 32));
       },
+      
+      unlocked(){ return hasUpgrade('f',31)}
     },
     33: {
       title: "Even More Flowers 4",
@@ -224,6 +246,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 33));
       },
+      
+      unlocked(){ return hasUpgrade('f',32)}
     },
     34: {
       title: "Even More Flowers 5",
@@ -239,6 +263,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 34));
       },
+      
+      unlocked(){ return hasUpgrade('f',33)}
     },
     35: {
       title: "Even More Flowers 6",
@@ -254,6 +280,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 35));
       },
+      
+      unlocked(){ return hasUpgrade('f',34)}
     },
     41: {
       title: "Even More Flowers Final",
@@ -269,6 +297,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 41));
       },
+      
+      unlocked(){ return hasUpgrade('f',35)}
     },
     42: {
       title: "The God Bees",
@@ -276,6 +306,8 @@ addLayer("f", {
       description: "Make flower generation x1e6 quicker and x1e6 Flowers.",
 
       cost: new OmegaNum("1e70"),
+      
+      unlocked(){ return hasUpgrade('f',41)}
     },
     43: {
       title: "Even More Flower Generation",
@@ -291,6 +323,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 43));
       },
+      
+      unlocked(){ return hasUpgrade('f',42)}
     },
     44: {
       title: "Even More Flower Generation 2",
@@ -306,6 +340,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 44));
       },
+      
+      unlocked(){ return hasUpgrade('f',43)}
     },
     45: {
       title: "Get past the FF1e10 range",
@@ -321,6 +357,8 @@ addLayer("f", {
       effectDisplay() {
         return "Tetration Power x" + format(upgradeEffect("f", 45));
       },
+      
+      unlocked(){ return hasUpgrade('f',44)}
     },
     51: {
       title: "Yet More Flowers",
@@ -336,6 +374,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 51));
       },
+      
+      unlocked(){ return hasUpgrade('f',45)}
     },
     52: {
       title: "Even More Flower Generation 3",
@@ -351,6 +391,8 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 52));
       },
+      
+      unlocked(){ return hasUpgrade('f',51)}
     },
     53: {
 
@@ -359,7 +401,8 @@ addLayer("f", {
       description: "Make flower generation x1e6 quicker and ^1.05 Flowers.",
 
       cost: new OmegaNum("2e149"),
-
+	
+      unlocked(){ return hasUpgrade('f',52)}
     },
     54: {
 
@@ -368,7 +411,8 @@ addLayer("f", {
       description: "Make flower generation x1e10 quicker and ^1.1 Flowers.",
 
       cost: new OmegaNum("1e173"),
-
+      
+      unlocked(){ return hasUpgrade('f',53)}
     },
     55: {
 
@@ -390,6 +434,7 @@ addLayer("f", {
 
       },
 
+      unlocked(){ return hasUpgrade('f',54)}
     },
   },
 });
