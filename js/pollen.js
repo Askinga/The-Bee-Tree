@@ -28,8 +28,8 @@ addLayer("p", {
 
     gainMult() { // Calculate the multiplier for main currency from bonuses
 
-        mult = new OmegaNum(1)
-
+        mult = new OmegaNum(1)	
+        if(hasUpgrade('p',13)) mult = mult.times(2)
         return mult
 
     },
@@ -69,6 +69,15 @@ addLayer("p", {
       description: "Boost Flowers by x4 and auto buy Flower upgrades.",
 
       cost: new OmegaNum(1),
+
+    },
+    13: {
+
+      title: "Faster",
+
+      description: "Boost Flowers by x4 and x2 Pollen.",
+
+      cost: new OmegaNum(2),
 
     },
    },
