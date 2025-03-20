@@ -50,6 +50,17 @@ addLayer("p", {
 
     ],
 
-    layerShown(){return (hasUpgrade('f', 55) || player.p.unlocked)}
+    layerShown(){return (hasUpgrade('f', 55) || player.p.unlocked)},
+    upgrades: {
 
+    11: {
+
+      title: "More Flowers",
+
+      description: "Boost Flowers by x3",
+
+      cost: new OmegaNum(1),
+
+    },
+   },
 })

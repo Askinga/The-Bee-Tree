@@ -47,6 +47,7 @@ addLayer("f", {
     if (hasUpgrade("f", 34)) mult = mult.times(upgradeEffect("f", 34));
     if (hasUpgrade("f", 35)) mult = mult.times(upgradeEffect("f", 35));
     if (hasUpgrade("f", 41)) mult = mult.times(upgradeEffect("f", 41));
+    if (hasUpgrade("p", 11)) mult = mult.times(3);
     if (hasUpgrade("f", 42)) mult = mult.times(1e6);
     if (hasUpgrade("f", 51)) mult = mult.times(upgradeEffect("f", 51));
     return mult;
