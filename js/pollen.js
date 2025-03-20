@@ -14,6 +14,9 @@ addLayer("p", {
 
     color: "#FFFFE0",
 
+    passiveGeneration(){
+      let p = new 
+  
     requires: new OmegaNum("10^^10^^4e52"), // Can be a function that takes requirement increases into account
 
     resource: "pollen", // Name of prestige currency
@@ -32,6 +35,7 @@ addLayer("p", {
         if(hasUpgrade('p',13)) mult = mult.times(2)
         if(hasUpgrade('p',14)) mult = mult.times(3)
         if(hasUpgrade('p',15)) mult = mult.times(2.5)
+        if(hasUpgrade('p',21)) mult = mult.times(upgradeEffect('p',21)
         return mult
 
     },
@@ -118,5 +122,30 @@ addLayer("p", {
 
       unlocked(){ return hasUpgrade('p',14)}
     },
+    21: {
+
+      title: "Faster Pollen",
+
+      description: "Boost Pollen based on Pollen and 100% of Pollen per sec.",
+
+      cost: new OmegaNum("300"),
+
+      effect() {
+
+        return player.p.points.add(1).pow(0.1);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 21));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',15)}
+
+   },
     },
 })
