@@ -62,5 +62,14 @@ addLayer("p", {
       cost: new OmegaNum(1),
 
     },
+    12: {
+
+      title: "Even More Flowers",
+
+      description: "Boost Flowers by x4 and auto buy Flower upgrades.",
+
+      cost: new OmegaNum(1),
+
+    },
    },
 })

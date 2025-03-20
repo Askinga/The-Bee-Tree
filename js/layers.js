@@ -26,7 +26,7 @@ addLayer("f", {
   color: "#86AEF3",
   requires: new OmegaNum(10), // Can be a function that takes requirement increases into account
   resource: "Flowers", // Name of prestige currency
-  baseResource: "points", // Name of resource prestige is based on
+  baseResource: "bees", // Name of resource prestige is based on
   baseAmount() {
     return player.points;
   }, // Get the current amount of baseResource
@@ -50,6 +50,7 @@ addLayer("f", {
     if (hasUpgrade("p", 11)) mult = mult.times(3);
     if (hasUpgrade("f", 42)) mult = mult.times(1e6);
     if (hasUpgrade("f", 51)) mult = mult.times(upgradeEffect("f", 51));
+    if (hasUpgrade("p", 12)) mult = mult.times(4);
     return mult;
   },
   gainExp() {
@@ -72,6 +73,7 @@ addLayer("f", {
   layerShown() {
     return true;
   },
+  autoUpgrade(){ return hasUpgrade('p', 12)},
   upgrades: {
     11: {
       title: "More Bees",
