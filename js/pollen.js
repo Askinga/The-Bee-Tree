@@ -17,6 +17,7 @@ addLayer("p", {
     passiveGeneration(){
       let p = new OmegaNum(0)
       if(hasUpgrade('p',21)) p = p.add(1)
+      if(hasUpgrade('p',23)) p = p.times(5)
       return p
     },
   
@@ -39,6 +40,8 @@ addLayer("p", {
         if(hasUpgrade('p',14)) mult = mult.times(3)
         if(hasUpgrade('p',15)) mult = mult.times(2.5)
         if(hasUpgrade('p',21)) mult = mult.times(upgradeEffect('p',21))
+        if(hasUpgrade('p',22)) mult = mult.times(upgradeEffect('p',22))
+        if(hasUpgrade('p',23)) mult = mult.times(2)
         return mult
 
     },
@@ -142,6 +145,67 @@ addLayer("p", {
       effectDisplay() {
 
         return "x" + format(upgradeEffect("p", 21));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',15)}
+
+    },
+    22: {
+
+      title: "Even More Pollen",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("3000"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.25);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 22));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',21)}
+
+   },
+    23: {
+
+      title: "Even Faster Pollen",
+
+      description: "x2 Pollen and x5 of Pollen per sec.",
+
+      cost: new OmegaNum("75000"),
+
+      unlocked(){ return hasUpgrade('p',22)}
+
+   },
+    24: {
+
+      title: "Faster Bees",
+
+      description: "Boost Flower Upgrade 3 based on Pollen",
+
+      cost: new OmegaNum("1e6"),
+
+      effect() {
+
+        return player.p.points.add(1).pow(0.02);
+
+      },
+
+      effectDisplay() {
+
+        return "Tetration Power x" + format(upgradeEffect("p", 24));
 
       },
 
