@@ -42,6 +42,7 @@ addLayer("p", {
         if(hasUpgrade('p',21)) mult = mult.times(upgradeEffect('p',21))
         if(hasUpgrade('p',22)) mult = mult.times(upgradeEffect('p',22))
         if(hasUpgrade('p',23)) mult = mult.times(2)
+        if(hasUpgrade('p',31)) mult = mult.times(2)   
         return mult
 
     },
@@ -237,6 +238,31 @@ addLayer("p", {
       
 
       unlocked(){ return hasUpgrade('p',24)}
+
+   },
+    31: {
+
+      title: "More Pollen and Flowers 2",
+
+      description: "Boost Flowers based on Pollen again and x2 Pollen",
+
+      cost: new OmegaNum("2e6"),
+
+      effect() {
+
+        return player.p.points.add(1).pow(2);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 31));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',25)}
 
    },
     },

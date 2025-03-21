@@ -54,6 +54,7 @@ addLayer("f", {
     if (hasUpgrade("p", 13)) mult = mult.times(4);
     if (hasUpgrade("p", 14)) mult = mult.times(upgradeEffect("p", 14));
     if (hasUpgrade("p", 15)) mult = mult.times(10);
+    if (hasUpgrade("p", 31)) mult = mult.times(upgradeEffect("p", 31));
     return mult;
   },
   gainExp() {
