@@ -211,7 +211,32 @@ addLayer("p", {
 
       
 
-      unlocked(){ return hasUpgrade('p',15)}
+      unlocked(){ return hasUpgrade('p',23)}
+
+   },
+    25: {
+
+      title: "Even Faster Bees",
+
+      description: "Boost Flower Upgrade 3 based on Pollen",
+
+      cost: new OmegaNum("1.5e6"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.1);
+
+      },
+
+      effectDisplay() {
+
+        return "Tetration Power x" + format(upgradeEffect("p", 25));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',24)}
 
    },
     },
