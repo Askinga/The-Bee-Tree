@@ -68,7 +68,18 @@ addLayer('h', {
     
     layerShown(){ return (player.points.gte("10^^10^^1e4000") || player.h.unlocked)},
   
-    upgrades: {
-      11: {
-
+    milestones: {
+      0: {
+        requirementDescription: "1 Honey",
+        effectDescription: "x10 Flowers",
+        done(){ return player.h.points.gte('1')}
+      },
+    },
+	
+    effect(){
+      return new OmegaNum(2.5).pow(player.h.points)
+    },
+  
+    effectDescription
+  
 })
