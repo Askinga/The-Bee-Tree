@@ -1,8 +1,8 @@
-addLayer('s', {
+addLayer('h', {
   
-  name: "Sprunki",
+  name: "honey",
   
-  symbol: "S",
+  symbol: "H",
   
   position: 0,
   
@@ -12,7 +12,7 @@ addLayer('s', {
       	points: new OmegaNum(0)
     }},
 
-    color: "#dd00ff",
+    color: "#FFC30B",
 
     passiveGeneration(){
 
@@ -25,21 +25,22 @@ addLayer('s', {
   
 
     requires(){ 
-      let req = new OmegaNum("10^^10^^1e5000")
-      req = req.times(new OmegaNum(10).tetrate(new OmegaNum(10).tetrate(new OmegaNum("e5000").pow(player.s.points.add(1).times(1)))))
+      let req = new OmegaNum("1e9")
       return req
     },// Can be a function that takes requirement increases into account
 
-    resource: "sprunki", // Name of prestige currency
+    resource: "honey", // Name of prestige currency
 
-    baseResource: "bees", // Name of resource prestige is based on
+    baseResource: "pollen", // Name of resource prestige is based on
 
-    baseAmount() {return player.points}, // Get the current amount of baseResource
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
 
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 
-    exponent: 0, // Prestige currency exponent
-
+    exponent: 1, // Prestige currency exponent
+    
+    base: 10,
+  
     gainMult() { // Calculate the multiplier for main currency from bonuses
 
         mult = new OmegaNum(1)	        
@@ -53,7 +54,7 @@ addLayer('s', {
 
     },
 
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
 
   
 
@@ -61,10 +62,10 @@ addLayer('s', {
 
     hotkeys: [
 
-        {key: "s", description: "S: Reset for sprunki", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "h", description: "H: Reset for honey", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
 
     ],
     
-    layerShown(){ return player.points.gte("10^^10^^1e4000")}
+    layerShown(){ return (player.points.gte("10^^10^^1e4000") || player.h.unlocked)}
 
 })
