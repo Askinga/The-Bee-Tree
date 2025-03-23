@@ -96,6 +96,20 @@ addLayer('h', {
         unlocked(){ return hasMilestone('h', 1)}
 
       },
+      3: {
+
+        requirementDescription: "12 Honey",
+
+        effectDescription: "x3 Flowers again, buy max Honey and boost Flowers based on Honey.",
+
+        done(){ return player.h.points.gte('6')},
+
+        effect(){
+          return new Decimal.pow
+        
+        unlocked(){ return hasMilestone('h', 1)}
+
+      },
     },
 	
     effect(){
