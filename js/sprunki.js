@@ -26,7 +26,7 @@ addLayer('s', {
 
     requires(){ 
       let req = new OmegaNum("10^^10^^1e5000")
-      req = req.tetrate(new OmegaNum(10).tetrate(new OmegaNum("e5000").pow(player.s.points.add(1).times(0.2))))
+      req = req.times(new OmegaNum(10).tetrate(new OmegaNum(10).tetrate(new OmegaNum("e5000").pow(player.s.points.add(1).times(1)))))
       return req
     },// Can be a function that takes requirement increases into account
 
