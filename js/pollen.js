@@ -45,6 +45,7 @@ addLayer("p", {
         if(hasUpgrade('p',31)) mult = mult.times(2)   
         if(hasUpgrade('p',32)) mult = mult.times(upgradeEffect('p',32))
         if(hasUpgrade('p',33)) mult = mult.times(upgradeEffect('p',33))
+        mult = mult.times(layers.h.effect())
         return mult
 
     },

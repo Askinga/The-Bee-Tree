@@ -55,6 +55,7 @@ addLayer("f", {
     if (hasUpgrade("p", 14)) mult = mult.times(upgradeEffect("p", 14));
     if (hasUpgrade("p", 15)) mult = mult.times(10);
     if (hasUpgrade("p", 31)) mult = mult.times(upgradeEffect("p", 31));
+    if (hasMilestone('h', 0)) mult = mult.times(10);
     return mult;
   },
   gainExp() {
@@ -77,7 +78,7 @@ addLayer("f", {
   layerShown() {
     return true;
   },
-  autoUpgrade(){ return hasUpgrade('p', 12)},
+  autoUpgrade(){ return (hasUpgrade('p', 12) || hasMilestone('h', 0))},
   upgrades: {
     11: {
       title: "More Bees",
