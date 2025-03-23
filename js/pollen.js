@@ -62,7 +62,7 @@ addLayer("p", {
         {key: "p", description: "P: Reset for pollen", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
 
     ],
-
+	
     layerShown(){return (hasUpgrade('f', 55) || player.p.unlocked)},
     upgrades: {
 
