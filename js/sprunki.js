@@ -10,7 +10,7 @@ addLayer('s', {
     return {
       unlocked: false,
       	points: new OmegaNum(0)
-    }}
+    }},
 
     color: "#dd00ff",
 
@@ -25,10 +25,10 @@ addLayer('s', {
   
 
     requires(){ 
-      let req = new OmegaNum("10^^10^^1e5000"),
-      req = req.tetrate(player.s.points.add(1).tetrate("1e1000"),
+      let req = new OmegaNum("10^^10^^1e5000")
+      req = req.tetrate(new OmegaNum(10).tetrate(new OmegaNum("e5000").pow(player.s.points.add(1).times(0.2))))
       return req
-    }},// Can be a function that takes requirement increases into account
+    },// Can be a function that takes requirement increases into account
 
     resource: "sprunki", // Name of prestige currency
 
@@ -67,4 +67,4 @@ addLayer('s', {
     
     layerShown(){ return player.points.gte("10^^10^^1e4000")}
 
-}
+})
