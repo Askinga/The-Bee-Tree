@@ -85,17 +85,15 @@ addLayer('h', {
         unlocked(){ return hasMilestone('h', 0)}
         
       },
-      12: {
+      2: {
 
         requirementDescription: "6 Honey",
 
-        effectDescription: "x3 Flowers",
+        effectDescription: "Automate Pollen upgrades and unlock a new Pollen upgrade.",
 
-        done(){ return player.h.points.gte('3')},
+        done(){ return player.h.points.gte('6')},
 
-        unlocked(){ return hasMilestone('h', 0)}
-
-        
+        unlocked(){ return hasMilestone('h', 1)}
 
       },
     },

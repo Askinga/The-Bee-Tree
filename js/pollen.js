@@ -47,6 +47,7 @@ addLayer("p", {
         if(hasUpgrade('p',33)) mult = mult.times(upgradeEffect('p',33))
         mult = mult.times(layers.h.effect())
         if(hasUpgrade('p',34)) mult = mult.times(upgradeEffect('p',34))
+        if(hasUpgrade('p',35)) mult = mult.times(upgradeEffect('p',35))
         return mult
 
     },
@@ -66,6 +67,8 @@ addLayer("p", {
         {key: "p", description: "P: Reset for pollen", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
 
     ],
+  
+    autoUpgrade(){return hasMilestone('h', 2)},
 	
     layerShown(){return (hasUpgrade('f', 55) || player.p.unlocked)},
     upgrades: {
@@ -342,6 +345,31 @@ addLayer("p", {
       
 
       unlocked(){ return hasUpgrade('p',33)}
+
+   },
+    35: {
+
+      title: "Even More Pollen 5",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("5e14"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.5);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 35));
+
+      },
+
+      
+
+      unlocked(){ return hasMilestone('h',2)}
 
    },
     },
