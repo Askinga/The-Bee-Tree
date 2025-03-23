@@ -17,6 +17,7 @@ addLayer("p", {
     passiveGeneration(){
       let p = new OmegaNum(0)
       if(hasUpgrade('p',21)) p = p.add(1)
+      if(hasMilestone('h',4)) p = p.add(1)
       if(hasUpgrade('p',23)) p = p.times(5)
       return p
     },
@@ -48,6 +49,7 @@ addLayer("p", {
         mult = mult.times(layers.h.effect())
         if(hasUpgrade('p',34)) mult = mult.times(upgradeEffect('p',34))
         if(hasUpgrade('p',35)) mult = mult.times(upgradeEffect('p',35))
+       if(hasUpgrade('p',41)) mult = mult.times(upgradeEffect('p',41))
         return mult
 
     },
@@ -140,7 +142,7 @@ addLayer("p", {
 
       title: "Faster Pollen",
 
-      description: "Boost Pollen based on Pollen and 100% of Pollen per sec.",
+      description: "Boost Pollen based on Pollen and +100% of Pollen per sec.",
 
       cost: new OmegaNum("300"),
 
@@ -370,6 +372,31 @@ addLayer("p", {
       
 
       unlocked(){ return hasMilestone('h',2)}
+
+   },
+    41: {
+
+      title: "Even More Pollen 6",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("1e22"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.6);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 41));
+
+      },
+
+      
+
+      unlocked(){ return hasMilestone('h',4)}
 
    },
     },

@@ -113,6 +113,18 @@ addLayer('h', {
         unlocked(){ return hasMilestone('h', 2)}
 
       },
+      4: {
+
+        requirementDescription: "13 Honey",
+
+        effectDescription: "Always have at least 100% of Pollen per second and unlock a new row of Pollen upgrades.",
+
+        done(){ return player.h.points.gte('13')},
+
+        unlocked(){ return hasMilestone('h', 3)}
+
+      },
+      
     },
 	
     effect(){
