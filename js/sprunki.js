@@ -66,6 +66,9 @@ addLayer('h', {
 
     ],
     
-    layerShown(){ return (player.points.gte("10^^10^^1e4000") || player.h.unlocked)}
+    layerShown(){ return (player.points.gte("10^^10^^1e4000") || player.h.unlocked)},
+  
+    upgrades: {
+      11: {
 
 })
