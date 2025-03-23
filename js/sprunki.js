@@ -71,7 +71,7 @@ addLayer('h', {
     milestones: {
       0: {
         requirementDescription: "1 Honey",
-        effectDescription: "x10 Flowers",
+        effectDescription: "x10 Flowers and keep Flower Upgrade Automation.",
         done(){ return player.h.points.gte('1')}
       },
     },
@@ -80,6 +80,8 @@ addLayer('h', {
       return new OmegaNum(2.5).pow(player.h.points)
     },
   
-    effectDescription
+    effectDescription(){
+      return 'which is boosting Pollen by x' + format(layers.h.effect())
+    },
   
 })

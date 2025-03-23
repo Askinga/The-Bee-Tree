@@ -43,6 +43,8 @@ addLayer("p", {
         if(hasUpgrade('p',22)) mult = mult.times(upgradeEffect('p',22))
         if(hasUpgrade('p',23)) mult = mult.times(2)
         if(hasUpgrade('p',31)) mult = mult.times(2)   
+        if(hasUpgrade('p',32)) mult = mult.times(upgradeEffect('p',32))
+        if(hasUpgrade('p',33)) mult = mult.times(upgradeEffect('p',33))
         return mult
 
     },
@@ -263,6 +265,56 @@ addLayer("p", {
       
 
       unlocked(){ return hasUpgrade('p',25)}
+
+   },
+    32: {
+
+      title: "Even More Pollen 2",
+
+      description: "Boost Pollen based on Flowers",
+
+      cost: new OmegaNum("5e6"),
+
+      effect() {
+
+        return player.f.points.add(1).pow(0.001);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 32));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',31)}
+
+   },
+    33: {
+
+      title: "Even More Pollen 3",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("1e7"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.3);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 33));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',32)}
 
    },
     },
