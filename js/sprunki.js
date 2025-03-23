@@ -74,6 +74,30 @@ addLayer('h', {
         effectDescription: "x10 Flowers and keep Flower Upgrade Automation.",
         done(){ return player.h.points.gte('1')}
       },
+      1: {
+
+        requirementDescription: "3 Honey",
+
+        effectDescription: "x3 Flowers",
+
+        done(){ return player.h.points.gte('3')},
+
+        unlocked(){ return hasMilestone('h', 0)}
+        
+      },
+      12: {
+
+        requirementDescription: "6 Honey",
+
+        effectDescription: "x3 Flowers",
+
+        done(){ return player.h.points.gte('3')},
+
+        unlocked(){ return hasMilestone('h', 0)}
+
+        
+
+      },
     },
 	
     effect(){
