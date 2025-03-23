@@ -49,7 +49,8 @@ addLayer("p", {
         mult = mult.times(layers.h.effect())
         if(hasUpgrade('p',34)) mult = mult.times(upgradeEffect('p',34))
         if(hasUpgrade('p',35)) mult = mult.times(upgradeEffect('p',35))
-       if(hasUpgrade('p',41)) mult = mult.times(upgradeEffect('p',41))
+        if(hasUpgrade('p',41)) mult = mult.times(upgradeEffect('p',41))
+        if(hasUpgrade('p',42)) mult = mult.times(upgradeEffect('p',42))
         return mult
 
     },
@@ -397,6 +398,42 @@ addLayer("p", {
       
 
       unlocked(){ return hasMilestone('h',4)}
+
+   },
+     42: {
+
+      title: "Even More Pollen 7",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("1e29"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.7);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 42));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p', 41)}
+
+   },
+    43: {
+
+      title: "Pollinated Flowers",
+
+      description: "^1.05 Flowers",
+
+      cost: new OmegaNum("7.5e37"),
+
+      unlocked(){ return hasUpgrade('p', 42)}
 
    },
     },
