@@ -46,6 +46,7 @@ addLayer("p", {
         if(hasUpgrade('p',32)) mult = mult.times(upgradeEffect('p',32))
         if(hasUpgrade('p',33)) mult = mult.times(upgradeEffect('p',33))
         mult = mult.times(layers.h.effect())
+        if(hasUpgrade('p',34)) mult = mult.times(upgradeEffect('p',34))
         return mult
 
     },
@@ -316,6 +317,31 @@ addLayer("p", {
       
 
       unlocked(){ return hasUpgrade('p',32)}
+
+   },
+    34: {
+
+      title: "Even More Pollen 4",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("3e9"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.4);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 34));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',33)}
 
    },
     },
