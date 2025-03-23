@@ -57,6 +57,7 @@ addLayer("f", {
     if (hasUpgrade("p", 31)) mult = mult.times(upgradeEffect("p", 31));
     if (hasMilestone('h', 0)) mult = mult.times(10);
     if (hasMilestone('h', 1)) mult = mult.times(3);
+    if (hasMilestone('h', 3)) mult = mult.times(tmp.h.milestoneEffect1);
     return mult;
   },
   gainExp() {

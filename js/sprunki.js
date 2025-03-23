@@ -65,8 +65,14 @@ addLayer('h', {
         {key: "h", description: "H: Reset for honey", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
 
     ],
+  
+    canBuyMax(){ return hasMilestone('h', 3)},
     
     layerShown(){ return (player.points.gte("10^^10^^1e4000") || player.h.unlocked)},
+  
+    milestoneEffect1(){
+      return new OmegaNum(10).pow(player.h.points)
+    },
   
     milestones: {
       0: {
@@ -100,14 +106,11 @@ addLayer('h', {
 
         requirementDescription: "12 Honey",
 
-        effectDescription: "x3 Flowers again, buy max Honey and boost Flowers based on Honey.",
+        effectDescription(){ return 'Buy max Honey and boost Flowers based on Honey. Currently: x' + format(tmp.h.milestoneEffect1)},
 
-        done(){ return player.h.points.gte('6')},
-
-        effect(){
-          return new Decimal.pow
-        
-        unlocked(){ return hasMilestone('h', 1)}
+        done(){ return player.h.points.gte('12')},
+          
+        unlocked(){ return hasMilestone('h', 2)}
 
       },
     },
