@@ -146,7 +146,17 @@ addLayer('h', {
         unlocked(){ return hasMilestone('h', 5)}
 
       },
-      
+      7: {
+
+        requirementDescription: "69 Honey",
+
+        effectDescription: "Unlock a challenge.",
+
+        done(){ return player.h.points.gte('69')},
+
+        unlocked(){ return hasMilestone('h', 6)}
+
+      },
     },
 	
     effect(){
