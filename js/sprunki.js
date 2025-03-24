@@ -468,24 +468,28 @@ addLayer("h", {
       cost: new OmegaNum(7456),
 
       effect(){
-
         let pow = new OmegaNum(0.0005)
-
-        return player.p.points.pow(pow)
-
+        return player.f.points.pow(pow)
       },
-
       
-
       effectDisplay(){
-
         return "x" + format(upgradeEffect(this.layer, this.id))
-
       },
+                          
+      unlocked(){ return hasUpgrade("h", 15)}     
+
+    },
+    22: {
+
+      title: "Insane Flower Boosk",
+
+      description: "x1e100K Flowers",
+
+      cost: new OmegaNum(14691),
 
       
 
-      unlocked(){ return hasUpgrade("h", 15)}     
+      unlocked(){ return hasUpgrade("h", 21)}     
 
     },
   },
