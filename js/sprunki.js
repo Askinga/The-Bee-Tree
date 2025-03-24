@@ -71,7 +71,9 @@ addLayer("h", {
   canBuyMax() {
     return hasMilestone("h", 3);
   },
-
+  
+  resetsNothing(){ return hasMilestone('h', 11)}
+  
   layerShown() {
     return player.points.gte("10^^10^^1e4000") || player.h.unlocked;
   },
@@ -266,13 +268,13 @@ addLayer("h", {
     },
     10: {
 
-      requirementDescription: "10 Terrible Pollen Supply completions",
+      requirementDescription: "1e265 Pollen inside Terrible Pollen Supply",
 
       effectDescription: "^1.025 flowers",
 
       done() {
 
-        return challengeCompletions("h", 12).gte(10);
+        return (player.p.points.gte("1e265") && inChallenge('h', 12));
 
       },
 
