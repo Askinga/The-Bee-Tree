@@ -324,6 +324,7 @@ addLayer("h", {
 
       },
   },
+  },
   upgrades: {
 
     11: {
