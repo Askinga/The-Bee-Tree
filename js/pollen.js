@@ -58,8 +58,9 @@ addLayer("p", {
 
     gainExp() { // Calculate the exponent on main currency from bonuses
 
-        return new OmegaNum(1)
-
+        exp = new OmegaNum(1)
+        if(hasUpgrade('f', 62)) exp = exp.times(1.05)
+        return exp
     },
 
     row: 1, // Row the layer is in on the tree (0 is the first row)

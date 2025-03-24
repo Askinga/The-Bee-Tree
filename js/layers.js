@@ -458,5 +458,18 @@ addLayer("f", {
       unlocked(){ return hasMilestone('h',6)}
 
     },
+    62: {
+
+      title: "Big pollen boost",
+
+      description: "^1.05 Pollen",
+
+      cost: new OmegaNum("1e1715"),
+
+      
+
+      unlocked(){ return hasUpgrade('f', 61)}
+
+    },
   },
 });
