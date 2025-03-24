@@ -83,13 +83,13 @@ addLayer("h", {
 
       challengeDescription: function() { return "Square root Flower gain<br>"+challengeCompletions(this.layer, this.id) + "/" + this.completionLimit + " completions"},
 
-      rewardDescription: "x10000 Pollen for each completion",
+      rewardDescription: "x10 Pollen for each completion",
 
-      goalDescription: "Reach 1e89 Flowers",
+      goalDescription: function() {return format(new OmegaNum.pow(10000, challengeCompletions("h", 11) + 22.25))+" Flowers"},
 
       completionLimit: 100,
 
-      canComplete: function() {return player.f.points.gte(new OmegaNum.pow(10000, challengeCompletions("h", 11) + 29.66666666666)) },
+      canComplete: function() {return player.f.points.gte(new OmegaNum.pow(10000, challengeCompletions("h", 11) + 22.25)) },
 
       unlocked() {
         return hasMilestone("h", 7);

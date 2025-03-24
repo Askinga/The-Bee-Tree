@@ -52,6 +52,7 @@ addLayer("p", {
         if(hasUpgrade('p',41)) mult = mult.times(upgradeEffect('p',41))
         if(hasUpgrade('p',42)) mult = mult.times(upgradeEffect('p',42))
         if(hasUpgrade("p", 45)) mult = mult.times(upgradeEffect("p", 45));
+        mult = mult.times(new OmegaNum(10).pow(challengeCompletions("h", 11),2))
         return mult
 
     },
