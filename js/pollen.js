@@ -436,5 +436,30 @@ addLayer("p", {
       unlocked(){ return hasUpgrade('p', 42)}
 
    },
+     41: {
+
+      title: "Flower Boost",
+
+      description: "Boost Pollen based on Pollen again",
+
+      cost: new OmegaNum("1e22"),
+
+      effect() {
+
+        return player.p.points.add(1).log(10).add(1).pow(1.6);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 41));
+
+      },
+
+      
+
+      unlocked(){ return hasMilestone('h',4)}
+
+   },
     },
 })
