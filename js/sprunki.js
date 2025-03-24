@@ -81,7 +81,7 @@ addLayer("h", {
     11: {
       name: "Dying Flowers",
 
-      challengeDescription: "Square root Flower gain.",
+      challengeDescription: function() { return "Square root Flower gain<br>"+challengeCompletions(this.layer, this.id) + "/" + this.completionLimit + " completions"},
 
       rewardDescription: "x10000 Pollen for each completion",
 
@@ -89,9 +89,7 @@ addLayer("h", {
 
       completionLimit: 100,
 
-      canComplete: function () {
-        return player.p.points.gte("1e80");
-      },
+      canComplete: function() {return player.f.points.gte(new OmegaNum.pow(10000, challengeCompletions("h", 11) + 29.66666666666)) },
 
       unlocked() {
         return hasMilestone("h", 7);
