@@ -101,13 +101,13 @@ addLayer("h", {
 
       challengeDescription: function() { return "Cube root Flower gain and square root Pollen gain. (effect dosent work in this challenge)<br>"+challengeCompletions(this.layer, this.id) + "/" + this.completionLimit + " completions"},
 
-      rewardDescription: function() {return "x" + format(new OmegaNum("1e1000").pow(challengeCompletions("h", 11),2)) +" to Pollen gain."},
+      rewardDescription: function() {return "x" + format(new OmegaNum("1e1000").pow(challengeCompletions("h", 12),2)) +" to Flower gain."},
 
-      goalDescription: function() {return format(new OmegaNum.pow(1e10, challengeCompletions("h", 11) + 220))+" Pollen"},
+      goalDescription: function() {return format(new OmegaNum.pow(1e10, challengeCompletions("h", 12) + 22))+" Pollen"},
 
       completionLimit: 100,
 
-      canComplete: function() {return player.p.points.gte(new OmegaNum.pow(1e0, challengeCompletions("h", 11) + 220)) },
+      canComplete: function() {return player.p.points.gte(new OmegaNum.pow(1e10, challengeCompletions("h", 12) + 22)) },
 
       unlocked() {
 
