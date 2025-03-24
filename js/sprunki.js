@@ -261,8 +261,24 @@ addLayer("h", {
         return hasMilestone("h", 8);
 
       },
-
     },
+    10: {
+
+      requirementDescription: "100 Terrible Pollen Supply completions",
+
+      effectDescription: "Honey resets nothing.",
+
+      done() {
+
+        return maxedChallenge('h', 12);
+
+      },
+
+      unlocked() {
+
+        return hasMilestone("h", 9);
+
+      },
 
     },
   },
