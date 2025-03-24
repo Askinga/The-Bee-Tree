@@ -21,7 +21,6 @@ addLayer("f", {
     if (hasUpgrade("f", 52)) p = p.times(upgradeEffect("f", 52));
     if (hasUpgrade("f", 53)) p = p.times(1e6);
     if (hasUpgrade("f", 54)) p = p.times(1e10);
-    if (hasUpgrade("f", 64)) p = p.times(upgradeEffect("f", 64));
     return p;
   },
   color: "#86AEF3",
@@ -533,7 +532,7 @@ addLayer("f", {
 
       title: "Even More Flowers?",
 
-      description: "Boost Flowers generation based on Flowers again",
+      description: "Boost Flowers based on Flowers again",
 
       cost: new OmegaNum("1e11900"),
 
@@ -552,6 +551,21 @@ addLayer("f", {
       unlocked() {
 
         return hasUpgrade("f", 63);
+
+      },
+
+    },
+    65: {
+
+      title: "End of this row",
+
+      description: "^1.05 Flowers.",
+
+      cost: new OmegaNum("1e14310"),
+
+      unlocked() {
+
+        return hasMilestone("f);
 
       },
 
