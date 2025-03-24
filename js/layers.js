@@ -71,6 +71,7 @@ addLayer("f", {
     if (hasUpgrade("p", 43)) exp = exp.times(1.1);
     if (hasUpgrade("f", 61)) exp = exp.times(1.075);
     if (hasUpgrade("f", 65)) exp = exp.times(1.05);
+    if (hasMilestone("h", 10)) exp = exp.times(1.025);
     if (inChallenge("h", 11)) exp = exp.times(0.5);
     if (inChallenge("h", 12)) exp = exp.times(0.333);
     return exp;

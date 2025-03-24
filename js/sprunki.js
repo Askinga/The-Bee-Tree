@@ -56,7 +56,7 @@ addLayer("h", {
 
   branches: ["p"],
 
-  autoPrestige(){ return hasMilestone('h', 9)},
+  autoPrestige(){ return player.h.autoPrestige},
   
   hotkeys: [
     {
@@ -256,7 +256,7 @@ addLayer("h", {
 
       },
 
-      toggles: ["h", "autoPrestige"],
+      toggles: [["h", "autoPrestige"]],
       
       unlocked() {
 
@@ -265,6 +265,25 @@ addLayer("h", {
       },
     },
     10: {
+
+      requirementDescription: "10 Terrible Pollen Supply completions",
+
+      effectDescription: "^1.025 flowers",
+
+      done() {
+
+        return challengeCompletions("h", 12).gte(10);
+
+      },
+
+      unlocked() {
+
+        return hasMilestone("h", 9);
+
+      },
+
+    },
+    11: {
 
       requirementDescription: "100 Terrible Pollen Supply completions",
 
@@ -278,7 +297,7 @@ addLayer("h", {
       
       unlocked() {
 
-        return hasMilestone("h", 9);
+        return hasMilestone("h", 10);
 
       },
 
