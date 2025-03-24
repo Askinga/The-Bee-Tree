@@ -21,6 +21,7 @@ addLayer("f", {
     if (hasUpgrade("f", 52)) p = p.times(upgradeEffect("f", 52));
     if (hasUpgrade("f", 53)) p = p.times(1e6);
     if (hasUpgrade("f", 54)) p = p.times(1e10);
+    if (hasUpgrade("f", 64)) p = p.times(upgradeEffect("f", 64));
     return p;
   },
   color: "#86AEF3",
@@ -59,6 +60,7 @@ addLayer("f", {
     if (hasMilestone("h", 1)) mult = mult.times(3);
     if (hasMilestone("h", 3)) mult = mult.times(tmp.h.milestoneEffect1);
     if (hasUpgrade("p", 44)) mult = mult.times(upgradeEffect("p", 44));
+    if (hasUpgrade("f", 64)) mult = mult.times(upgradeEffect("f", 64));
     return mult;
   },
   gainExp() {
@@ -523,6 +525,33 @@ addLayer("f", {
       unlocked() {
 
         return hasUpgrade("f", 62);
+
+      },
+
+    },
+    64: {
+
+      title: "Even More Flowers?",
+
+      description: "Boost Flowers generation based on Flowers again",
+
+      cost: new OmegaNum("1e11900"),
+
+      effect() {
+
+        return player.f.points.add(1).pow(0.05);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("f", 64));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("f", 63);
 
       },
 
