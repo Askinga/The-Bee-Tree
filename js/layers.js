@@ -19,8 +19,8 @@ addLayer("f", {
     if (hasUpgrade("f", 43)) p = p.times(upgradeEffect("f", 43));
     if (hasUpgrade("f", 44)) p = p.times(upgradeEffect("f", 44));
     if (hasUpgrade("f", 52)) p = p.times(upgradeEffect("f", 52));
-    if (hasUpgrade("f", 53)) p = p.times(1e6)
-    if (hasUpgrade("f", 54)) p = p.times(1e10)
+    if (hasUpgrade("f", 53)) p = p.times(1e6);
+    if (hasUpgrade("f", 54)) p = p.times(1e10);
     return p;
   },
   color: "#86AEF3",
@@ -55,20 +55,21 @@ addLayer("f", {
     if (hasUpgrade("p", 14)) mult = mult.times(upgradeEffect("p", 14));
     if (hasUpgrade("p", 15)) mult = mult.times(10);
     if (hasUpgrade("p", 31)) mult = mult.times(upgradeEffect("p", 31));
-    if (hasMilestone('h', 0)) mult = mult.times(10);
-    if (hasMilestone('h', 1)) mult = mult.times(3);
-    if (hasMilestone('h', 3)) mult = mult.times(tmp.h.milestoneEffect1);
+    if (hasMilestone("h", 0)) mult = mult.times(10);
+    if (hasMilestone("h", 1)) mult = mult.times(3);
+    if (hasMilestone("h", 3)) mult = mult.times(tmp.h.milestoneEffect1);
     if (hasUpgrade("p", 44)) mult = mult.times(upgradeEffect("p", 44));
     return mult;
   },
   gainExp() {
     // Calculate the exponent on main currency from bonuses
     let exp = new OmegaNum(1);
-    if(hasUpgrade('f', 53)) exp = exp.times(1.05)
-    if(hasUpgrade('f', 54)) exp = exp.times(1.1)
-    if(hasUpgrade('p', 43)) exp = exp.times(1.1)
-    if(hasUpgrade('f', 61)) exp = exp.times(1.075)
-    return exp
+    if (hasUpgrade("f", 53)) exp = exp.times(1.05);
+    if (hasUpgrade("f", 54)) exp = exp.times(1.1);
+    if (hasUpgrade("p", 43)) exp = exp.times(1.1);
+    if (hasUpgrade("f", 61)) exp = exp.times(1.075);
+    if (inChallenge("h", 11)) exp = exp.times(0.5);
+    return exp;
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
   hotkeys: [
@@ -83,7 +84,9 @@ addLayer("f", {
   layerShown() {
     return true;
   },
-  autoUpgrade(){ return (hasUpgrade('p', 12) || hasMilestone('h', 0))},
+  autoUpgrade() {
+    return hasUpgrade("p", 12) || hasMilestone("h", 0);
+  },
   upgrades: {
     11: {
       title: "More Bees",
@@ -96,8 +99,10 @@ addLayer("f", {
       description: "Boost Bees by ^10",
 
       cost: new OmegaNum("15"),
-      
-      unlocked(){ return hasUpgrade('f',11)}
+
+      unlocked() {
+        return hasUpgrade("f", 11);
+      },
     },
     13: {
       title: "Even More Bees",
@@ -115,10 +120,12 @@ addLayer("f", {
       },
 
       effectDisplay() {
-        return "10^^" + format(upgradeEffect("f", 13))+"x";
+        return "10^^" + format(upgradeEffect("f", 13)) + "x";
       },
-      
-      unlocked(){ return hasUpgrade('f',12)}
+
+      unlocked() {
+        return hasUpgrade("f", 12);
+      },
     },
     14: {
       title: "Faster",
@@ -126,8 +133,10 @@ addLayer("f", {
       description: "Make flower generation x6.5 quicker and x3.5 Flowers.",
 
       cost: new OmegaNum("500"),
-      
-      unlocked(){ return hasUpgrade('f',13)}
+
+      unlocked() {
+        return hasUpgrade("f", 13);
+      },
     },
     15: {
       title: "Even Faster",
@@ -135,8 +144,10 @@ addLayer("f", {
       description: "Make flower generation x2 quicker and x5 Flowers.",
 
       cost: new OmegaNum("6000"),
-      
-      unlocked(){ return hasUpgrade('f',14)}
+
+      unlocked() {
+        return hasUpgrade("f", 14);
+      },
     },
     21: {
       title: "More Flowers",
@@ -152,8 +163,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 21));
       },
-      
-      unlocked(){ return hasUpgrade('f',15)}
+
+      unlocked() {
+        return hasUpgrade("f", 15);
+      },
     },
     22: {
       title: "Even More Flowers",
@@ -169,8 +182,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 22));
       },
-      
-      unlocked(){ return hasUpgrade('f',21)}
+
+      unlocked() {
+        return hasUpgrade("f", 21);
+      },
     },
     23: {
       title: "More Flower Generation",
@@ -186,8 +201,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 23));
       },
-      
-      unlocked(){ return hasUpgrade('f',22)}
+
+      unlocked() {
+        return hasUpgrade("f", 22);
+      },
     },
     24: {
       title: "Faster^2",
@@ -195,8 +212,10 @@ addLayer("f", {
       description: "Make flower generation x10 quicker and x10 Flowers.",
 
       cost: new OmegaNum("1e9"),
-      
-      unlocked(){ return hasUpgrade('f',23)}
+
+      unlocked() {
+        return hasUpgrade("f", 23);
+      },
     },
     25: {
       title: "Even More Flowers 2",
@@ -212,8 +231,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 25));
       },
-      
-      unlocked(){ return hasUpgrade('f',24)}
+
+      unlocked() {
+        return hasUpgrade("f", 24);
+      },
     },
     31: {
       title: "The Holy Bees",
@@ -221,8 +242,10 @@ addLayer("f", {
       description: "Make flower generation x1000 quicker and x2.5 Flowers.",
 
       cost: new OmegaNum("1e15"),
-      
-      unlocked(){ return hasUpgrade('f',25)}
+
+      unlocked() {
+        return hasUpgrade("f", 25);
+      },
     },
     32: {
       title: "Even More Flowers 3",
@@ -238,8 +261,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 32));
       },
-      
-      unlocked(){ return hasUpgrade('f',31)}
+
+      unlocked() {
+        return hasUpgrade("f", 31);
+      },
     },
     33: {
       title: "Even More Flowers 4",
@@ -255,8 +280,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 33));
       },
-      
-      unlocked(){ return hasUpgrade('f',32)}
+
+      unlocked() {
+        return hasUpgrade("f", 32);
+      },
     },
     34: {
       title: "Even More Flowers 5",
@@ -272,8 +299,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 34));
       },
-      
-      unlocked(){ return hasUpgrade('f',33)}
+
+      unlocked() {
+        return hasUpgrade("f", 33);
+      },
     },
     35: {
       title: "Even More Flowers 6",
@@ -289,8 +318,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 35));
       },
-      
-      unlocked(){ return hasUpgrade('f',34)}
+
+      unlocked() {
+        return hasUpgrade("f", 34);
+      },
     },
     41: {
       title: "Even More Flowers Final",
@@ -306,8 +337,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 41));
       },
-      
-      unlocked(){ return hasUpgrade('f',35)}
+
+      unlocked() {
+        return hasUpgrade("f", 35);
+      },
     },
     42: {
       title: "The God Bees",
@@ -315,8 +348,10 @@ addLayer("f", {
       description: "Make flower generation x1e6 quicker and x1e6 Flowers.",
 
       cost: new OmegaNum("1e70"),
-      
-      unlocked(){ return hasUpgrade('f',41)}
+
+      unlocked() {
+        return hasUpgrade("f", 41);
+      },
     },
     43: {
       title: "Even More Flower Generation",
@@ -332,8 +367,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 43));
       },
-      
-      unlocked(){ return hasUpgrade('f',42)}
+
+      unlocked() {
+        return hasUpgrade("f", 42);
+      },
     },
     44: {
       title: "Even More Flower Generation 2",
@@ -349,8 +386,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 44));
       },
-      
-      unlocked(){ return hasUpgrade('f',43)}
+
+      unlocked() {
+        return hasUpgrade("f", 43);
+      },
     },
     45: {
       title: "Get past the FF1e10 range",
@@ -366,8 +405,10 @@ addLayer("f", {
       effectDisplay() {
         return "Tetration Power x" + format(upgradeEffect("f", 45));
       },
-      
-      unlocked(){ return hasUpgrade('f',44)}
+
+      unlocked() {
+        return hasUpgrade("f", 44);
+      },
     },
     51: {
       title: "Yet More Flowers",
@@ -383,8 +424,10 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 51));
       },
-      
-      unlocked(){ return hasUpgrade('f',45)}
+
+      unlocked() {
+        return hasUpgrade("f", 45);
+      },
     },
     52: {
       title: "Even More Flower Generation 3",
@@ -400,76 +443,74 @@ addLayer("f", {
       effectDisplay() {
         return "x" + format(upgradeEffect("f", 52));
       },
-      
-      unlocked(){ return hasUpgrade('f',51)}
+
+      unlocked() {
+        return hasUpgrade("f", 51);
+      },
     },
     53: {
-
       title: "Holy Flowers",
 
       description: "Make flower generation x1e6 quicker and ^1.05 Flowers.",
 
       cost: new OmegaNum("2e149"),
-	
-      unlocked(){ return hasUpgrade('f',52)}
+
+      unlocked() {
+        return hasUpgrade("f", 52);
+      },
     },
     54: {
-
       title: "God Flowers",
 
       description: "Make flower generation x1e10 quicker and ^1.1 Flowers.",
 
       cost: new OmegaNum("1e173"),
-      
-      unlocked(){ return hasUpgrade('f',53)}
+
+      unlocked() {
+        return hasUpgrade("f", 53);
+      },
     },
     55: {
-
       title: "New Layer!",
 
-      description: "Boost Upgrade 3 based on Flowers again but stronger and unlock a new layer.",
+      description:
+        "Boost Upgrade 3 based on Flowers again but stronger and unlock a new layer.",
 
       cost: new OmegaNum("2.5e223"),
 
       effect() {
-
         return player.f.points.add(1).pow(0.001);
-
       },
 
       effectDisplay() {
-
         return "Tetration Power x" + format(upgradeEffect("f", 55));
-
       },
 
-      unlocked(){ return hasUpgrade('f',54)}
+      unlocked() {
+        return hasUpgrade("f", 54);
+      },
     },
     61: {
-
       title: "Next Row!",
 
       description: "^1.075 Flowers.",
 
       cost: new OmegaNum("1e1300"),
 
-      
-
-      unlocked(){ return hasMilestone('h',6)}
-
+      unlocked() {
+        return hasMilestone("h", 6);
+      },
     },
     62: {
-
       title: "Big pollen boost",
 
       description: "^1.05 Pollen",
 
       cost: new OmegaNum("1e1715"),
 
-      
-
-      unlocked(){ return hasUpgrade('f', 61)}
-
+      unlocked() {
+        return hasUpgrade("f", 61);
+      },
     },
   },
 });
