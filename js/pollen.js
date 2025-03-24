@@ -63,6 +63,7 @@ addLayer("p", {
 
         exp = new OmegaNum(1)
         if(hasUpgrade('f', 62)) exp = exp.times(1.05)
+        if(hasUpgrade('f', 63)) exp = exp.times(1.03)
         return exp
     },
 

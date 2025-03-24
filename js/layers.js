@@ -512,5 +512,20 @@ addLayer("f", {
         return hasUpgrade("f", 61);
       },
     },
+    63: {
+
+      title: "Pollen boost",
+
+      description: "^1.03 Pollen",
+
+      cost: new OmegaNum("1e9540"),
+
+      unlocked() {
+
+        return hasUpgrade("f", 62);
+
+      },
+
+    },
   },
 });
