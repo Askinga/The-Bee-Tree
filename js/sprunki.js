@@ -103,11 +103,11 @@ addLayer("h", {
 
       rewardDescription: function() {return "x" + format(new OmegaNum("1e1000").pow(challengeCompletions("h", 12),2)) +" to Flower gain."},
 
-      goalDescription: function() {return format(new OmegaNum.pow(1e10, challengeCompletions("h", 12) + 22))+" Pollen"},
+      goalDescription: function() {return format(new OmegaNum.pow(1e5, challengeCompletions("h", 12) + 44))+" Pollen"},
 
       completionLimit: 100,
 
-      canComplete: function() {return player.p.points.gte(new OmegaNum.pow(1e10, challengeCompletions("h", 12) + 22)) },
+      canComplete: function() {return player.p.points.gte(new OmegaNum.pow(1e5, challengeCompletions("h", 12) + 44)) },
 
       unlocked() {
 
