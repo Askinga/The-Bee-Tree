@@ -72,7 +72,7 @@ addLayer("h", {
     return hasMilestone("h", 3);
   },
   
-  resetsNothing(){ return hasMilestone('h', 11)}
+  resetsNothing(){ return hasMilestone('h', 11)},
   
   layerShown() {
     return player.points.gte("10^^10^^1e4000") || player.h.unlocked;
@@ -302,8 +302,28 @@ addLayer("h", {
         return hasMilestone("h", 10);
 
       },
-
+   
     },
+    12: {
+
+      requirementDescription: "2,571 Honey",
+
+      effectDescription: "Unlock Honey Upgrades",
+
+      done() {
+
+        return player.h.points.gte("2571");
+
+      },
+
+      
+
+      unlocked() {
+
+        return hasMilestone("h", 11);
+
+      },
+  },
   },
 
   effect() {
