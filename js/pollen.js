@@ -19,6 +19,7 @@ addLayer("p", {
       if(hasUpgrade('p',21)) p = p.add(1)
       if(hasMilestone('h',4)) p = p.add(1)
       if(hasUpgrade('p',23)) p = p.times(5)
+      if(inChallenge('h', 11)) p = p.times(0)
       return p
     },
   
@@ -69,6 +70,8 @@ addLayer("p", {
   
     branches: ["f"],
 
+    canReset(){ return !inChallenge('h',11)},
+  
     hotkeys: [
 
         {key: "p", description: "P: Reset for pollen", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
