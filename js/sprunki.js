@@ -336,7 +336,9 @@ addLayer("h", {
       cost: new OmegaNum(2571),
 
       effect(){
-        return player.h.points.pow(0.1)
+        let pow = new OmegaNum(0.1)
+        if(hasUpgrade('h',12)) pow =pow.times(upgradeEffect'h',12
+        return player.h.points.pow(pow)
       },
       
       effectDisplay(){
@@ -345,6 +347,34 @@ addLayer("h", {
       
       unlocked(){ return hasMilestone('h', 12)}     
     },
+    11: {
+
+      title: "Honey Upgrades!",
+
+      description: "Boost the previous upgrade based on Honey and x1e75 Pollen",
+
+      cost: new OmegaNum(2793),
+
+      effect(){
+
+        return player.h.points.pow(0.075)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "x" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('h', 11)}     
+
+    },
+
   },
 
   effect() {
