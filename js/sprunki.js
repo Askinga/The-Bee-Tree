@@ -37,7 +37,7 @@ addLayer('h', {
 
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 
-    exponent: 1, // Prestige currency exponent
+    exponent: 1.002, // Prestige currency exponent
     
     base: 10,
   
@@ -84,7 +84,7 @@ addLayer('h', {
 
         requirementDescription: "3 Honey",
 
-        effectDescription: "x3 Flowers",
+        effectDescription: "x3 Flowers.",
 
         done(){ return player.h.points.gte('3')},
 
@@ -124,11 +124,35 @@ addLayer('h', {
         unlocked(){ return hasMilestone('h', 3)}
 
       },
+      5: {
+
+        requirementDescription: "43 Honey",
+
+        effectDescription: "Honey base is 3.",
+
+        done(){ return player.h.points.gte('43')},
+
+        unlocked(){ return hasMilestone('h', 4)}
+
+      },
+      6: {
+
+        requirementDescription: "54 Honey",
+
+        effectDescription: "Unlock a new row of Flower upgrades.",
+
+        done(){ return player.h.points.gte('54')},
+
+        unlocked(){ return hasMilestone('h', 5)}
+
+      },
       
     },
 	
     effect(){
-      return new OmegaNum(2.5).pow(player.h.points)
+      let base = new OmegaNum(2.5)
+      if(hasMilestone('h',5)) base = base.add(0.5)
+      return new OmegaNum(base).pow(player.h.points)
     },
   
     effectDescription(){

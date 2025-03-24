@@ -51,7 +51,7 @@ addLayer("p", {
         if(hasUpgrade('p',35)) mult = mult.times(upgradeEffect('p',35))
         if(hasUpgrade('p',41)) mult = mult.times(upgradeEffect('p',41))
         if(hasUpgrade('p',42)) mult = mult.times(upgradeEffect('p',42))
-        if(hasUpgrade("p", 45)) mult = mult.times(upgradeEffect("p", 5));
+        if(hasUpgrade("p", 45)) mult = mult.times(upgradeEffect("p", 45));
         return mult
 
     },
@@ -472,7 +472,7 @@ addLayer("p", {
 
       effect() {
 
-        return player.p.points.add(1).pow(0.125);
+        return player.p.points.add(1).pow(0.1);
 
       },
 
