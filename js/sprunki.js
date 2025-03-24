@@ -324,6 +324,26 @@ addLayer("h", {
 
       },
   },
+  upgrades: {
+
+    11: {
+
+      title: "Honey Upgrades!",
+
+      description: "Boost Flower Upgrade 3 based on Honey and x1e50 Pollen",
+
+      cost: new OmegaNum(2571),
+
+      effect(){
+        return player.h.points.pow(0.1)
+      },
+      
+      effectDisplay(){
+        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id))
+      },
+      
+      unlocked(){ return hasMilestone('h', 12)}     
+    },
   },
 
   effect() {

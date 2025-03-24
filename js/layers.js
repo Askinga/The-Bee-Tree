@@ -121,6 +121,7 @@ addLayer("f", {
         if (hasUpgrade("f", 55)) tetPow = tetPow.times(upgradeEffect("f", 55));
         if (hasUpgrade("p", 24)) tetPow = tetPow.times(upgradeEffect("p", 24));
         if (hasUpgrade("p", 25)) tetPow = tetPow.times(upgradeEffect("p", 25));
+        if (hasUpgrade("h", 11)) tetPow = tetPow.pow(upgradeEffect("h", 11));
         return new OmegaNum(10).tetrate(player.f.points.add(1).pow(tetPow));
       },
 
