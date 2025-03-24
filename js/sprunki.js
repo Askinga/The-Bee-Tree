@@ -256,6 +256,8 @@ addLayer("h", {
 
       },
 
+      toggles: ["h", "autoPrestige"],
+      
       unlocked() {
 
         return hasMilestone("h", 8);
@@ -273,7 +275,7 @@ addLayer("h", {
         return maxedChallenge('h', 12);
 
       },
-
+      
       unlocked() {
 
         return hasMilestone("h", 9);
