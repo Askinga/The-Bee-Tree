@@ -51,6 +51,7 @@ addLayer("p", {
         if(hasUpgrade('p',35)) mult = mult.times(upgradeEffect('p',35))
         if(hasUpgrade('p',41)) mult = mult.times(upgradeEffect('p',41))
         if(hasUpgrade('p',42)) mult = mult.times(upgradeEffect('p',42))
+        if(hasUpgrade("p", 45)) mult = mult.times(upgradeEffect("p", 5));
         return mult
 
     },
@@ -436,30 +437,55 @@ addLayer("p", {
       unlocked(){ return hasUpgrade('p', 42)}
 
    },
-     41: {
+    44: {
 
       title: "Flower Boost",
 
-      description: "Boost Pollen based on Pollen again",
+      description: "Boost Flowers based on Pollen again",
 
-      cost: new OmegaNum("1e22"),
+      cost: new OmegaNum("1e38"),
 
       effect() {
 
-        return player.p.points.add(1).log(10).add(1).pow(1.6);
+        return player.p.points.add(1).pow(2.25);
 
       },
 
       effectDisplay() {
 
-        return "x" + format(upgradeEffect("p", 41));
+        return "x" + format(upgradeEffect("p", 44));
 
       },
 
       
 
-      unlocked(){ return hasMilestone('h',4)}
+      unlocked(){ return hasUpgrade('p', 43)}
 
    },
+    45: {
+
+      title: "Faster Pollen 2",
+
+      description: "Boost Pollen based on Pollen again.",
+
+      cost: new OmegaNum("1e39"),
+
+      effect() {
+
+        return player.p.points.add(1).pow(0.125);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect("p", 45));
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('p',44)}
+
+    },
     },
 })
