@@ -57,6 +57,8 @@ addLayer("p", {
         if(hasUpgrade('h',11)) mult = mult.times("1e50") 
         if(hasUpgrade('h',12)) mult = mult.times("1e75")
         if(hasUpgrade('h',13)) mult = mult.times("1e100") 
+        if(hasUpgrade('h',14)) mult = mult.times("1e125") 
+        if(hasUpgrade('h',15)) mult = mult.times("1e150") 
         if(inChallenge('h', 11)) mult = mult.times(0) 
         return mult
 

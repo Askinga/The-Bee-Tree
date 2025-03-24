@@ -60,8 +60,13 @@ addLayer("f", {
     if (hasMilestone("h", 3)) mult = mult.times(tmp.h.milestoneEffect1);
     if (hasUpgrade("p", 44)) mult = mult.times(upgradeEffect("p", 44));
     if (hasUpgrade("f", 64)) mult = mult.times(upgradeEffect("f", 64));
-    if (!inChallenge('h', 12)) mult = mult.times(new OmegaNum("1e1000").pow(challengeCompletions("h", 12),2))
+    if (!inChallenge("h", 12))
+      mult = mult.times(
+        new OmegaNum("1e1000").pow(challengeCompletions("h", 12), 2)
+      );
     if (hasUpgrade("h", 13)) mult = mult.times(upgradeEffect("h", 13));
+    if (hasUpgrade("h", 14)) mult = mult.times(upgradeEffect("h", 14));
+    if (hasUpgrade("h", 15)) mult = mult.times(upgradeEffect("h", 15));
     return mult;
   },
   gainExp() {
@@ -520,7 +525,6 @@ addLayer("f", {
       },
     },
     63: {
-
       title: "Pollen boost",
 
       description: "^1.03 Pollen",
@@ -528,14 +532,10 @@ addLayer("f", {
       cost: new OmegaNum("1e9540"),
 
       unlocked() {
-
         return hasUpgrade("f", 62);
-
       },
-
     },
     64: {
-
       title: "Even More Flowers?",
 
       description: "Boost Flowers based on Flowers again",
@@ -543,26 +543,18 @@ addLayer("f", {
       cost: new OmegaNum("1e11900"),
 
       effect() {
-
         return player.f.points.add(1).pow(0.05);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect("f", 64));
-
       },
 
       unlocked() {
-
         return hasUpgrade("f", 63);
-
       },
-
     },
     65: {
-
       title: "End of this row",
 
       description: "^1.05 Flowers.",
@@ -570,11 +562,8 @@ addLayer("f", {
       cost: new OmegaNum("1e14310"),
 
       unlocked() {
-
         return hasUpgrade("f", 64);
-
       },
-
     },
   },
 });
