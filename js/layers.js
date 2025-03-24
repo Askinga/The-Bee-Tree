@@ -64,9 +64,10 @@ addLayer("f", {
   gainExp() {
     // Calculate the exponent on main currency from bonuses
     let exp = new OmegaNum(1);
-    if (hasUpgrade('f', 53)) exp = exp.times(1.05)
-    if (hasUpgrade('f', 54)) exp = exp.times(1.1)
-    if (hasUpgrade('p', 43)) exp = exp.times(1.05)
+    if(hasUpgrade('f', 53)) exp = exp.times(1.05)
+    if(hasUpgrade('f', 54)) exp = exp.times(1.1)
+    if(hasUpgrade('p', 43)) exp = exp.times(1.1)
+    if(hasUpgrade('f', 61)) exp = exp.times(1.075)
     return exp
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -443,6 +444,19 @@ addLayer("f", {
       },
 
       unlocked(){ return hasUpgrade('f',54)}
+    },
+    61: {
+
+      title: "Next Row!",
+
+      description: "^1.075 Flowers.",
+
+      cost: new OmegaNum("1e1300"),
+
+      
+
+      unlocked(){ return hasMilestone('h',6)}
+
     },
   },
 });
