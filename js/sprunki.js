@@ -81,9 +81,9 @@ addLayer("h", {
     11: {
       name: "Dying Flowers",
 
-      challengeDescription: function() { return "Square root Flower gain<br>"+challengeCompletions(this.layer, this.id) + "/" + this.completionLimit + " completions"},
+      challengeDescription: function() { return "Square root Flower gain and you can't gain Pollen.<br>"+challengeCompletions(this.layer, this.id) + "/" + this.completionLimit + " completions"},
 
-      rewardDescription: "x10 Pollen for each completion",
+      rewardDescription: function() {return "x" + format(new OmegaNum(10).pow(challengeCompletions("h", 11),2)) +" to Pollen gain."},
 
       goalDescription: function() {return format(new OmegaNum.pow(10000, challengeCompletions("h", 11) + 22.25))+" Flowers"},
 
