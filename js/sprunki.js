@@ -56,6 +56,8 @@ addLayer("h", {
 
   branches: ["p"],
 
+  autoPrestige(){ return hasMilestone('h', 9)},
+  
   hotkeys: [
     {
       key: "h",
@@ -240,6 +242,27 @@ addLayer("h", {
         return hasMilestone("h", 7);
 
       },
+
+    },
+    9: {
+
+      requirementDescription: "605 Honey",
+
+      effectDescription: "Automatically reset for honey.",
+
+      done() {
+
+        return player.h.points.gte("605");
+
+      },
+
+      unlocked() {
+
+        return hasMilestone("h", 8);
+
+      },
+
+    },
 
     },
   },
