@@ -337,7 +337,7 @@ addLayer("h", {
 
       effect(){
         let pow = new OmegaNum(0.1)
-        if(hasUpgrade('h',12)) pow =pow.times(upgradeEffect'h',12
+        if(hasUpgrade('h',12)) pow = pow.times(upgradeEffect('h',12))
         return player.h.points.pow(pow)
       },
       
@@ -347,9 +347,9 @@ addLayer("h", {
       
       unlocked(){ return hasMilestone('h', 12)}     
     },
-    11: {
+    12: {
 
-      title: "Honey Upgrades!",
+      title: "Booster",
 
       description: "Boost the previous upgrade based on Honey and x1e75 Pollen",
 
@@ -374,7 +374,64 @@ addLayer("h", {
       unlocked(){ return hasUpgrade('h', 11)}     
 
     },
+    13: {
 
+      title: "Flower Booster",
+
+      description: "Boost Flowers based on Pollne and x1e100 Pollen",
+
+      cost: new OmegaNum(3119),
+
+      effect(){
+
+        return player.p.points.pow(10)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "x" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('h', 12)}     
+
+    },
+    14: {
+
+      title: "Flower Booster 2",
+
+      description: "Boost Flowers based on Honey and x1e125 Pollen",
+
+      cost: new OmegaNum(2571),
+
+      effect(){
+
+        let pow = new OmegaNum(0.1)
+
+        return player.h.points.pow(pow)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasMilestone('h', 12)}     
+
+    },
+
+  },
   },
 
   effect() {

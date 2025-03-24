@@ -61,6 +61,7 @@ addLayer("f", {
     if (hasUpgrade("p", 44)) mult = mult.times(upgradeEffect("p", 44));
     if (hasUpgrade("f", 64)) mult = mult.times(upgradeEffect("f", 64));
     if (!inChallenge('h', 12)) mult = mult.times(new OmegaNum("1e1000").pow(challengeCompletions("h", 12),2))
+    if (hasUpgrade("h", 13)) mult = mult.times(upgradeEffect("h", 13));
     return mult;
   },
   gainExp() {
