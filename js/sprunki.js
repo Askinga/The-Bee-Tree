@@ -95,6 +95,27 @@ addLayer("h", {
         return hasMilestone("h", 7);
       },
     },
+    12: {
+
+      name: "Terrible Pollen Supply",
+
+      challengeDescription: function() { return "Cube root Flower gain and square root Pollen gain. (effect dosent work in this challenge)<br>"+challengeCompletions(this.layer, this.id) + "/" + this.completionLimit + " completions"},
+
+      rewardDescription: function() {return "x" + format(new OmegaNum("1e1000").pow(challengeCompletions("h", 11),2)) +" to Pollen gain."},
+
+      goalDescription: function() {return format(new OmegaNum.pow(1e10, challengeCompletions("h", 11) + 220))+" Pollen"},
+
+      completionLimit: 100,
+
+      canComplete: function() {return player.p.points.gte(new OmegaNum.pow(1e0, challengeCompletions("h", 11) + 220)) },
+
+      unlocked() {
+
+        return hasMilestone("h", 8);
+
+      },
+
+    },
   },
   milestones: {
     0: {
@@ -201,6 +222,25 @@ addLayer("h", {
       unlocked() {
         return hasMilestone("h", 6);
       },
+    },
+    8: {
+
+      requirementDescription: "551 Honey",
+
+      effectDescription: "Unlock a challenge.",
+
+      done() {
+
+        return player.h.points.gte("551");
+
+      },
+
+      unlocked() {
+
+        return hasMilestone("h", 7);
+
+      },
+
     },
   },
 

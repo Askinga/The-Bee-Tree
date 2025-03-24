@@ -60,6 +60,7 @@ addLayer("f", {
     if (hasMilestone("h", 3)) mult = mult.times(tmp.h.milestoneEffect1);
     if (hasUpgrade("p", 44)) mult = mult.times(upgradeEffect("p", 44));
     if (hasUpgrade("f", 64)) mult = mult.times(upgradeEffect("f", 64));
+    if (!inChallenge('h', 12)) mult = mult.times(new OmegaNum("1e1000").pow(challengeCompletions("h", 12),2))
     return mult;
   },
   gainExp() {
@@ -69,7 +70,9 @@ addLayer("f", {
     if (hasUpgrade("f", 54)) exp = exp.times(1.1);
     if (hasUpgrade("p", 43)) exp = exp.times(1.1);
     if (hasUpgrade("f", 61)) exp = exp.times(1.075);
+    if (hasUpgrade("f", 65)) exp = exp.times(1.05);
     if (inChallenge("h", 11)) exp = exp.times(0.5);
+    if (inChallenge("h", 12)) exp = exp.times(0.333);
     return exp;
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -565,7 +568,7 @@ addLayer("f", {
 
       unlocked() {
 
-        return hasMilestone("f);
+        return hasUpgrade("f", 64);
 
       },
 
