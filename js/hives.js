@@ -66,7 +66,7 @@ addLayer("hi", {
 
       requirementDescription: "1 Beehive",
 
-      effectDescription: "Keep Honey Challenges (too painful to do them again).",
+      effectDescription: "Keep Honey Challenges (too painful to do them again). and x2 Pollen.",
 
       done() {
 

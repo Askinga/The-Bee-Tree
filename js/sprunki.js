@@ -483,7 +483,7 @@ addLayer("h", {
 
       description: "Boost Flowers based on Pollen again and x1e125 Pollen",
 
-      cost: new OmegaNum(4456),
+      cost: new OmegaNum(4455),
 
       effect(){
 
