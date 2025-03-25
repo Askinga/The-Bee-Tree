@@ -68,6 +68,9 @@ addLayer("p", {
     if (hasUpgrade("h", 25)) mult = mult.times("e1.25e3");
     if (hasUpgrade("p", 51)) mult = mult.times("ee3");
     if (hasUpgrade("p", 52)) mult = mult.times("e1.25e3");
+    if (hasUpgrade("p", 53)) mult = mult.times("e1.5e3");
+    if (hasUpgrade("p", 54)) mult = mult.times("e1.75e3");
+    if (hasUpgrade("p", 55)) mult = mult.times("e2e3");
     if (inChallenge("h", 11)) mult = mult.times(0);
     return mult;
   },
@@ -460,6 +463,45 @@ addLayer("p", {
       
 
       unlocked(){ return hasUpgrade("p", 51)}     
+
+    },
+    53: {
+
+      title: "It gets even stronger.",
+
+      description: "x1e1.5K Pollen",
+
+      cost: new OmegaNum("e76318"),
+
+      
+
+      unlocked(){ return hasUpgrade("p", 52)}     
+
+    },
+    54: {
+
+      title: "It gets way too strong.",
+
+      description: "x1e1.75K Pollen",
+
+      cost: new OmegaNum("e92850"),
+
+      
+
+      unlocked(){ return hasUpgrade("p", 53)}     
+
+    },
+    55: {
+
+      title: "It gets the most strong.",
+
+      description: "x1e2K Pollen",
+
+      cost: new OmegaNum("e112096"),
+
+      
+
+      unlocked(){ return hasUpgrade("p", 54)}     
 
     },
   },
