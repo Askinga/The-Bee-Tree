@@ -81,6 +81,7 @@ addLayer("f", {
     if (hasMilestone("h", 10)) exp = exp.times(1.025);
     if (inChallenge("h", 11)) exp = exp.times(0.5);
     if (inChallenge("h", 12)) exp = exp.times(0.333);
+    if (player.f.points.gte("e5e6")) exp = exp.times(new OmegaNum(1).div(player.f.points.max("e5e6").log(10).div("e1e7")))
     return exp;
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)

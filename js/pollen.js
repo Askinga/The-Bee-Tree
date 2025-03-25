@@ -64,6 +64,7 @@ addLayer("p", {
     if (hasUpgrade("h", 14)) mult = mult.times("1e125");
     if (hasUpgrade("h", 15)) mult = mult.times("1e150");
     if (hasUpgrade("h", 21)) mult = mult.times(upgradeEffect("h", 21));
+    if (hasUpgrade("h", 23)) mult = mult.times("ee3");
     if (inChallenge("h", 11)) mult = mult.times(0);
     return mult;
   },
