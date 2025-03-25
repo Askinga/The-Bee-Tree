@@ -65,6 +65,9 @@ addLayer("p", {
     if (hasUpgrade("h", 15)) mult = mult.times("1e150");
     if (hasUpgrade("h", 21)) mult = mult.times(upgradeEffect("h", 21));
     if (hasUpgrade("h", 23)) mult = mult.times("ee3");
+    if (hasUpgrade("h", 25)) mult = mult.times("e1.25e3");
+    if (hasUpgrade("p", 51)) mult = mult.times("ee3");
+    if (hasUpgrade("p", 52)) mult = mult.times("e1.25e3");
     if (inChallenge("h", 11)) mult = mult.times(0);
     return mult;
   },
@@ -432,6 +435,32 @@ addLayer("p", {
       unlocked() {
         return hasUpgrade("p", 44);
       },
+    },
+    51: {
+
+      title: "The next row!",
+
+      description: "x1e1K Pollen",
+
+      cost: new OmegaNum("e51446"),
+
+      
+
+      unlocked(){ return hasMilestone("h", 13)}     
+
+    },
+    52: {
+
+      title: "It gets stronger.",
+
+      description: "x1e1.25K Pollen",
+
+      cost: new OmegaNum("e62513"),
+
+      
+
+      unlocked(){ return hasUpgrade("p", 51)}     
+
     },
   },
 });

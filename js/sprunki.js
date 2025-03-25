@@ -324,6 +324,27 @@ addLayer("h", {
 
       },
   },
+  13: {
+
+      requirementDescription: "50,333 Honey",
+
+      effectDescription: "Unlock a new row of Pollen upgrades.",
+
+      done() {
+
+        return player.h.points.gte("50333");
+
+      },
+
+      
+
+      unlocked() {
+
+        return hasMilestone("h", 12);
+
+      },
+
+  },
   },
   upgrades: {
 
@@ -516,6 +537,19 @@ addLayer("h", {
       
 
       unlocked(){ return hasUpgrade("h", 23)}     
+
+    },
+    25: {
+
+      title: "Insane Pollen Boost 2",
+
+      description: "x1e1.25K Pollen",
+
+      cost: new OmegaNum(36785),
+
+      
+
+      unlocked(){ return hasUpgrade("h", 24)}     
 
     },
   },
