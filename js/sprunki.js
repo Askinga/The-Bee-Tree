@@ -345,6 +345,27 @@ addLayer("h", {
       },
 
   },
+  14: {
+
+      requirementDescription: "130,921 Honey",
+
+      effectDescription: "Unlock a new layer.",
+
+      done() {
+
+        return player.h.points.gte("130921");
+
+      },
+
+      
+
+      unlocked() {
+
+        return hasMilestone("h", 13);
+
+      },
+
+  },
   },
   upgrades: {
 
