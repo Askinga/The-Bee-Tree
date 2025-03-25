@@ -494,7 +494,7 @@ addLayer("h", {
     },
     23: {
 
-      title: "Insane Pollen Boosk",
+      title: "Insane Pollen Boost",
 
       description: "x1e1K Pollen",
 
@@ -503,6 +503,19 @@ addLayer("h", {
       
 
       unlocked(){ return hasUpgrade("h", 22)}     
+
+    },
+    24: {
+
+      title: "Insane Flower Boost 2",
+
+      description: "x1e50K Flowers",
+
+      cost: new OmegaNum(33085),
+
+      
+
+      unlocked(){ return hasUpgrade("h", 23)}     
 
     },
   },

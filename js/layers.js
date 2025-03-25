@@ -67,7 +67,8 @@ addLayer("f", {
     if (hasUpgrade("h", 13)) mult = mult.times(upgradeEffect("h", 13));
     if (hasUpgrade("h", 14)) mult = mult.times(upgradeEffect("h", 14));
     if (hasUpgrade("h", 15)) mult = mult.times(upgradeEffect("h", 15));
-    if (hasUpgrade('h', 22)) mult = mult.times("ee5") 
+    if (hasUpgrade("h", 22)) mult = mult.times("ee5");
+    if (hasUpgrade("h", 24)) mult = mult.times("e5e4");
     return mult;
   },
   gainExp() {
@@ -81,7 +82,6 @@ addLayer("f", {
     if (hasMilestone("h", 10)) exp = exp.times(1.025);
     if (inChallenge("h", 11)) exp = exp.times(0.5);
     if (inChallenge("h", 12)) exp = exp.times(0.333);
-    if (player.f.points.gte("e5e6")) exp = exp.times(new OmegaNum(1).div(player.f.points.max("e5e6").log(10).div("e1e7")))
     return exp;
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
