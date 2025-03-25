@@ -587,7 +587,7 @@ addLayer("h", {
 
       description: "x1e50K Flowers",
 
-      cost: new OmegaNum(33085),
+      cost: new OmegaNum(33081),
 
       
 
@@ -600,7 +600,7 @@ addLayer("h", {
 
       description: "x1e1.25K Pollen",
 
-      cost: new OmegaNum(36785),
+      cost: new OmegaNum(36782),
 
       
 

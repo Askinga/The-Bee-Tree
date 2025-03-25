@@ -48,7 +48,7 @@ addLayer("hi", {
   hotkeys: [
     {
       key: "i",
-      description: "I: Reset for hives",
+      description: "I: Reset for beehives",
       onPress() {
         if (canReset(this.layer)) doReset(this.layer);
       },
