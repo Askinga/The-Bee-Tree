@@ -114,5 +114,15 @@ addLayer("hi", {
       unlocked(){ return true }     
 
     },
+    12: {
+
+      title: "Bees are happy!",
+
+      description: "They are so happy that they multiply Pollen by x1e100!",
+
+      cost: new OmegaNum(2),
+
+      unlocked(){ return hasUpgrade('hi', 11)}
+    },
   },
 });
