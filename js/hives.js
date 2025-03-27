@@ -22,8 +22,10 @@ addLayer("hi", {
   baseResource: "honey", // Name of resource prestige is based on
 
   passiveGeneration(){
-    let p = new Decimal(0)
-    if (hasUpgrade("hi", 25)) mult = mult.times("4");
+    let p = new OmegaNum(0)
+    if (hasUpgrade("hi", 32)) p = p.add("1");
+    return p
+  },
   
   baseAmount() {
     return player.h.points;
@@ -43,6 +45,8 @@ addLayer("hi", {
     if (hasUpgrade("hi", 24)) mult = mult.times(upgradeEffect("hi", 24));
     if (hasUpgrade("hi", 25)) mult = mult.times("4");
     if (hasUpgrade("hi", 32)) mult = mult.times("3");
+    if (hasUpgrade("hi", 33)) mult = mult.times("5");
+    if (hasUpgrade("hi", 34)) mult = mult.times("6");
     return mult;
   },
 
@@ -269,6 +273,36 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 31);
+
+      },
+
+    },
+    33: {
+
+      title: "Hyperactive Bees^2",
+
+      description: "x5 Beehives",
+
+      cost: new OmegaNum(2.5e5),
+
+      unlocked() {
+
+        return hasUpgrade("hi", 32);
+
+      },
+
+    },
+    34: {
+
+      title: "Hyperactive Bees^3",
+
+      description: "X6 Beehives",
+
+      cost: new OmegaNum(1e6),
+
+      unlocked() {
+
+        return hasUpgrade("hi", 33);
 
       },
 
