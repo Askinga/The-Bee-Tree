@@ -33,7 +33,8 @@ addLayer("hi", {
     // Calculate the multiplier for main currency from bonuses
 
     mult = new OmegaNum(1);
-    if(hasUpgrade('hi', 15)) mult = mult.times(upgradeEffect('hi', 15))
+    if (hasUpgrade('hi', 15)) mult = mult.times(upgradeEffect('hi', 15))
+    if (hasUpgrade("hi", 22)) mult = mult.times("2")
     return mult;
   },
 
@@ -157,7 +158,7 @@ addLayer("hi", {
 
       effect(){
 
-        let pow = new OmegaNum(0.75)
+        let pow = new OmegaNum(0.5)
 
         return player.h.points.add(1).log(10).add(1).pow(pow)
 
@@ -174,6 +175,46 @@ addLayer("hi", {
       
 
       unlocked(){ return hasUpgrade('hi', 14) }     
+
+    },
+    21: {
+
+      title: "Insane Boost",
+
+      description: "Boost Pollen based on Beehives.",
+
+      cost: new OmegaNum(40),
+
+      effect(){
+
+        let pow = new OmegaNum(1500)
+
+        return player.hi.points.add(1).pow(pow)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "x" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('hi', 15) }     
+
+    },
+    22: {
+
+      title: "More Bee Homes",
+
+      description: "x2 Beehives",
+
+      cost: new OmegaNum(50),
+
+      unlocked(){ return hasUpgrade('hi', 21)}
 
     },
   },
