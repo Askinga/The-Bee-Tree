@@ -21,6 +21,10 @@ addLayer("hi", {
 
   baseResource: "honey", // Name of resource prestige is based on
 
+  passiveGeneration(){
+    let p = new Decimal(0)
+    if (hasUpgrade("hi", 25)) mult = mult.times("4");
+  
   baseAmount() {
     return player.h.points;
   }, // Get the current amount of baseResource
@@ -33,11 +37,12 @@ addLayer("hi", {
     // Calculate the multiplier for main currency from bonuses
 
     mult = new OmegaNum(1);
-    if (hasUpgrade('hi', 15)) mult = mult.times(upgradeEffect('hi', 15))
-    if (hasUpgrade("hi", 22)) mult = mult.times("2")
-    if (hasUpgrade("hi", 23)) mult = mult.times("3")
-    if (hasUpgrade('hi', 24)) mult = mult.times(upgradeEffect('hi', 24))
-    if (hasUpgrade('hi', 25)) mult = mult.times("4")
+    if (hasUpgrade("hi", 15)) mult = mult.times(upgradeEffect("hi", 15));
+    if (hasUpgrade("hi", 22)) mult = mult.times("2");
+    if (hasUpgrade("hi", 23)) mult = mult.times("3");
+    if (hasUpgrade("hi", 24)) mult = mult.times(upgradeEffect("hi", 24));
+    if (hasUpgrade("hi", 25)) mult = mult.times("4");
+    if (hasUpgrade("hi", 32)) mult = mult.times("3");
     return mult;
   },
 
@@ -60,215 +65,212 @@ addLayer("hi", {
   ],
 
   branches: ["h"],
-   
+
   layerShown() {
     return hasMilestone("h", 14) || player.hi.unlocked;
   },
-  
+
   milestones: {
     0: {
-
       requirementDescription: "1 Beehive",
 
-      effectDescription: "Keep Honey Challenges (too painful to do them again). and x2 Pollen.",
+      effectDescription:
+        "Keep Honey Challenges (too painful to do them again). and x2 Pollen.",
 
       done() {
-
         return player.hi.points.gte("1");
-
       },
-
-      
 
       unlocked() {
-
         return true;
-
       },
-
-  },
+    },
   },
   upgrades: {
-  11: {
-
+    11: {
       title: "Finally the bees have a home!",
 
       description: "Boost Flower Upgrade 3 based on Beehives and x3 Pollen",
 
       cost: new OmegaNum(1),
 
-      effect(){
+      effect() {
+        let pow = new OmegaNum(player.hi.points.add(1).pow(0.4));
 
-        let pow = new OmegaNum(player.hi.points.add(1).pow(0.4))
-
-        return player.hi.points.add(1).pow(pow)
-
+        return player.hi.points.add(1).pow(pow);
       },
 
-      
-
-      effectDisplay(){
-
-        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return true }     
-
+      unlocked() {
+        return true;
+      },
     },
     12: {
-
       title: "Bees are happy!",
 
       description: "They are so happy that they multiply Pollen by x1e100!",
 
       cost: new OmegaNum(2),
 
-      unlocked(){ return hasUpgrade('hi', 11)}
-      
+      unlocked() {
+        return hasUpgrade("hi", 11);
+      },
     },
     13: {
-
       title: "Beekeepers",
 
       description: "Keep Flower Upgrades, Honey Milestones and xe1K Pollen",
 
       cost: new OmegaNum(3),
 
-      unlocked(){ return hasUpgrade('hi', 12)}
-
+      unlocked() {
+        return hasUpgrade("hi", 12);
+      },
     },
     14: {
-
       title: "Full Honey Automation",
 
       description: "Automate Honey Upgrades and xe2K Pollen!",
 
       cost: new OmegaNum(6),
 
-      unlocked(){ return hasUpgrade('hi', 13)}
-
+      unlocked() {
+        return hasUpgrade("hi", 13);
+      },
     },
     15: {
-
       title: "More Honey = More Beehives?",
 
       description: "Boost Beehives based on Honey.",
 
       cost: new OmegaNum(15),
 
-      effect(){
+      effect() {
+        let pow = new OmegaNum(0.5);
 
-        let pow = new OmegaNum(0.5)
-
-        return player.h.points.add(1).log(10).add(1).pow(pow)
-
+        return player.h.points.add(1).log(10).add(1).pow(pow);
       },
 
-      
-
-      effectDisplay(){
-
-        return "x" + format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('hi', 14) }     
-
+      unlocked() {
+        return hasUpgrade("hi", 14);
+      },
     },
     21: {
-
       title: "Insane Boost",
 
       description: "Boost Pollen based on Beehives.",
 
       cost: new OmegaNum(40),
 
-      effect(){
+      effect() {
+        let pow = new OmegaNum(1500);
 
-        let pow = new OmegaNum(1500)
-
-        return player.hi.points.add(1).pow(pow)
-
+        return player.hi.points.add(1).pow(pow);
       },
 
-      
-
-      effectDisplay(){
-
-        return "x" + format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('hi', 15) }     
-
+      unlocked() {
+        return hasUpgrade("hi", 15);
+      },
     },
     22: {
-
       title: "More Bee Homes",
 
       description: "x2 Beehives",
 
       cost: new OmegaNum(50),
 
-      unlocked(){ return hasUpgrade('hi', 21)}
-
+      unlocked() {
+        return hasUpgrade("hi", 21);
+      },
     },
     23: {
-
       title: "Good Pollination Sources",
 
       description: "x3 Beehives",
 
       cost: new OmegaNum(100),
 
-      unlocked(){ return hasUpgrade('hi', 22)}
-
+      unlocked() {
+        return hasUpgrade("hi", 22);
+      },
     },
     24: {
-
       title: "More Beehives",
 
       description: "Boost Beehives based on Beehives.",
 
       cost: new OmegaNum(325),
 
-      effect(){
+      effect() {
+        let pow = new OmegaNum(0.1);
 
-        let pow = new OmegaNum(0.1)
-
-        return player.hi.points.add(1).pow(pow)
-
+        return player.hi.points.add(1).pow(pow);
       },
 
-      
-
-      effectDisplay(){
-
-        return "x" + format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('hi', 23) }     
-
+      unlocked() {
+        return hasUpgrade("hi", 23);
+      },
     },
     25: {
-
       title: "Hyperactive Bees",
 
       description: "x4 Beehives",
 
       cost: new OmegaNum(600),
-    
-      unlocked(){ return hasUpgrade('hi', 24) }     
+
+      unlocked() {
+        return hasUpgrade("hi", 24);
+      },
+    },
+    31: {
+      title: "Insane Boost 2",
+
+      description: "Boost Flowers based on Beehives.",
+
+      cost: new OmegaNum(3000),
+
+      effect() {
+        let pow = new OmegaNum(1000000);
+
+        return player.hi.points.add(1).pow(pow);
+      },
+
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
+      },
+
+      unlocked() {
+        return hasUpgrade("hi", 25);
+      },
+    },
+    32: {
+
+      title: "Speed up Hives",
+
+      description: "x3 Beehives and 100% of Beehives per second.",
+
+      cost: new OmegaNum(5000),
+
+      unlocked() {
+
+        return hasUpgrade("hi", 31);
+
+      },
 
     },
   },
