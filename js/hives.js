@@ -33,7 +33,7 @@ addLayer("hi", {
     // Calculate the multiplier for main currency from bonuses
 
     mult = new OmegaNum(1);
-
+    if(hasUpgrade('hi', 15)) mult = mult.times(upgradeEffect('hi', 15))
     return mult;
   },
 
@@ -134,6 +134,46 @@ addLayer("hi", {
       cost: new OmegaNum(3),
 
       unlocked(){ return hasUpgrade('hi', 12)}
+
+    },
+    14: {
+
+      title: "Full Honey Automation",
+
+      description: "Automate Honey Upgrades and xe2K Pollen!",
+
+      cost: new OmegaNum(6),
+
+      unlocked(){ return hasUpgrade('hi', 13)}
+
+    },
+    15: {
+
+      title: "More Honey = More Beehives?",
+
+      description: "Boost Beehives based on Honey.",
+
+      cost: new OmegaNum(15),
+
+      effect(){
+
+        let pow = new OmegaNum(0.75)
+
+        return player.h.points.add(1).log(10).add(1).pow(pow)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "x" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('hi', 14) }     
 
     },
   },
