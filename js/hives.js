@@ -47,6 +47,7 @@ addLayer("hi", {
     if (hasUpgrade("hi", 32)) mult = mult.times("3");
     if (hasUpgrade("hi", 33)) mult = mult.times("5");
     if (hasUpgrade("hi", 34)) mult = mult.times("6");
+    if (hasUpgrade("hi", 35)) mult = mult.times(upgradeEffect("hi", 35));
     return mult;
   },
 
@@ -303,6 +304,65 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 33);
+
+      },
+
+    },
+    15: {
+
+      title: "More Honey = More Beehives?",
+
+      description: "Boost Beehives based on Honey.",
+
+      cost: new OmegaNum(15),
+
+      effect() {
+
+        let pow = new OmegaNum(0.5);
+
+        return player.h.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 14);
+
+      },
+
+    },
+
+    35: {
+
+      title: "Insane Beehive Boost",
+
+      description: "Boost Beehives based on Pollen.",
+
+      cost: new OmegaNum(1e7),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.p.points.add(1).log(10).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 34);
 
       },
 
