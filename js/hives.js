@@ -35,6 +35,9 @@ addLayer("hi", {
     mult = new OmegaNum(1);
     if (hasUpgrade('hi', 15)) mult = mult.times(upgradeEffect('hi', 15))
     if (hasUpgrade("hi", 22)) mult = mult.times("2")
+    if (hasUpgrade("hi", 23)) mult = mult.times("3")
+    if (hasUpgrade('hi', 24)) mult = mult.times(upgradeEffect('hi', 24))
+    if (hasUpgrade('hi', 25)) mult = mult.times("4")
     return mult;
   },
 
@@ -215,6 +218,57 @@ addLayer("hi", {
       cost: new OmegaNum(50),
 
       unlocked(){ return hasUpgrade('hi', 21)}
+
+    },
+    23: {
+
+      title: "Good Pollination Sources",
+
+      description: "x3 Beehives",
+
+      cost: new OmegaNum(100),
+
+      unlocked(){ return hasUpgrade('hi', 22)}
+
+    },
+    24: {
+
+      title: "More Beehives",
+
+      description: "Boost Beehives based on Beehives.",
+
+      cost: new OmegaNum(325),
+
+      effect(){
+
+        let pow = new OmegaNum(0.1)
+
+        return player.hi.points.add(1).pow(pow)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "x" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('hi', 23) }     
+
+    },
+    25: {
+
+      title: "Hyperactive Bees",
+
+      description: "x4 Beehives",
+
+      cost: new OmegaNum(600),
+    
+      unlocked(){ return hasUpgrade('hi', 24) }     
 
     },
   },
