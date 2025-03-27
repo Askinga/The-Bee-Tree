@@ -8,6 +8,39 @@ addLayer("f", {
       points: new OmegaNum(0),
     };
   },
+  doReset(f) {
+
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+
+        if (layers[f].row <= this.row) return;
+
+    
+
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+
+        let keptUpgrades = [];
+
+        
+
+        // Stage 3, track which main features you want to keep - milestones
+
+        let keep = [];
+
+        if (hasUpgrade('hi', 13)) keep.push("upgrades");
+
+    
+
+        // Stage 4, do the actual data resetautomate() {
+
+        layerDataReset(this.layer, keep);
+
+    
+
+        // Stage 5, add back in the specific subfeatures you saved earlier
+
+        player[this.layer].upgrades.push(...keptUpgrades);
+
+    },
   passiveGeneration() {
     let p = new OmegaNum(1);
     if (hasUpgrade("f", 14)) p = p.times(6.5);

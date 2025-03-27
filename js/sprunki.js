@@ -19,8 +19,9 @@ addLayer("h", {
 
         let keep = [];
 
-	if (hasMilestone('hi', 0)) keep.push("challenges");
-
+        if (hasMilestone('hi', 0)) keep.push("challenges");
+    
+        if (hasUpgrade('hi', 13)) keep.push("milestones");
     
 
         // Stage 4, do the actual data resetautomate() {

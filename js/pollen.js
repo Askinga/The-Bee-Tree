@@ -74,6 +74,7 @@ addLayer("p", {
     if (hasMilestone("hi", 0)) mult = mult.times("2");
     if (hasUpgrade("hi", 11)) mult = mult.times(3);
     if (hasUpgrade("hi", 12)) mult = mult.times("e100");
+    if (hasUpgrade("hi", 13)) mult = mult.times("ee3");
     if (inChallenge("h", 11)) mult = mult.times(0);
     return mult;
   },

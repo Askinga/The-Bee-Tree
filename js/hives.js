@@ -123,6 +123,18 @@ addLayer("hi", {
       cost: new OmegaNum(2),
 
       unlocked(){ return hasUpgrade('hi', 11)}
+      
+    },
+    13: {
+
+      title: "Beekeepers",
+
+      description: "Keep Flower Upgrades, Honey Milestones and xe1K Pollen",
+
+      cost: new OmegaNum(3),
+
+      unlocked(){ return hasUpgrade('hi', 12)}
+
     },
   },
 });
