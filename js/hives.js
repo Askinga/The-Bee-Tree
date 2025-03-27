@@ -84,4 +84,35 @@ addLayer("hi", {
 
   },
   },
+  upgrades: {
+  11: {
+
+      title: "Finally the bees have a home!",
+
+      description: "Boost Flower Upgrade 3 based on Beehives and x3 Pollen",
+
+      cost: new OmegaNum(1),
+
+      effect(){
+
+        let pow = new OmegaNum(player.hi.points.add(1).pow(0.4))
+
+        return player.hi.points.add(1).pow(pow)
+
+      },
+
+      
+
+      effectDisplay(){
+
+        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return true }     
+
+    },
+  },
 });
