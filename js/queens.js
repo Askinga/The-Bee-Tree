@@ -18,7 +18,7 @@ addLayer("queen", {
 
     resource: "queen bees", // Name of prestige currency
 
-    baseResource: "Hives", // Name of resource prestige is based on
+    baseResource: "beehives", // Name of resource prestige is based on
 
     baseAmount() {return player.hi.points}, // Get the current amount of baseResource
 
@@ -36,6 +36,14 @@ addLayer("queen", {
 
     },
 
+    tabFormat: [
+      "main-display",
+      "blank",
+      "prestige-button",
+      "resource-display",
+      ["display-text", "Don't worry about your bees, they will act like if there was 1 queen."]
+    ],
+  
     gainExp() { // Calculate the exponent on main currency from bonuses
 
         return new OmegaNum(1)

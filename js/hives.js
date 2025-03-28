@@ -537,7 +537,7 @@ addLayer("hi", {
 
       title: "Flower Beehive Boost",
 
-      description: "Boost Beehives based on Flowers.",
+      description: "Boost Beehives based on Flowers and unlock a new layer.",
 
       cost: new OmegaNum(1e23),
 
