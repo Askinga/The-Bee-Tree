@@ -48,6 +48,7 @@ addLayer("hi", {
     if (hasUpgrade("hi", 33)) mult = mult.times("5");
     if (hasUpgrade("hi", 34)) mult = mult.times("6");
     if (hasUpgrade("hi", 35)) mult = mult.times(upgradeEffect("hi", 35));
+    if (hasUpgrade("hi", 41)) mult = mult.times(upgradeEffect("hi", 41));
     return mult;
   },
 
@@ -363,6 +364,33 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 34);
+
+      },
+
+    },
+    41: {
+
+      title: "Insane Beehive Boost 2",
+
+      description: "Boost Beehives based on Beehives.",
+
+      cost: new OmegaNum(2.5e8),
+
+      effect() {
+
+        return player.hi.points.add(1).log(10).add(1);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 35);
 
       },
 
