@@ -49,6 +49,7 @@ addLayer("hi", {
     if (hasUpgrade("hi", 34)) mult = mult.times("6");
     if (hasUpgrade("hi", 35)) mult = mult.times(upgradeEffect("hi", 35));
     if (hasUpgrade("hi", 41)) mult = mult.times(upgradeEffect("hi", 41));
+    if (hasUpgrade("hi", 42)) mult = mult.times(upgradeEffect("hi", 42));
     return mult;
   },
 
@@ -391,6 +392,35 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 35);
+
+      },
+
+    },
+    42: {
+
+      title: "Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(1e10),
+
+      effect() {
+
+        let pow = new OmegaNum(0.65);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 41);
 
       },
 
