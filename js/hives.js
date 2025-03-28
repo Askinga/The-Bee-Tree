@@ -50,6 +50,10 @@ addLayer("hi", {
     if (hasUpgrade("hi", 35)) mult = mult.times(upgradeEffect("hi", 35));
     if (hasUpgrade("hi", 41)) mult = mult.times(upgradeEffect("hi", 41));
     if (hasUpgrade("hi", 42)) mult = mult.times(upgradeEffect("hi", 42));
+    if (hasUpgrade("hi", 43)) mult = mult.times(upgradeEffect("hi", 43));
+    if (hasUpgrade("hi", 44)) mult = mult.times(upgradeEffect("hi", 44));
+    if (hasUpgrade("hi", 45)) mult = mult.times(upgradeEffect("hi", 45));
+    if (hasUpgrade("hi", 51)) mult = mult.times("100");
     return mult;
   },
 
@@ -421,6 +425,108 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 41);
+
+      },
+
+    },
+    43: {
+
+      title: "Good Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(1e11),
+
+      effect() {
+
+        let pow = new OmegaNum(1.25);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 42);
+
+      },
+
+    },
+    44: {
+
+      title: "Great Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(1e13),
+
+      effect() {
+
+        let pow = new OmegaNum(1.3);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 43);
+
+      },
+
+    },
+    45: {
+
+      title: "Amazing Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(5e15),
+
+      effect() {
+
+        let pow = new OmegaNum(1.5);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 44);
+
+      },
+
+    },
+    51: {
+
+      title: "Static Beehive Boost",
+
+      description: "x100 Beehives",
+
+      cost: new OmegaNum(1e19),
+
+      unlocked() {
+
+        return hasUpgrade("hi", 45);
 
       },
 
