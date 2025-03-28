@@ -1,6 +1,6 @@
 addLayer("queen", {
 
-    name: "Flowers", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "Queen Bees", // This is optional, only used in a few places, If absent it just uses the layer id.
 
     symbol: "👑", // This appears on the layer's node. Default is the id with the first letter capitalized
 
@@ -12,7 +12,7 @@ addLayer("queen", {
 
 		points: new OmegaNum(0),    }},
 
-    color: "#86AEF3",
+    color: "#e0d82f",
 
     requires: new OmegaNum(5e21), // Can be a function that takes requirement increases into account
 
@@ -42,28 +42,29 @@ addLayer("queen", {
 
     },
 
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: "side", // Row the layer is in on the tree (0 is the first row)
 
     hotkeys: [
 
-        {key: "q", description: "Q: Reset for flowers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "q", description: "Q: Reset for queen bees", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
 
     ],
 
-    layerShown(){return true},
+    layerShown(){return hasUpgrade('hi', 51)},
 
-    upgrades: {
+    effect() {
 
-	11: {
+    let base = new OmegaNum(10);
 
-	    title: "More Bees",
+    return new OmegaNum(base).pow(player.queen.points);
 
-	    description: "Double Bees.",
+  },
+  
+  resetDescription: "Get ",
+  
+  effectDescription() {
 
-	    cost: new OmegaNum(1)
+    return "which is boosting Beehives by x" + format(layers.queen.effect());
 
-	},
-
-    },
-
+  },
 })

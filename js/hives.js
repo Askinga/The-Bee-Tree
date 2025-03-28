@@ -54,6 +54,8 @@ addLayer("hi", {
     if (hasUpgrade("hi", 44)) mult = mult.times(upgradeEffect("hi", 44));
     if (hasUpgrade("hi", 45)) mult = mult.times(upgradeEffect("hi", 45));
     if (hasUpgrade("hi", 51)) mult = mult.times("100");
+    mult = mult.times(layers.queen.effect());
+    if (hasUpgrade("hi", 52)) mult = mult.times(upgradeEffect("hi", 52)); 
     return mult;
   },
 
@@ -527,6 +529,35 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 45);
+
+      },
+
+    },
+    52: {
+
+      title: "Flower Beehive Boost",
+
+      description: "Boost Beehives based on Flowers.",
+
+      cost: new OmegaNum(1e23),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.f.points.add(1).log(10).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 51);
 
       },
 
