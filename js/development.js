@@ -123,4 +123,17 @@ addLayer("dev", {
       },
     },
   },
+  upgrades: {
+    11: {
+      title: "Queens get happy",
+      description: "Development time boosts Queen Bee base.",
+      cost: new OmegaNum(60),
+      effect(){
+        return player.dev.points.addpow(0.01)
+      },
+      effectDisplay(){
+        return "+"+format(upgradeEffect(this.layer, this.id))
+      },
+  },
+  },
 });

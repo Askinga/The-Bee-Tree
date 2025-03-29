@@ -64,7 +64,11 @@ addLayer("queen", {
 
     let base = new OmegaNum(10);
 
-    return new OmegaNum(base).pow(player.queen.points);
+    let times = new OmegaNum(1)
+      
+    if(hasUpgrade('dev', 11)) times = times.times(upgradeEffect('dev', 11))
+    
+    return new OmegaNum(base).pow(player.queen.points.times(times));
 
   },
   
