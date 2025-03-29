@@ -58,6 +58,9 @@ addLayer("hi", {
     if (hasUpgrade("hi", 52)) mult = mult.times(upgradeEffect("hi", 52)); 
     if (hasUpgrade("hi", 53)) mult = mult.times(upgradeEffect("hi", 53)); 
     if (hasUpgrade("hi", 54)) mult = mult.times(upgradeEffect("hi", 54)); 
+    if (hasUpgrade("hi", 61)) mult = mult.times(upgradeEffect("hi", 61)); 
+    if (hasUpgrade("hi", 62)) mult = mult.times(upgradeEffect("hi", 62)); 
+    if (hasUpgrade("hi", 63)) mult = mult.times(upgradeEffect("hi", 63)); 
     return mult;
   },
 
@@ -649,6 +652,122 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 54);
+
+      },
+
+    },
+    61: {
+
+      title: "Best Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(3e32),
+
+      effect() {
+
+        let pow = new OmegaNum(1.65);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 55);
+
+      },
+
+    },
+    62: {
+
+      title: "Best^2 Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(5e38),
+
+      effect() {
+
+        let pow = new OmegaNum(1.7);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 61);
+
+      },
+
+    },
+    63: {
+
+      title: "Bestest Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(1e44),
+
+      effect() {
+
+        let pow = new OmegaNum(2);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 62);
+
+      },
+
+    },
+    64: {
+
+      title: "Super Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again.",
+
+      cost: new OmegaNum(5e51),
+
+      effect() {
+
+        let pow = new OmegaNum(1.5);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 44);
 
       },
 
