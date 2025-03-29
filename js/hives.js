@@ -61,6 +61,8 @@ addLayer("hi", {
     if (hasUpgrade("hi", 61)) mult = mult.times(upgradeEffect("hi", 61)); 
     if (hasUpgrade("hi", 62)) mult = mult.times(upgradeEffect("hi", 62)); 
     if (hasUpgrade("hi", 63)) mult = mult.times(upgradeEffect("hi", 63)); 
+    if (hasUpgrade("hi", 64)) mult = mult.times(upgradeEffect("hi", 64)); 
+    if (hasUpgrade("hi", 65)) mult = mult.times(upgradeEffect("hi", 65)); 
     return mult;
   },
 
@@ -753,9 +755,38 @@ addLayer("hi", {
 
       effect() {
 
-        let pow = new OmegaNum(1.5);
+        let pow = new OmegaNum(0.15);
 
-        return player.hi.points.add(1).log(10).add(1).pow(pow);
+        return player.hi.points.add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 63);
+
+      },
+
+    },
+    65: {
+
+      title: "Hyper Beehive Boost",
+
+      description: "Boost Beehives based on Beehives again and unlock Beehive Development Time layer.",
+
+      cost: new OmegaNum(3e69),
+
+      effect() {
+
+        let pow = new OmegaNum(0.125);
+
+        return player.hi.points.add(1).pow(pow);
 
       },
 
