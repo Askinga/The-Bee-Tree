@@ -74,4 +74,19 @@ addLayer("dev", {
 
   },
   
+  clickables: {
+
+    11: {
+        title: "Start Working in the Beehive",
+      
+        display() {return "Starts Beehive Development"},
+
+        style: {
+          width: 200,
+          height: 50,
+          
+        },
+    }
+
+}
 })
