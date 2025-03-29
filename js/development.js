@@ -1,92 +1,126 @@
+let tmtBuyable = {
+  width: "400px",
+
+  height: "80px",
+
+  "min-height": "120px",
+
+  "font-size": "10px",
+
+  margin: "10px",
+
+  "border-radius": "33%",
+};
+
 addLayer("dev", {
+  name: "Time", // This is optional, only used in a few places, If absent it just uses the layer id.
 
-    name: "Time", // This is optional, only used in a few places, If absent it just uses the layer id.
+  symbol: "Dev", // This appears on the layer's node. Default is the id with the first letter capitalized
 
-    symbol: "Dev", // This appears on the layer's node. Default is the id with the first letter capitalized
+  position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
 
-    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+  startData() {
+    return {
+      unlocked: false,
 
-    startData() { return {
+      points: new OmegaNum(0),
+    };
+  },
 
-        unlocked: false,
+  color: "#FFDADE",
 
-		points: new OmegaNum(0),    }},
+  requires: new OmegaNum("10^^10^^10^^6"), // Can be a function that takes requirement increases into account
 
-    color: "#FFDADE",
+  resource: "seconds of beehive development time", // Name of prestige currency
 
-    requires: new OmegaNum("10^^10^^10^^6"), // Can be a function that takes requirement increases into account
+  baseResource: "bees", // Name of resource prestige is based on
 
-    resource: "seconds of beehive development time", // Name of prestige currency
+  baseAmount() {
+    return player.points;
+  }, // Get the current amount of baseResource
 
-    baseResource: "bees", // Name of resource prestige is based on
+  type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 
-    baseAmount() {return player.points}, // Get the current amount of baseResource
+  exponent: 0, // Prestige currency exponent
 
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+  passiveGeneration() {
+    let p = new OmegaNum(0);
 
-    exponent: 0, // Prestige currency exponent
+    if (player.dev.points.gte(1)) p = p.add(1);
 
-    passiveGeneration(){
-      let p = new OmegaNum(0)
-      
-      if(player.dev.points.gte(1)) p = p.add(1)
-      
-      return p
-    },
+    return p;
+  },
+
+  prestigeButtonText() {
+    return "Start beehive development. Need FF1.0000F6 Bees";
+  },
+
+  gainMult() {
+    // Calculate the multiplier for main currency from bonuses
+
+    mult = new OmegaNum(1);
+
+    return mult;
+  },
+
+  gainExp() {
+    // Calculate the exponent on main currency from bonuses
+
+    return new OmegaNum(1);
+  },
+
+  tabFormat: [
+    "main-display",
+    "blank",
+    "clickables",
+    "resource-display",
+    "blank",
+    "upgrades"
+  ],
   
-    prestigeButtonText(){ return "Start beehive development. Need FF1.0000F6 Bees"},
-  
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+  row: 3, // Row the layer is in on the tree (0 is the first row)
 
-        mult = new OmegaNum(1)
-
-        return mult
-
+  hotkeys: [
+    {
+      key: "d",
+      description: "D: Develop your beehives",
+      onPress() {
+        if (canReset(this.layer)) doReset(this.layer);
+      },
     },
+  ],
 
-    gainExp() { // Calculate the exponent on main currency from bonuses
+  layerShown() {
+    return hasUpgrade("hi", 65) || player.dev.unlocked;
+  },
 
-        return new OmegaNum(1)
+  branches: ["hi"],
 
-    },
-
-    row: 3, // Row the layer is in on the tree (0 is the first row)
-
-    hotkeys: [
-
-        {key: "d", description: "D: Develop your beehives", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-
-    ],
-
-    layerShown(){return (hasUpgrade('hi', 65) || player.dev.unlocked)},
-
-    branches: ["hi"],
-  
-    effect() {
-
+  effect() {
     return player.dev.points.add(1).pow(5);
-
   },
-  
+
   effectDescription() {
-
     return "which is boosting Beehives by x" + format(layers.dev.effect());
-
   },
-  
+
   clickables: {
-
     11: {
-        title: "Start Working in the Beehive",
+      title: "Start Working in the Beehive",
+
+      display() {
+        return "Starts Beehive Development";
+      },
+
+      onClick(){
+        return player.dev.points = player.dev.points.add(1)
+      },
       
-        display() {return "Starts Beehive Development"},
-
-        style: {
-          width: 200,
-          height: 50,
-          
-        },
-    }
-
-}
-})
+      canClick(){ return !player.dev.points.gte(1)},
+      
+      style() {
+        return { ...tmtBuyable };
+      },
+    },
+  },
+});
