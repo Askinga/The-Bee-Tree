@@ -599,13 +599,42 @@ addLayer("hi", {
 
       title: "Beehive Beehive Boost",
 
-      description: "Boost Beehive Upgrade 1 based on Beehives and xe50K Pollen.",
+      description: "Boost Beehives based on Beehives.",
 
-      cost: new OmegaNum(2e32),
+      cost: new OmegaNum(2.5e28),
 
       effect() {
 
-        let pow = new OmegaNum(0.0005);
+        let pow = new OmegaNum(1);
+
+        return player.hi.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 53);
+
+      },
+
+    },
+    55: {
+
+      title: "Insane Upgrade Boost",
+
+      description: "Boost Beehive Upgrade 1 based on Beehives and xe50K Pollen.",
+
+      cost: new OmegaNum(2.5e32),
+
+      effect() {
+
+        let pow = new OmegaNum(0.001);
 
         return player.hi.points.add(1).pow(pow);
 
@@ -620,35 +649,6 @@ addLayer("hi", {
       unlocked() {
 
         return hasUpgrade("hi", 54);
-
-      },
-
-    },
-    55: {
-
-      title: "Flower Beehive Boost",
-
-      description: "Boost Beehives based on Flowers.",
-
-      cost: new OmegaNum(1e23),
-
-      effect() {
-
-        let pow = new OmegaNum(1);
-
-        return player.f.points.add(1).log(10).log(10).add(1).pow(pow);
-
-      },
-
-      effectDisplay() {
-
-        return "x" + format(upgradeEffect(this.layer, this.id));
-
-      },
-
-      unlocked() {
-
-        return hasUpgrade("hi", 51);
 
       },
 
