@@ -70,6 +70,9 @@ addLayer("dev", {
     if(hasUpgrade('dev', 23)) mult = mult.times(upgradeEffect('dev', 23))
     if(hasUpgrade('dev', 24)) mult = mult.times(upgradeEffect('dev', 24))
     if(hasUpgrade('dev', 25)) mult = mult.times(upgradeEffect('dev', 25))
+    if(hasUpgrade('dev', 31)) mult = mult.times(10000)
+    if(hasUpgrade('dev', 32)) mult = mult.times(upgradeEffect('dev', 32))
+    if(hasUpgrade('dev', 33)) mult = mult.times(upgradeEffect('dev', 33))
     return mult;
   },
 
@@ -331,6 +334,69 @@ addLayer("dev", {
       
 
       unlocked(){ return hasUpgrade('dev', 24)}
+
+    },
+    31: {
+
+      title: "Faster!",
+
+      description: "x10000 Development time.",
+
+      cost: new OmegaNum(1e17),
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 25)}
+
+    },
+    32: {
+
+      title: "Even More Work 5",
+
+      description: "Boost Development time based on Development time again.",
+
+      cost: new OmegaNum(1e23),
+
+      effect(){
+
+        return player.dev.points.add(1).pow(0.1)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 31)}
+
+    },
+    33: {
+
+      title: "Even More Work 6",
+
+      description: "Boost Development time based on Development time again.",
+
+      cost: new OmegaNum(5e26),
+
+      effect(){
+
+        return player.dev.points.add(1).pow(0.075)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 32)}
 
     },
     },
