@@ -67,6 +67,9 @@ addLayer("dev", {
     if(hasUpgrade('dev', 15)) mult = mult.times(3)
     if(hasUpgrade('dev', 21)) mult = mult.times(upgradeEffect('dev', 21))
     if(hasUpgrade('dev', 22)) mult = mult.times(upgradeEffect('dev', 22))
+    if(hasUpgrade('dev', 23)) mult = mult.times(upgradeEffect('dev', 23))
+    if(hasUpgrade('dev', 24)) mult = mult.times(upgradeEffect('dev', 24))
+    if(hasUpgrade('dev', 25)) mult = mult.times(upgradeEffect('dev', 25))
     return mult;
   },
 
@@ -247,6 +250,87 @@ addLayer("dev", {
       
 
       unlocked(){ return hasUpgrade('dev', 21)}
+
+    },
+    23: {
+
+      title: "Even More Work 2",
+
+      description: "Boost Development time based on Development time again.",
+
+      cost: new OmegaNum(1e8),
+
+      
+
+      effect(){
+
+        return player.dev.points.add(1).log(10).add(1).pow(1.3)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 22)}
+
+    },
+    24: {
+
+      title: "Even More Work 3",
+
+      description: "Boost Development time based on Development time again.",
+
+      cost: new OmegaNum(2.5e10),
+
+      
+
+      effect(){
+
+        return player.dev.points.add(1).log(10).add(1).pow(1.4)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 23)}
+
+    },
+    25: {
+
+      title: "Even More Work 4",
+
+      description: "Boost Development time based on Development time again.",
+
+      cost: new OmegaNum(2.5e13),
+
+      
+
+      effect(){
+
+        return player.dev.points.add(1).log(10).add(1).pow(1.5)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 24)}
 
     },
     },
