@@ -56,6 +56,8 @@ addLayer("hi", {
     if (hasUpgrade("hi", 51)) mult = mult.times("100");
     mult = mult.times(layers.queen.effect());
     if (hasUpgrade("hi", 52)) mult = mult.times(upgradeEffect("hi", 52)); 
+    if (hasUpgrade("hi", 53)) mult = mult.times(upgradeEffect("hi", 53)); 
+    if (hasUpgrade("hi", 54)) mult = mult.times(upgradeEffect("hi", 54)); 
     return mult;
   },
 
@@ -110,6 +112,8 @@ addLayer("hi", {
       effect() {
         let pow = new OmegaNum(player.hi.points.add(1).pow(0.4));
 
+        if(hasUpgrade('hi', 55)) pow = pow.tetrate(upgradeEffect('hi', 55))
+        
         return player.hi.points.add(1).pow(pow);
       },
 
@@ -534,6 +538,93 @@ addLayer("hi", {
 
     },
     52: {
+
+      title: "Flower Beehive Boost",
+
+      description: "Boost Beehives based on Flowers.",
+
+      cost: new OmegaNum(1e23),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.f.points.add(1).log(10).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 51);
+
+      },
+
+    },
+    53: {
+
+      title: "Honey Beehive Boost",
+
+      description: "Boost Beehives based on Honey.",
+
+      cost: new OmegaNum(2.5e25),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.h.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 52);
+
+      },
+
+    },
+    54: {
+
+      title: "Beehive Beehive Boost",
+
+      description: "Boost Beehive Upgrade 1 based on Beehives and xe50K Pollen.",
+
+      cost: new OmegaNum(2e32),
+
+      effect() {
+
+        let pow = new OmegaNum(0.0005);
+
+        return player.hi.points.add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "^^" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasUpgrade("hi", 54);
+
+      },
+
+    },
+    55: {
 
       title: "Flower Beehive Boost",
 
