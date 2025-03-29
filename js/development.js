@@ -60,6 +60,9 @@ addLayer("dev", {
 
     mult = new OmegaNum(1);
 
+    if(hasUpgrade('dev', 11)) mult = mult.times(2)
+    if(hasUpgrade('dev', 12)) mult = mult.times(2.5)
+    
     return mult;
   },
 
@@ -126,14 +129,24 @@ addLayer("dev", {
   upgrades: {
     11: {
       title: "Queens get happy",
-      description: "Development time boosts Queen Bee base.",
+      description: "Boost Queen Bees in the Queen Bee Effect based on Development Time and x2 Development time.",
       cost: new OmegaNum(60),
       effect(){
-        return player.dev.points.addpow(0.01)
+        return player.dev.points.add(1).pow(0.01)
       },
       effectDisplay(){
-        return "+"+format(upgradeEffect(this.layer, this.id))
+        return "x"+format(upgradeEffect(this.layer, this.id))
       },
-  },
+    },
+    12: {
+
+      title: "Queens encourages bees to work faster",
+
+      description: "x2.5 Development time.",
+
+      cost: new OmegaNum(125),
+      
+      unlocked(){ return hasUpgrade('dev', 11)}
+    },
   },
 });
