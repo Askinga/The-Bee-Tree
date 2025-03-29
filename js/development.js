@@ -26,6 +26,14 @@ addLayer("dev", {
 
     exponent: 0, // Prestige currency exponent
 
+    passiveGeneration(){
+      let p = new OmegaNum(0)
+      
+      if(player.dev.points.gte(1)) p = p.add(1)
+      
+      return p
+    },
+  
     prestigeButtonText(){ return "Start beehive development. Need FF1.0000F6 Bees"},
   
     gainMult() { // Calculate the multiplier for main currency from bonuses

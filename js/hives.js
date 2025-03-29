@@ -63,6 +63,7 @@ addLayer("hi", {
     if (hasUpgrade("hi", 63)) mult = mult.times(upgradeEffect("hi", 63)); 
     if (hasUpgrade("hi", 64)) mult = mult.times(upgradeEffect("hi", 64)); 
     if (hasUpgrade("hi", 65)) mult = mult.times(upgradeEffect("hi", 65)); 
+    mult = mult.times(layers.dev.effect())
     return mult;
   },
 
