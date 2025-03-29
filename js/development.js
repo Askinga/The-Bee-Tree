@@ -106,7 +106,7 @@ addLayer("dev", {
 
   clickables: {
     11: {
-      title: "Start Working in the Beehive",
+      title: "Start the Development",
 
       display() {
         return "Starts Beehive Development";
