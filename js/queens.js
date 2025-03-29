@@ -8,7 +8,7 @@ addLayer("queen", {
 
     startData() { return {
 
-        unlocked: true,
+        unlocked: false,
 
 		points: new OmegaNum(0),    }},
 
@@ -58,7 +58,7 @@ addLayer("queen", {
 
     ],
 
-    layerShown(){return hasUpgrade('hi', 51)},
+    layerShown(){return (hasUpgrade('hi', 51) || player.queen.unlocked)},
 
     effect() {
 
