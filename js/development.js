@@ -8,17 +8,17 @@ addLayer("dev", {
 
     startData() { return {
 
-        unlocked: true,
+        unlocked: false,
 
 		points: new OmegaNum(0),    }},
 
-    color: "#FFDDAA",
+    color: "#FFDADE",
 
     requires: new OmegaNum("10^^10^^10^^6"), // Can be a function that takes requirement increases into account
 
-    resource: "beehive development time", // Name of prestige currency
+    resource: "seconds of beehive development time", // Name of prestige currency
 
-    baseResource: "points", // Name of resource prestige is based on
+    baseResource: "bees", // Name of resource prestige is based on
 
     baseAmount() {return player.points}, // Get the current amount of baseResource
 
@@ -26,6 +26,8 @@ addLayer("dev", {
 
     exponent: 0, // Prestige currency exponent
 
+    prestigeButtonText(){ return "Start beehive development. Need FF1.0000F6 Bees"},
+  
     gainMult() { // Calculate the multiplier for main currency from bonuses
 
         mult = new OmegaNum(1)
@@ -50,6 +52,18 @@ addLayer("dev", {
 
     layerShown(){return (hasUpgrade('hi', 65) || player.dev.unlocked)},
 
-    branches: 
+    branches: ["hi"],
+  
+    effect() {
+
+    return player.dev.points.add(1).pow(5);
+
+  },
+  
+  effectDescription() {
+
+    return "which is boosting Beehives by x" + format(layers.dev.effect());
+
+  },
   
 })
