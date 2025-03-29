@@ -65,6 +65,8 @@ addLayer("dev", {
     if(hasUpgrade('dev', 13)) mult = mult.times(upgradeEffect('dev', 13))
     if(hasUpgrade('dev', 14)) mult = mult.times(5)
     if(hasUpgrade('dev', 15)) mult = mult.times(3)
+    if(hasUpgrade('dev', 21)) mult = mult.times(upgradeEffect('dev', 21))
+    if(hasUpgrade('dev', 22)) mult = mult.times(upgradeEffect('dev', 22))
     return mult;
   },
 
@@ -169,6 +171,8 @@ addLayer("dev", {
         return "x"+format(upgradeEffect(this.layer, this.id))
 
       },
+      
+      unlocked(){ return hasUpgrade('dev', 12)}
 
     },
     14: {
@@ -194,15 +198,56 @@ addLayer("dev", {
 
       
 
-      unlocked(){ return hasUpgrade('dev', 14)}
+      unlounlocked(){ return hasUpgrade('dev', 14)}
 
     },
     21: {
 
-      title: "",
+      title: "More Work",
 
-      description: "Boost Queen Bees in the Queen Bee Effect based on Development Time and x2 Development time.",
+      description: "Boost Development time based on Development time.",
 
-      cost: new OmegaNum(60),
-  },
+      cost: new OmegaNum(32500),
+
+      effect(){
+
+        return player.dev.points.add(1).pow(0.2)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+      
+      unlocked(){ return hasUpgrade('dev', 15)}
+
+    },
+    22: {
+
+      title: "Even More Work",
+
+      description: "Boost Development time based on Development time again.",
+
+      cost: new OmegaNum(1e6),
+      
+      effect(){
+
+        return player.dev.points.add(1).log(10).add(1).pow(1.25)
+
+      },
+
+      effectDisplay(){
+
+        return "x"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 21)}
+
+    },
+    },
 });
