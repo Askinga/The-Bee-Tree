@@ -31,7 +31,7 @@ addLayer("dev", {
 
   requires: new OmegaNum("10^^10^^10^^6"), // Can be a function that takes requirement increases into account
 
-  resource: "seconds of beehive development time", // Name of prestige currency
+  resource: "seconds of beehive development", // Name of prestige currency
 
   baseResource: "bees", // Name of resource prestige is based on
 
