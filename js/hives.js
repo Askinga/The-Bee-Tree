@@ -641,8 +641,12 @@ addLayer("hi", {
       effect() {
 
         let pow = new OmegaNum(0.001);
+        
+        let powTimes = new OmegaNum(10) 
 
-        return new OmegaNum(10).tetrate(player.hi.points.add(1).pow(pow));
+        if (hasUpgrade('dev', 42)) powTimes = powTimes.pentate(upgradeEffect('dev', 42))
+        
+        return new OmegaNum(10).tetrate(player.hi.points.add(1).pow(pow.times(powTimes)));
 
       },
 

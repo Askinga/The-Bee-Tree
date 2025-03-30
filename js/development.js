@@ -453,5 +453,30 @@ addLayer("dev", {
       unlocked(){ return hasUpgrade('dev', 35)}
 
     },
+    42: {
+
+      title: "Pentation?",
+
+      description: "Boost Beehive Upgrade 25 based on Development time.",
+
+      cost: new OmegaNum(2.5e45),
+
+      effect(){
+
+        return player.dev.points.add(1).pow(0.0005)
+
+      },
+
+      effectDisplay(){
+
+        return "Tetration Power Multi ^^^"+format(upgradeEffect(this.layer, this.id))
+
+      },
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 41)}
+
+    },
     },
 });
