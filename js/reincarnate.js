@@ -23,7 +23,7 @@ addLayer("re", {
 
       "resource-display",
 
-      ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 10 bee skill points for your first reset."],
+      ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 25 bee skill points for your first reset."],
 
       ["upgrade-tree", [[11], [21, 22], [31, 32], [41, 42]]],
     ],
@@ -47,7 +47,7 @@ addLayer("re", {
   gainMult() {
     // Calculate the multiplier for main currency from bonuses
 
-    mult = new OmegaNum(10);
+    mult = new OmegaNum(25);
     if (hasUpgrade("re", 41)) mult = mult.times("1.25")
     return mult;
   },
