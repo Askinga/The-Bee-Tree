@@ -1,5 +1,5 @@
 addLayer("re", {
-  name: "Flowers", // This is optional, only used in a few places, If absent it just uses the layer id.
+  name: "Reincarnation", // This is optional, only used in a few places, If absent it just uses the layer id.
 
   symbol: "Re", // This appears on the layer's node. Default is the id with the first letter capitalized
 
@@ -29,7 +29,7 @@ addLayer("re", {
 
     [
       "upgrade-tree",
-      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64]],
+      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64], [71, 72]],
     ],
   ],
 
@@ -239,6 +239,40 @@ addLayer("re", {
       },
 
       branches: ["51"],
+    },
+    71: {
+
+      title: "Bigger boost",
+
+      description: "x100 Previous non-static layers.",
+
+      cost: new OmegaNum(65),
+
+      
+
+      unlocked(){ return (hasUpgrade('re', 61) && hasUpgrade('re', 62) && hasUpgrade('re', 63) && hasUpgrade('re', 64))},
+
+      
+
+      branches: ["61", "62"]
+
+    },
+    72: {
+
+      title: "Auto 5",
+
+      description: "Keep Honey Milestones",
+
+      cost: new OmegaNum(65),
+
+      
+
+      unlocked(){ return (hasUpgrade('re', 61) && hasUpgrade('re', 62) && hasUpgrade('re', 63) && hasUpgrade('re', 64))},
+
+      
+
+      branches: ["63", "64"]
+
     },
   },
 });

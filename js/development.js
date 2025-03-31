@@ -83,6 +83,7 @@ addLayer("dev", {
     if (hasUpgrade("re", 32)) mult = mult.times("2");
     if (hasUpgrade("re", 42)) mult = mult.times("1.5");
     if (hasUpgrade("re", 51)) mult = mult.times("10");
+    if (hasUpgrade("re", 71)) mult = mult.times("100")
     return mult;
   },
 

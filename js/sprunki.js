@@ -16,7 +16,7 @@ addLayer("h", {
 
     if (hasMilestone("hi", 0) || hasUpgrade('re', 31)) keep.push("challenges");
 
-    if (hasUpgrade("hi", 13)) keep.push("milestones");
+    if (hasUpgrade("hi", 13) || hasUpgrade('re', 72)) keep.push("milestones");
     
     if (hasUpgrade("re", 62)) keep.push("upgrades");
 
