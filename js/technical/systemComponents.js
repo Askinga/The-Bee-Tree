@@ -170,9 +170,8 @@ var systemComponents = {
                 <td><button class="opt" onclick="toggleOpt('hideChallenges')">Completed Challenges: {{ options.hideChallenges?"HIDDEN":"SHOWN" }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('forceOneTab'); needsCanvasUpdate = true">Single-Tab Mode: {{ options.forceOneTab?"ALWAYS":"AUTO" }}</button></td>
                 </tr> 
-      <h3>Milestone Popups</h3>
       <tr>
-      
+      <td><button class="opt" onclick="toggleOpt('honeyPopups')">Honey Milestone Popups: {{ options.honeyPopups?"SHOWN":"HIDDEN" }}</button></td>
       
         </table>`
     },

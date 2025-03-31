@@ -10,6 +10,10 @@
 
 }
 
+.center {
+  text-align: center;
+}
+
 *:focus {
 	outline: none;
 	webkit-outline: none;
