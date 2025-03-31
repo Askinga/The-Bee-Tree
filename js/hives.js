@@ -85,7 +85,7 @@ addLayer("hi", {
     },
   ],
 
-  branches: ["h"],
+  branches: ["h", "queen"],
 
   layerShown() {
     return hasMilestone("h", 14) || player.hi.unlocked;

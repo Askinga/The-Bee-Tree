@@ -7,7 +7,7 @@ addLayer("re", {
 
   startData() {
     return {
-      unlocked: true,
+      unlocked: false,
 
       points: new OmegaNum(0),
     };
@@ -23,13 +23,14 @@ addLayer("re", {
 
       "resource-display",
 
-      ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree."]
+      ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 10 bee skill points for your first reset."],
 
+      ["upgrade-tree", [11], [21, 22]],
     ],
   
-  color: "#B236A6",
+  color: "#B265DA",
 
-  requires: new OmegaNum(1e65), // Can be a function that takes requirement increases into account
+  requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 
   resource: "bee skill points", // Name of prestige currency
 
@@ -75,5 +76,52 @@ addLayer("re", {
     return hasUpgrade("dev", 45) || player.re.unlocked;
   },
 
-  branches: ["hi", "dev", "queen"]
+  branches: ["hi", "dev", "queen"],
+  
+  upgrades: {
+    11: {
+
+      title: "First tree upgrade!",
+
+      description: "x2.5 previous non-static layers.",
+
+      cost: new OmegaNum(1),
+
+      
+
+      unlocked(){ return true}
+
+    },
+    21: {
+
+      title: "Faster honey",
+
+      description: "x5 Pollen.",
+
+      cost: new OmegaNum(2),
+
+      
+
+      unlocked(){ return hasUpgrade('re', 11)},
+      
+      branches: ["11"]
+    },
+    22: {
+
+      title: "Faster beehives",
+
+      description: "x4 Beehives.",
+
+      cost: new OmegaNum(2),
+
+      
+
+      unlocked(){ return hasUpgrade('re', 11)},
+
+      
+
+      branches: ["11"]
+
+    },
+  },
 });

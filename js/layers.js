@@ -103,6 +103,7 @@ addLayer("f", {
     if (hasUpgrade("h", 22)) mult = mult.times("ee5");
     if (hasUpgrade("h", 24)) mult = mult.times("e5e4");
     if (hasUpgrade("hi", 31)) mult = mult.times(upgradeEffect('hi', 31))
+    if (hasUpgrade("re", 11)) mult = 
     return mult;
   },
   gainExp() {
