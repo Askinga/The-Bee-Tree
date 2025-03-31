@@ -35,6 +35,12 @@ addLayer("hi", {
 
   exponent: 0.5, // Prestige currency exponent
 
+  autoUpgrade() {
+
+    return hasUpgrade("re", 61);
+
+  },
+  
   gainMult() {
     // Calculate the multiplier for main currency from bonuses
 

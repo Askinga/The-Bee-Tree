@@ -14,20 +14,25 @@ addLayer("re", {
   },
 
   tabFormat: [
+    "main-display",
 
-      "main-display",
+    "blank",
 
-      "blank",
+    "prestige-button",
 
-      "prestige-button",
+    "resource-display",
 
-      "resource-display",
-
-      ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 25 bee skill points for your first reset."],
-
-      ["upgrade-tree", [[11], [21, 22], [31, 32], [41, 42], [51]]],
+    [
+      "display-text",
+      "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 25 bee skill points for your first reset.",
     ],
-  
+
+    [
+      "upgrade-tree",
+      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64]],
+    ],
+  ],
+
   color: "#32DD78",
 
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
@@ -48,7 +53,7 @@ addLayer("re", {
     // Calculate the multiplier for main currency from bonuses
 
     mult = new OmegaNum(25);
-    if (hasUpgrade("re", 41)) mult = mult.times("1.25")
+    if (hasUpgrade("re", 41)) mult = mult.times("1.25");
     return mult;
   },
 
@@ -70,143 +75,170 @@ addLayer("re", {
     },
   ],
 
-  resetDescription(){ return "Reincarnate for " },
-  
+  resetDescription() {
+    return "Reincarnate for ";
+  },
+
   layerShown() {
     return hasUpgrade("dev", 45) || player.re.unlocked;
   },
 
   branches: ["hi", "dev", "queen"],
-  
+
   upgrades: {
     11: {
-
       title: "First tree upgrade!",
 
       description: "x2.5 previous non-static layers.",
 
       cost: new OmegaNum(1),
 
-      
-
-      unlocked(){ return true}
-
+      unlocked() {
+        return true;
+      },
     },
     21: {
-
       title: "Faster honey",
 
       description: "x5 Pollen.",
 
       cost: new OmegaNum(2),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 11);
+      },
 
-      unlocked(){ return hasUpgrade('re', 11)},
-      
-      branches: ["11"]
+      branches: ["11"],
     },
     22: {
-
       title: "Faster beehives",
 
       description: "x4 Beehives.",
 
       cost: new OmegaNum(2),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 11);
+      },
 
-      unlocked(){ return hasUpgrade('re', 11)},
-
-      
-
-      branches: ["11"]
-
+      branches: ["11"],
     },
     31: {
-
       title: "Faster flowers",
 
       description: "x3 Flowers and keep Honey challenges.",
 
       cost: new OmegaNum(4),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 21);
+      },
 
-      unlocked(){ return hasUpgrade('re', 21)},
-
-      
-
-      branches: ["22"]
-
+      branches: ["22"],
     },
     32: {
-
       title: "Faster development",
 
       description: "x2 Development time.",
 
       cost: new OmegaNum(4),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 22);
+      },
 
-      unlocked(){ return hasUpgrade('re', 22)},
-
-      
-
-      branches: ["21"]
-
+      branches: ["21"],
     },
     41: {
-
       title: "More skill points",
 
       description: "x1.25 Bee skill points.",
 
       cost: new OmegaNum(8),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 31);
+      },
 
-      unlocked(){ return hasUpgrade('re', 31)},
-
-      
-
-      branches: ["31"]
-
+      branches: ["31"],
     },
     42: {
-
       title: "Even faster development",
 
       description: "x1.5 Development time.",
 
       cost: new OmegaNum(8),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 32);
+      },
 
-      unlocked(){ return hasUpgrade('re', 32)},
-
-      
-
-      branches: ["32"]
-
+      branches: ["32"],
     },
     51: {
-
       title: "Big boost",
 
       description: "x10 Previous non-static layers.",
 
       cost: new OmegaNum(16),
 
-      
+      unlocked() {
+        return hasUpgrade("re", 41) && hasUpgrade("re", 42);
+      },
 
-      unlocked(){ return (hasUpgrade('re', 41) && hasUpgrade('re', 42))},
+      branches: ["41", "42"],
+    },
+    61: {
+      title: "Auto 1",
 
-      
+      description: "Automate Beehive upgrades.",
 
-      branches: ["41", "42"]
+      cost: new OmegaNum(25),
 
+      unlocked() {
+        return hasUpgrade("re", 51);
+      },
+
+      branches: ["51"],
+    },
+    62: {
+      title: "Auto 2",
+
+      description: "Keep Honey Upgrades.",
+
+      cost: new OmegaNum(25),
+
+      unlocked() {
+        return hasUpgrade("re", 51);
+      },
+
+      branches: ["51"],
+    },
+    63: {
+      title: "Auto 3",
+
+      description: "Automate Development upgrades.",
+
+      cost: new OmegaNum(25),
+
+      unlocked() {
+        return hasUpgrade("re", 51);
+      },
+
+      branches: ["51"],
+    },
+    64: {
+      title: "Auto 4",
+
+      description: "Automate the whole Queen Bee layer and it resets nothing.",
+
+      cost: new OmegaNum(25),
+
+      unlocked() {
+        return hasUpgrade("re", 51);
+      },
+
+      branches: ["51"],
     },
   },
 });

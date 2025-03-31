@@ -1,82 +1,100 @@
 addLayer("queen", {
+  name: "Queen Bees", // This is optional, only used in a few places, If absent it just uses the layer id.
 
-    name: "Queen Bees", // This is optional, only used in a few places, If absent it just uses the layer id.
+  symbol: "👑", // This appears on the layer's node. Default is the id with the first letter capitalized
 
-    symbol: "👑", // This appears on the layer's node. Default is the id with the first letter capitalized
+  position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
 
-    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+  autoUpgrade() {
+    return hasUpgrade("re", 64);
+  },
+  autoPrestige() {
+    return hasUpgrade("re", 64);
+  },
+  resetsNothing() {
+    return hasUpgrade("re", 64);
+  },
 
-    startData() { return {
+  startData() {
+    return {
+      unlocked: false,
 
-        unlocked: false,
+      points: new OmegaNum(0),
+    };
+  },
 
-		points: new OmegaNum(0),    }},
+  color: "#e0d82f",
 
-    color: "#e0d82f",
+  requires: new OmegaNum(5e21), // Can be a function that takes requirement increases into account
 
-    requires: new OmegaNum(5e21), // Can be a function that takes requirement increases into account
+  resource: "queen bees", // Name of prestige currency
 
-    resource: "queen bees", // Name of prestige currency
+  baseResource: "beehives", // Name of resource prestige is based on
 
-    baseResource: "beehives", // Name of resource prestige is based on
+  baseAmount() {
+    return player.hi.points;
+  }, // Get the current amount of baseResource
 
-    baseAmount() {return player.hi.points}, // Get the current amount of baseResource
+  type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+  exponent: 1.25, // Prestige currency exponent
 
-    exponent: 1.25, // Prestige currency exponent
-  
-    base: 100,
+  base: 100,
 
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+  gainMult() {
+    // Calculate the multiplier for main currency from bonuses
 
-        mult = new OmegaNum(1)
+    mult = new OmegaNum(1);
 
-        return mult
+    return mult;
+  },
 
-    },
-
-    tabFormat: [
-      "main-display",
-      "blank",
-      "prestige-button",
-      "resource-display",
-      ["display-text", "Don't worry about your bees, they will act like if there was 1 queen."]
+  tabFormat: [
+    "main-display",
+    "blank",
+    "prestige-button",
+    "resource-display",
+    [
+      "display-text",
+      "Don't worry about your bees, they will act like if there was 1 queen.",
     ],
-  
-    gainExp() { // Calculate the exponent on main currency from bonuses
+  ],
 
-        return new OmegaNum(1)
+  gainExp() {
+    // Calculate the exponent on main currency from bonuses
 
+    return new OmegaNum(1);
+  },
+
+  row: 3, // Row the layer is in on the tree (0 is the first row)
+
+  hotkeys: [
+    {
+      key: "q",
+      description: "Q: Reset for queen bees",
+      onPress() {
+        if (canReset(this.layer)) doReset(this.layer);
+      },
     },
+  ],
 
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+  layerShown() {
+    return hasUpgrade("hi", 51) || player.queen.unlocked;
+  },
 
-    hotkeys: [
-
-        {key: "q", description: "Q: Reset for queen bees", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-
-    ],
-
-    layerShown(){return (hasUpgrade('hi', 51) || player.queen.unlocked)},
-
-    effect() {
-
+  effect() {
     let base = new OmegaNum(10);
 
-    let times = new OmegaNum(1)
-      
-    if(hasUpgrade('dev', 11)) times = times.times(upgradeEffect('dev', 11))
-    
+    let times = new OmegaNum(1);
+
+    if (hasUpgrade("dev", 11)) times = times.times(upgradeEffect("dev", 11));
+
     return new OmegaNum(base).pow(player.queen.points.times(times));
-
   },
-  
+
   resetDescription: "Get ",
-  
+
   effectDescription() {
-
     return "which is boosting Beehives by x" + format(layers.queen.effect());
-
   },
-})
+});

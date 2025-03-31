@@ -60,29 +60,29 @@ addLayer("dev", {
 
     mult = new OmegaNum(1);
 
-    if(hasUpgrade('dev', 11)) mult = mult.times(2)
-    if(hasUpgrade('dev', 12)) mult = mult.times(2.5)
-    if(hasUpgrade('dev', 13)) mult = mult.times(upgradeEffect('dev', 13))
-    if(hasUpgrade('dev', 14)) mult = mult.times(5)
-    if(hasUpgrade('dev', 15)) mult = mult.times(3)
-    if(hasUpgrade('dev', 21)) mult = mult.times(upgradeEffect('dev', 21))
-    if(hasUpgrade('dev', 22)) mult = mult.times(upgradeEffect('dev', 22))
-    if(hasUpgrade('dev', 23)) mult = mult.times(upgradeEffect('dev', 23))
-    if(hasUpgrade('dev', 24)) mult = mult.times(upgradeEffect('dev', 24))
-    if(hasUpgrade('dev', 25)) mult = mult.times(upgradeEffect('dev', 25))
-    if(hasUpgrade('dev', 31)) mult = mult.times(10000)
-    if(hasUpgrade('dev', 32)) mult = mult.times(upgradeEffect('dev', 32))
-    if(hasUpgrade('dev', 33)) mult = mult.times(upgradeEffect('dev', 33))
-    if(hasUpgrade('dev', 34)) mult = mult.times(upgradeEffect('dev', 34))
-    if(hasUpgrade('dev', 35)) mult = mult.times(1000)
-    if(hasUpgrade('dev', 41)) mult = mult.times(500)
-    if(hasUpgrade('dev', 43)) mult = mult.times(1000)
-    if(hasUpgrade('dev', 44)) mult = mult.times(5000)
-    if(hasUpgrade('dev', 45)) mult = mult.times(10000)
-    if (hasUpgrade("re", 11)) mult = mult.times("2.5")
-    if (hasUpgrade("re", 32)) mult = mult.times("2")
-    if (hasUpgrade("re", 42)) mult = mult.times("1.5")
-    if (hasUpgrade("re", 51)) mult = mult.times("10")
+    if (hasUpgrade("dev", 11)) mult = mult.times(2);
+    if (hasUpgrade("dev", 12)) mult = mult.times(2.5);
+    if (hasUpgrade("dev", 13)) mult = mult.times(upgradeEffect("dev", 13));
+    if (hasUpgrade("dev", 14)) mult = mult.times(5);
+    if (hasUpgrade("dev", 15)) mult = mult.times(3);
+    if (hasUpgrade("dev", 21)) mult = mult.times(upgradeEffect("dev", 21));
+    if (hasUpgrade("dev", 22)) mult = mult.times(upgradeEffect("dev", 22));
+    if (hasUpgrade("dev", 23)) mult = mult.times(upgradeEffect("dev", 23));
+    if (hasUpgrade("dev", 24)) mult = mult.times(upgradeEffect("dev", 24));
+    if (hasUpgrade("dev", 25)) mult = mult.times(upgradeEffect("dev", 25));
+    if (hasUpgrade("dev", 31)) mult = mult.times(10000);
+    if (hasUpgrade("dev", 32)) mult = mult.times(upgradeEffect("dev", 32));
+    if (hasUpgrade("dev", 33)) mult = mult.times(upgradeEffect("dev", 33));
+    if (hasUpgrade("dev", 34)) mult = mult.times(upgradeEffect("dev", 34));
+    if (hasUpgrade("dev", 35)) mult = mult.times(1000);
+    if (hasUpgrade("dev", 41)) mult = mult.times(500);
+    if (hasUpgrade("dev", 43)) mult = mult.times(1000);
+    if (hasUpgrade("dev", 44)) mult = mult.times(5000);
+    if (hasUpgrade("dev", 45)) mult = mult.times(10000);
+    if (hasUpgrade("re", 11)) mult = mult.times("2.5");
+    if (hasUpgrade("re", 32)) mult = mult.times("2");
+    if (hasUpgrade("re", 42)) mult = mult.times("1.5");
+    if (hasUpgrade("re", 51)) mult = mult.times("10");
     return mult;
   },
 
@@ -93,15 +93,14 @@ addLayer("dev", {
   },
 
   tabFormat: [
-    
     "main-display",
     "blank",
     "clickables",
     "resource-display",
     "blank",
-    "upgrades"
+    "upgrades",
   ],
-  
+
   row: 3, // Row the layer is in on the tree (0 is the first row)
 
   hotkeys: [
@@ -128,6 +127,10 @@ addLayer("dev", {
     return "which is boosting Beehives by x" + format(layers.dev.effect());
   },
 
+  autoUpgrade() {
+    return hasUpgrade("re", 63);
+  },
+
   clickables: {
     11: {
       title: "Start the Development",
@@ -136,13 +139,17 @@ addLayer("dev", {
         return "Starts Beehive Development";
       },
 
-      onClick(){
-        doReset('dev', "true")
-        player.dev.points = player.dev.points.add(1)
+      onClick() {
+        doReset("dev", "true");
+        player.dev.points = player.dev.points.add(1);
       },
-      
-      canClick(){ return (!player.dev.points.gte(1) && player.points.gte("10^^10^^10^^10^^8"))},
-      
+
+      canClick() {
+        return (
+          !player.dev.points.gte(1) && player.points.gte("10^^10^^10^^10^^8")
+        );
+      },
+
       style() {
         return { ...tmtBuyable };
       },
@@ -151,380 +158,307 @@ addLayer("dev", {
   upgrades: {
     11: {
       title: "Queens get happy",
-      description: "Boost Queen Bees in the Queen Bee Effect based on Development Time and x2 Development time.",
+      description:
+        "Boost Queen Bees in the Queen Bee Effect based on Development Time and x2 Development time.",
       cost: new OmegaNum(60),
-      effect(){
-        return player.dev.points.add(1).pow(0.01)
+      effect() {
+        return player.dev.points.add(1).pow(0.01);
       },
-      effectDisplay(){
-        return "x"+format(upgradeEffect(this.layer, this.id))
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
     },
     12: {
-
       title: "Queens encourages bees to work faster",
 
       description: "x2.5 Development time.",
 
       cost: new OmegaNum(125),
-      
-      unlocked(){ return hasUpgrade('dev', 11)}
+
+      unlocked() {
+        return hasUpgrade("dev", 11);
+      },
     },
     13: {
-
       title: "More Queens = More Work",
 
       description: "Boost Development time based on Queen Bees.",
 
       cost: new OmegaNum(300),
 
-      effect(){
-
-        return player.queen.points.add(1).pow(0.5)
-
+      effect() {
+        return player.queen.points.add(1).pow(0.5);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
-      
-      unlocked(){ return hasUpgrade('dev', 12)}
 
+      unlocked() {
+        return hasUpgrade("dev", 12);
+      },
     },
     14: {
-
       title: "Queens are not satisfied",
 
       description: "BUMP IT UP! x5 Development time.",
 
       cost: new OmegaNum(1750),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 13)}
-
+      unlocked() {
+        return hasUpgrade("dev", 13);
+      },
     },
     15: {
-
       title: "Queens encourages bees to work even faster",
 
       description: "x3 Development time.",
 
       cost: new OmegaNum(10000),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 14)}
-
+      unlocked() {
+        return hasUpgrade("dev", 14);
+      },
     },
     21: {
-
       title: "More Work",
 
       description: "Boost Development time based on Development time.",
 
       cost: new OmegaNum(32500),
 
-      effect(){
-
-        return player.dev.points.add(1).pow(0.2)
-
+      effect() {
+        return player.dev.points.add(1).pow(0.2);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
-      
-      unlocked(){ return hasUpgrade('dev', 15)}
 
+      unlocked() {
+        return hasUpgrade("dev", 15);
+      },
     },
     22: {
-
       title: "Even More Work",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(1e6),
-      
-      effect(){
 
-        return player.dev.points.add(1).log(10).add(1).pow(1.25)
-
+      effect() {
+        return player.dev.points.add(1).log(10).add(1).pow(1.25);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 21)}
-
+      unlocked() {
+        return hasUpgrade("dev", 21);
+      },
     },
     23: {
-
       title: "Even More Work 2",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(1e8),
 
-      
-
-      effect(){
-
-        return player.dev.points.add(1).log(10).add(1).pow(1.3)
-
+      effect() {
+        return player.dev.points.add(1).log(10).add(1).pow(1.3);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 22)}
-
+      unlocked() {
+        return hasUpgrade("dev", 22);
+      },
     },
     24: {
-
       title: "Even More Work 3",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(2.5e10),
 
-      
-
-      effect(){
-
-        return player.dev.points.add(1).log(10).add(1).pow(1.4)
-
+      effect() {
+        return player.dev.points.add(1).log(10).add(1).pow(1.4);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 23)}
-
+      unlocked() {
+        return hasUpgrade("dev", 23);
+      },
     },
     25: {
-
       title: "Even More Work 4",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(2.5e13),
 
-      
-
-      effect(){
-
-        return player.dev.points.add(1).log(10).add(1).pow(1.5)
-
+      effect() {
+        return player.dev.points.add(1).log(10).add(1).pow(1.5);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 24)}
-
+      unlocked() {
+        return hasUpgrade("dev", 24);
+      },
     },
     31: {
-
       title: "Faster!",
 
       description: "x10000 Development time.",
 
       cost: new OmegaNum(1e17),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 25)}
-
+      unlocked() {
+        return hasUpgrade("dev", 25);
+      },
     },
     32: {
-
       title: "Even More Work 5",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(1e23),
 
-      effect(){
-
-        return player.dev.points.add(1).pow(0.1)
-
+      effect() {
+        return player.dev.points.add(1).pow(0.1);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 31)}
-
+      unlocked() {
+        return hasUpgrade("dev", 31);
+      },
     },
     33: {
-
       title: "Even More Work 6",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(5e26),
 
-      effect(){
-
-        return player.dev.points.add(1).pow(0.075)
-
+      effect() {
+        return player.dev.points.add(1).pow(0.075);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 32)}
-
+      unlocked() {
+        return hasUpgrade("dev", 32);
+      },
     },
     34: {
-
       title: "Even More Work Final",
 
       description: "Boost Development time based on Development time again.",
 
       cost: new OmegaNum(2.5e30),
 
-      effect(){
-
-        return player.dev.points.add(1).pow(0.06)
-
+      effect() {
+        return player.dev.points.add(1).pow(0.06);
       },
 
-      effectDisplay(){
-
-        return "x"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return "x" + format(upgradeEffect(this.layer, this.id));
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 33)}
-
+      unlocked() {
+        return hasUpgrade("dev", 33);
+      },
     },
     35: {
-
       title: "Queens encourages bees to work way faster",
 
       description: "x1000 Development time.",
 
       cost: new OmegaNum(1e34),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 34)}
-
+      unlocked() {
+        return hasUpgrade("dev", 34);
+      },
     },
     41: {
-
       title: "Queens encourages bees to work way fasterer",
 
       description: "x500 Development time.",
 
       cost: new OmegaNum(1e40),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 35)}
-
+      unlocked() {
+        return hasUpgrade("dev", 35);
+      },
     },
     42: {
-
       title: "Pentation?",
 
       description: "Boost Beehive Upgrade 25 based on Development time.",
 
       cost: new OmegaNum(2.5e45),
 
-      effect(){
-
-        return player.dev.points.add(1).pow(0.0005)
-
+      effect() {
+        return player.dev.points.add(1).pow(0.0005);
       },
 
-      effectDisplay(){
-
-        return "Tetration Power Multi ^^^"+format(upgradeEffect(this.layer, this.id))
-
+      effectDisplay() {
+        return (
+          "Tetration Power Multi ^^^" +
+          format(upgradeEffect(this.layer, this.id))
+        );
       },
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 41)}
-
+      unlocked() {
+        return hasUpgrade("dev", 41);
+      },
     },
     43: {
-
       title: "Queens encourages bees to work way faster^3",
 
       description: "x1000 Development time.",
 
       cost: new OmegaNum(3e45),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 42)}
-
+      unlocked() {
+        return hasUpgrade("dev", 42);
+      },
     },
     44: {
-
       title: "Queens encourages bees to work way faster^4",
 
       description: "x5000 Development time.",
 
       cost: new OmegaNum(2.5e51),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 43)}
-
+      unlocked() {
+        return hasUpgrade("dev", 43);
+      },
     },
     45: {
-
       title: "Queens encourages bees to work way faster^5",
 
       description: "x10000 Development time and unlock a new layer.",
 
       cost: new OmegaNum(2.5e58),
 
-      
-
-      unlocked(){ return hasUpgrade('dev', 44)}
-
+      unlocked() {
+        return hasUpgrade("dev", 44);
+      },
     },
-    },
+  },
 });
