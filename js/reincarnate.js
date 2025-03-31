@@ -28,7 +28,7 @@ addLayer("re", {
       ["upgrade-tree", [[11], [21, 22], [31, 32], [41, 42]]],
     ],
   
-  color: "#B695DA",
+  color: "#32DD78",
 
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 

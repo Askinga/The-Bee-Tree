@@ -83,7 +83,7 @@ addLayer("h", {
   branches: ["p"],
 
   autoPrestige() {
-    return player.h.autoPrestige;
+    return (player.h.autoPrestige && hasMilestone('h', 9));
   },
 
   hotkeys: [

@@ -99,7 +99,7 @@ addLayer("p", {
   branches: ["f"],
 
   canReset() {
-    return !inChallenge("h", 11);
+    return (!inChallenge("h", 11) && player.points.gte("10^^10^^4e52"));
   },
 
   hotkeys: [
