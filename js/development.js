@@ -76,6 +76,9 @@ addLayer("dev", {
     if(hasUpgrade('dev', 34)) mult = mult.times(upgradeEffect('dev', 34))
     if(hasUpgrade('dev', 35)) mult = mult.times(1000)
     if(hasUpgrade('dev', 41)) mult = mult.times(500)
+    if(hasUpgrade('dev', 43)) mult = mult.times(1000)
+    if(hasUpgrade('dev', 44)) mult = mult.times(5000)
+    if(hasUpgrade('dev', 45)) mult = mult.times(10000)
     return mult;
   },
 
@@ -476,6 +479,45 @@ addLayer("dev", {
       
 
       unlocked(){ return hasUpgrade('dev', 41)}
+
+    },
+    43: {
+
+      title: "Queens encourages bees to work way faster^3",
+
+      description: "x1000 Development time.",
+
+      cost: new OmegaNum(3e45),
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 42)}
+
+    },
+    44: {
+
+      title: "Queens encourages bees to work way faster^4",
+
+      description: "x5000 Development time.",
+
+      cost: new OmegaNum(2.5e51),
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 43)}
+
+    },
+    45: {
+
+      title: "Queens encourages bees to work way faster^5",
+
+      description: "x10000 Development time and unlock a new layer.",
+
+      cost: new OmegaNum(2.5e58),
+
+      
+
+      unlocked(){ return hasUpgrade('dev', 44)}
 
     },
     },
