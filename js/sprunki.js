@@ -411,7 +411,7 @@ addLayer("h", {
       effect() {
         let pow = new OmegaNum(0.1);
         if (hasUpgrade("h", 12)) pow = pow.times(upgradeEffect("h", 12));
-        return player.h.points.pow(pow);
+        return player.h.points.add(1).pow(pow);
       },
 
       effectDisplay() {
@@ -430,7 +430,7 @@ addLayer("h", {
       cost: new OmegaNum(2790),
 
       effect() {
-        return player.h.points.pow(0.075);
+        return player.h.points.add(1).pow(0.075);
       },
 
       effectDisplay() {
@@ -449,7 +449,7 @@ addLayer("h", {
       cost: new OmegaNum(3119),
 
       effect() {
-        return player.p.points.pow(10);
+        return player.p.points.add(1).pow(10);
       },
 
       effectDisplay() {
@@ -470,7 +470,7 @@ addLayer("h", {
       effect() {
         let pow = new OmegaNum(5);
 
-        return player.p.points.pow(pow);
+        return player.p.points.add(1).pow(pow);
       },
 
       effectDisplay() {
@@ -491,7 +491,7 @@ addLayer("h", {
       effect() {
         let pow = new OmegaNum(3);
 
-        return player.p.points.pow(pow);
+        return player.p.points.add(1).pow(pow);
       },
 
       effectDisplay() {
@@ -511,7 +511,7 @@ addLayer("h", {
 
       effect() {
         let pow = new OmegaNum(0.0005);
-        return player.f.points.pow(pow);
+        return player.f.points.add(1).pow(pow);
       },
 
       effectDisplay() {
