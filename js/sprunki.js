@@ -86,6 +86,8 @@ addLayer("h", {
     return (player.h.autoPrestige && hasMilestone('h', 9));
   },
 
+  milestonePopups(){ return
+  
   hotkeys: [
     {
       key: "h",
