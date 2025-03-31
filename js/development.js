@@ -82,6 +82,7 @@ addLayer("dev", {
     if (hasUpgrade("re", 11)) mult = mult.times("2.5")
     if (hasUpgrade("re", 32)) mult = mult.times("2")
     if (hasUpgrade("re", 42)) mult = mult.times("1.5")
+    if (hasUpgrade("re", 51)) mult = mult.times("10")
     return mult;
   },
 
@@ -140,7 +141,7 @@ addLayer("dev", {
         player.dev.points = player.dev.points.add(1)
       },
       
-      canClick(){ return !player.dev.points.gte(1)},
+      canClick(){ return (!player.dev.points.gte(1) && player.points.gte("10^^10^^10^^10^^8"))},
       
       style() {
         return { ...tmtBuyable };
