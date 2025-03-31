@@ -25,10 +25,10 @@ addLayer("re", {
 
       ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 10 bee skill points for your first reset."],
 
-      ["upgrade-tree", [11], [21, 22]],
+      ["upgrade-tree", [[11], [21, 22], [31, 32], [41, 42]]],
     ],
   
-  color: "#B265DA",
+  color: "#B695DA",
 
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 
@@ -48,7 +48,7 @@ addLayer("re", {
     // Calculate the multiplier for main currency from bonuses
 
     mult = new OmegaNum(10);
-
+    if (hasUpgrade("re", 41)) mult = mult.times("1.25")
     return mult;
   },
 
@@ -121,6 +121,74 @@ addLayer("re", {
       
 
       branches: ["11"]
+
+    },
+    31: {
+
+      title: "Faster flowers",
+
+      description: "x3 Flowers.",
+
+      cost: new OmegaNum(4),
+
+      
+
+      unlocked(){ return hasUpgrade('re', 21)},
+
+      
+
+      branches: ["22"]
+
+    },
+    32: {
+
+      title: "Faster development",
+
+      description: "x2 Development time.",
+
+      cost: new OmegaNum(4),
+
+      
+
+      unlocked(){ return hasUpgrade('re', 22)},
+
+      
+
+      branches: ["21"]
+
+    },
+    41: {
+
+      title: "More skill points",
+
+      description: "x1.25 Bee skill points.",
+
+      cost: new OmegaNum(8),
+
+      
+
+      unlocked(){ return hasUpgrade('re', 31)},
+
+      
+
+      branches: ["31"]
+
+    },
+    42: {
+
+      title: "Even faster development",
+
+      description: "x1.5 Development time.",
+
+      cost: new OmegaNum(8),
+
+      
+
+      unlocked(){ return hasUpgrade('re', 32)},
+
+      
+
+      branches: ["32"]
 
     },
   },

@@ -79,6 +79,9 @@ addLayer("dev", {
     if(hasUpgrade('dev', 43)) mult = mult.times(1000)
     if(hasUpgrade('dev', 44)) mult = mult.times(5000)
     if(hasUpgrade('dev', 45)) mult = mult.times(10000)
+    if (hasUpgrade("re", 11)) mult = mult.times("2.5")
+    if (hasUpgrade("re", 32)) mult = mult.times("2")
+    if (hasUpgrade("re", 42)) mult = mult.times("1.5")
     return mult;
   },
 
@@ -89,9 +92,10 @@ addLayer("dev", {
   },
 
   tabFormat: [
+    
     "main-display",
     "blank",
-    "clickables",
+    "prestige-button",
     "resource-display",
     "blank",
     "upgrades"
