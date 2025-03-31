@@ -127,7 +127,7 @@ addLayer("re", {
 
       title: "Faster flowers",
 
-      description: "x3 Flowers.",
+      description: "x3 Flowers and keep Honey challenges.",
 
       cost: new OmegaNum(4),
 

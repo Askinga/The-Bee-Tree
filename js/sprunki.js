@@ -14,7 +14,7 @@ addLayer("h", {
 
     let keep = [];
 
-    if (hasMilestone("hi", 0)) keep.push("challenges");
+    if (hasMilestone("hi", 0) || hasUpgrade('re', 31)) keep.push("challenges");
 
     if (hasUpgrade("hi", 13)) keep.push("milestones");
 
@@ -86,7 +86,7 @@ addLayer("h", {
     return (player.h.autoPrestige && hasMilestone('h', 9));
   },
 
-  milestonePopups(){ return
+  milestonePopups(){ return options.honeyPopups },
   
   hotkeys: [
     {
