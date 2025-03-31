@@ -25,7 +25,7 @@ addLayer("re", {
 
       ["display-text", "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 25 bee skill points for your first reset."],
 
-      ["upgrade-tree", [[11], [21, 22], [31, 32], [41, 42]]],
+      ["upgrade-tree", [[11], [21, 22], [31, 32], [41, 42], [51]]],
     ],
   
   color: "#32DD78",
@@ -189,6 +189,23 @@ addLayer("re", {
       
 
       branches: ["32"]
+
+    },
+    51: {
+
+      title: "Big boost",
+
+      description: "x10 Previous non-static layers.",
+
+      cost: new OmegaNum(16),
+
+      
+
+      unlocked(){ return (hasUpgrade('re', 41) && hasUpgrade('re', 42))},
+
+      
+
+      branches: ["41, 42"]
 
     },
   },
