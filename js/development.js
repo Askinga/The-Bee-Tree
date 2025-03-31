@@ -29,7 +29,7 @@ addLayer("dev", {
 
   color: "#FFDADE",
 
-  requires: new OmegaNum("10^^10^^10^^6"), // Can be a function that takes requirement increases into account
+  requires: new OmegaNum("10^^10^^10^^10^^8"), // Can be a function that takes requirement increases into account
 
   resource: "seconds of beehive development", // Name of prestige currency
 
@@ -52,7 +52,7 @@ addLayer("dev", {
   },
 
   prestigeButtonText() {
-    return "Start beehive development. Need FF1.0000F6 Bees";
+    return "Start beehive development. Need FFF1.0000F8 Bees";
   },
 
   gainMult() {
@@ -95,7 +95,7 @@ addLayer("dev", {
     
     "main-display",
     "blank",
-    "prestige-button",
+    "clickables",
     "resource-display",
     "blank",
     "upgrades"
@@ -136,7 +136,8 @@ addLayer("dev", {
       },
 
       onClick(){
-        return player.dev.points = player.dev.points.add(1)
+        doReset('dev', "true")
+        player.dev.points = player.dev.points.add(1)
       },
       
       canClick(){ return !player.dev.points.gte(1)},
@@ -214,7 +215,7 @@ addLayer("dev", {
 
       
 
-      unlounlocked(){ return hasUpgrade('dev', 14)}
+      unlocked(){ return hasUpgrade('dev', 14)}
 
     },
     21: {
