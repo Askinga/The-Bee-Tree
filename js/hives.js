@@ -74,6 +74,7 @@ addLayer("hi", {
     if (hasUpgrade("re", 22)) mult = mult.times("4")
     if (hasUpgrade("re", 51)) mult = mult.times("10")
     if (hasUpgrade("re", 71)) mult = mult.times("100")
+    if (hasUpgrade("re", 91)) mult = mult.times(upgradeEffect("re", 91))
     return mult;
   },
 

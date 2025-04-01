@@ -29,7 +29,7 @@ addLayer("re", {
 
     [
       "upgrade-tree",
-      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64], [71, 72], [81, 82, 83]],
+      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64], [71, 72], [81, 82, 83], [91]],
     ],
   ],
 
@@ -330,32 +330,31 @@ addLayer("re", {
 
       title: "Ultra Power",
 
-      description: "Boost Previous non-static layers based on",
+      description: "Boost Previous non-static layers based on Bee Skill Points.",
 
-      cost: new OmegaNum(2571),
+      cost: new OmegaNum(250),
 
       effect() {
 
-        let pow = new OmegaNum(0.1);
+        let pow = new OmegaNum(2);
 
-        if (hasUpgrade("h", 12)) pow = pow.times(upgradeEffect("h", 12));
-
-        return player.h.points.add(1).pow(pow);
+        return player.re.points.add(1).pow(pow);
 
       },
 
       effectDisplay() {
 
-        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id));
+        return "x" + format(upgradeEffect(this.layer, this.id));
 
       },
 
       unlocked() {
 
-        return hasMilestone("h", 12);
+        return (hasUpgrade("re", 81) && hasUpgrade("re", 82) && hasUpgrade("re", 83));
 
       },
 
+      branches: ["81", "82", "83"],
     },
   },
 });
