@@ -89,7 +89,7 @@ addLayer("re", {
     11: {
       title: "First tree upgrade!",
 
-      description: "x2.5 previous non-static layers.",
+      description: "x2.5 previous non-static layers. Also add 1 to base effect power of Flower Upgrade 3.",
 
       cost: new OmegaNum(1),
 

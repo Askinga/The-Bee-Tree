@@ -163,6 +163,7 @@ addLayer("f", {
       cost: new OmegaNum("100"),
       effect() {
         let tetPow = new OmegaNum(0.1);
+        if (hasUpgrade("re", 11)) tetPow = tetPow.add(1)
         if (hasUpgrade("f", 45)) tetPow = tetPow.times(upgradeEffect("f", 45));
         if (hasUpgrade("f", 55)) tetPow = tetPow.times(upgradeEffect("f", 55));
         if (hasUpgrade("p", 24)) tetPow = tetPow.times(upgradeEffect("p", 24));
