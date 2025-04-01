@@ -46,7 +46,7 @@ addLayer("dev", {
   passiveGeneration() {
     let p = new OmegaNum(0);
 
-    if (player.dev.points.gte(1)) p = p.add(1);
+    if (player.dev.unlocked) p = p.add(1);
 
     return p;
   },
