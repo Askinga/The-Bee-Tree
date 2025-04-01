@@ -11,6 +11,9 @@ addLayer("queen", {
   autoPrestige() {
     return hasUpgrade("re", 64);
   },
+  canBuyMax() {
+    return hasUpgrade("re", 101);
+  },
   resetsNothing() {
     return hasUpgrade("re", 64);
   },

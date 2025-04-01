@@ -85,6 +85,7 @@ addLayer("dev", {
     if (hasUpgrade("re", 51)) mult = mult.times("10");
     if (hasUpgrade("re", 71)) mult = mult.times("100");
     if (hasUpgrade("re", 91)) mult = mult.times(upgradeEffect("re", 91));
+    if (hasUpgrade("re", 103)) mult = mult.times("5");
     return mult;
   },
 

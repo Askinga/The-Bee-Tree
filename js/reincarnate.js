@@ -29,7 +29,18 @@ addLayer("re", {
 
     [
       "upgrade-tree",
-      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64], [71, 72], [81, 82, 83], [91]],
+      [
+        [11],
+        [21, 22],
+        [31, 32],
+        [41, 42],
+        [51],
+        [61, 62, 63, 64],
+        [71, 72],
+        [81, 82, 83],
+        [91],
+        [101, 102, 103],
+      ],
     ],
   ],
 
@@ -55,6 +66,7 @@ addLayer("re", {
     mult = new OmegaNum(25);
     if (hasUpgrade("re", 41)) mult = mult.times("1.25");
     if (hasUpgrade("re", 82)) mult = mult.times("1.5");
+    if (hasUpgrade("re", 102)) mult = mult.times("2");
     return mult;
   },
 
@@ -90,7 +102,8 @@ addLayer("re", {
     11: {
       title: "First tree upgrade!",
 
-      description: "x2.5 previous non-static layers. Also add 1 to base effect power of Flower Upgrade 3.",
+      description:
+        "x2.5 previous non-static layers. Also add 1 to base effect power of Flower Upgrade 3.",
 
       cost: new OmegaNum(1),
 
@@ -242,41 +255,42 @@ addLayer("re", {
       branches: ["51"],
     },
     71: {
-
       title: "Bigger boost",
 
       description: "x100 Previous non-static layers.",
 
       cost: new OmegaNum(65),
 
-      
+      unlocked() {
+        return (
+          hasUpgrade("re", 61) &&
+          hasUpgrade("re", 62) &&
+          hasUpgrade("re", 63) &&
+          hasUpgrade("re", 64)
+        );
+      },
 
-      unlocked(){ return (hasUpgrade('re', 61) && hasUpgrade('re', 62) && hasUpgrade('re', 63) && hasUpgrade('re', 64))},
-
-      
-
-      branches: ["61", "62"]
-
+      branches: ["61", "62"],
     },
     72: {
-
       title: "Auto 5",
 
       description: "Keep Honey Milestones",
 
       cost: new OmegaNum(65),
 
-      
+      unlocked() {
+        return (
+          hasUpgrade("re", 61) &&
+          hasUpgrade("re", 62) &&
+          hasUpgrade("re", 63) &&
+          hasUpgrade("re", 64)
+        );
+      },
 
-      unlocked(){ return (hasUpgrade('re', 61) && hasUpgrade('re', 62) && hasUpgrade('re', 63) && hasUpgrade('re', 64))},
-
-      
-
-      branches: ["63", "64"]
-
+      branches: ["63", "64"],
     },
     81: {
-
       title: "Auto 6",
 
       description: "Keep the Beehive generation.",
@@ -284,16 +298,12 @@ addLayer("re", {
       cost: new OmegaNum(100),
 
       unlocked() {
-
-       return (hasUpgrade("re", 71) && hasUpgrade("re", 72));;
-
+        return hasUpgrade("re", 71) && hasUpgrade("re", 72);
       },
 
       branches: ["71"],
-
     },
     82: {
-
       title: "More Skill Points",
 
       description: "x1.5 Bee skill points.",
@@ -301,16 +311,12 @@ addLayer("re", {
       cost: new OmegaNum(100),
 
       unlocked() {
-
-        return (hasUpgrade("re", 71) && hasUpgrade("re", 72));
-
+        return hasUpgrade("re", 71) && hasUpgrade("re", 72);
       },
 
       branches: ["71", "72"],
-
     },
     83: {
-
       title: "Faster Pre-Beehives",
 
       description: "x1e100 Pollen.",
@@ -318,43 +324,87 @@ addLayer("re", {
       cost: new OmegaNum(100),
 
       unlocked() {
-
-        return (hasUpgrade("re", 71) && hasUpgrade("re", 72));
-
+        return hasUpgrade("re", 71) && hasUpgrade("re", 72);
       },
 
       branches: ["72"],
-
     },
     91: {
-
       title: "Ultra Power",
 
-      description: "Boost Previous non-static layers based on Bee Skill Points.",
+      description:
+        "Boost Previous non-static layers based on Bee Skill Points.",
 
       cost: new OmegaNum(250),
 
       effect() {
-
         let pow = new OmegaNum(2);
 
         return player.re.points.add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
-        return (hasUpgrade("re", 81) && hasUpgrade("re", 82) && hasUpgrade("re", 83));
-
+        return (
+          hasUpgrade("re", 81) && hasUpgrade("re", 82) && hasUpgrade("re", 83)
+        );
       },
 
       branches: ["81", "82", "83"],
+    },
+    101: {
+
+      title: "QoL",
+
+      description: "Max buy Queen Bees.",
+
+      cost: new OmegaNum(200),
+
+      unlocked() {
+
+        return hasUpgrade("re", 91);
+
+      },
+
+      branches: ["91"],
+
+    },
+    102: {
+
+      title: "Bee Skills",
+
+      description: "x2 Bee skill points",
+
+      cost: new OmegaNum(300),
+
+      unlocked() {
+
+        return hasUpgrade("re", 91);
+
+      },
+
+      branches: ["91"],
+
+    },
+    103: {
+
+      title: "More Worker Bees",
+
+      description: "x5 Development time.",
+
+      cost: new OmegaNum(200),
+
+      unlocked() {
+
+        return hasUpgrade("re", 91);
+
+      },
+
+      branches: ["91"],
+
     },
   },
 });
