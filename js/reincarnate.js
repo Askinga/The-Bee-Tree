@@ -40,6 +40,7 @@ addLayer("re", {
         [81, 82, 83],
         [91],
         [101, 102, 103],
+        [111, 112],
       ],
     ],
   ],
@@ -67,6 +68,8 @@ addLayer("re", {
     if (hasUpgrade("re", 41)) mult = mult.times("1.25");
     if (hasUpgrade("re", 82)) mult = mult.times("1.5");
     if (hasUpgrade("re", 102)) mult = mult.times("2");
+    if (hasUpgrade("re", 111)) mult = mult.times(upgradeEffect("re", 111));
+    if (hasUpgrade("re", 112)) mult = mult.times(upgradeEffect("re", 112));
     return mult;
   },
 
@@ -404,6 +407,80 @@ addLayer("re", {
       },
 
       branches: ["91"],
+
+    },
+    111: {
+
+      title: "Honey Skills",
+
+      description:
+
+        "Boost Bee skill points based on Honey.",
+
+      cost: new OmegaNum(500),
+
+      effect() {
+
+        let pow = new OmegaNum(0.2);
+
+        return player.h.points.add(1).log(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 101) && hasUpgrade("re", 102) && hasUpgrade("re", 103)
+
+        );
+
+      },
+
+      branches: ["101", "102"],
+
+    },
+    112: {
+
+      title: "Skilled",
+
+      description:
+
+        "Boost Bee skill points based on Bee Skill Points.",
+
+      cost: new OmegaNum(500),
+
+      effect() {
+
+        let pow = new OmegaNum(0.1);
+
+        return player.re.points.add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 101) && hasUpgrade("re", 102) && hasUpgrade("re", 103)
+
+        );
+
+      },
+
+      branches: ["102", "103"],
 
     },
   },
