@@ -23,7 +23,7 @@ addLayer("hi", {
 
   passiveGeneration(){
     let p = new OmegaNum(0)
-    if (hasUpgrade("hi", 32)) p = p.add("1");
+    if (hasUpgrade("hi", 32) || hasUpgrade("re", 81)) p = p.add("1");
     return p
   },
   

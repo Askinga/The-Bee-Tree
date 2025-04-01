@@ -29,7 +29,7 @@ addLayer("re", {
 
     [
       "upgrade-tree",
-      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64], [71, 72]],
+      [[11], [21, 22], [31, 32], [41, 42], [51], [61, 62, 63, 64], [71, 72], [81, 82, 83]],
     ],
   ],
 
@@ -54,6 +54,7 @@ addLayer("re", {
 
     mult = new OmegaNum(25);
     if (hasUpgrade("re", 41)) mult = mult.times("1.25");
+    if (hasUpgrade("re", 82)) mult = mult.times("1.5");
     return mult;
   },
 
@@ -272,6 +273,88 @@ addLayer("re", {
       
 
       branches: ["63", "64"]
+
+    },
+    81: {
+
+      title: "Auto 6",
+
+      description: "Keep the Beehive generation.",
+
+      cost: new OmegaNum(100),
+
+      unlocked() {
+
+       return (hasUpgrade("re", 71) && hasUpgrade("re", 72));;
+
+      },
+
+      branches: ["71"],
+
+    },
+    82: {
+
+      title: "More Skill Points",
+
+      description: "x1.5 Bee skill points.",
+
+      cost: new OmegaNum(100),
+
+      unlocked() {
+
+        return (hasUpgrade("re", 71) && hasUpgrade("re", 72));
+
+      },
+
+      branches: ["71", "72"],
+
+    },
+    83: {
+
+      title: "Faster Pre-Beehives",
+
+      description: "x1e100 Pollen.",
+
+      cost: new OmegaNum(100),
+
+      unlocked() {
+
+        return (hasUpgrade("re", 71) && hasUpgrade("re", 72));
+
+      },
+
+      branches: ["72"],
+
+    },
+    91: {
+
+      title: "Ultra Power",
+
+      description: "Boost Previous non-static layers based on",
+
+      cost: new OmegaNum(2571),
+
+      effect() {
+
+        let pow = new OmegaNum(0.1);
+
+        if (hasUpgrade("h", 12)) pow = pow.times(upgradeEffect("h", 12));
+
+        return player.h.points.add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "Tetration Power ^" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return hasMilestone("h", 12);
+
+      },
 
     },
   },

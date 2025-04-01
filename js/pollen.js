@@ -82,6 +82,7 @@ addLayer("p", {
     if (hasUpgrade("re", 21)) mult = mult.times("5")
     if (hasUpgrade("re", 51)) mult = mult.times("10")
     if (hasUpgrade("re", 71)) mult = mult.times("100")
+    if (hasUpgrade("re", 83)) mult = mult.times("1e100")
     if (inChallenge("h", 11)) mult = mult.times(0);
     return mult;
   },
