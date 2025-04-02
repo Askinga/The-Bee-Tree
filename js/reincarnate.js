@@ -41,6 +41,7 @@ addLayer("re", {
         [91],
         [101, 102, 103],
         [111, 112],
+        [121],
       ],
     ],
   ],
@@ -70,6 +71,7 @@ addLayer("re", {
     if (hasUpgrade("re", 102)) mult = mult.times("2");
     if (hasUpgrade("re", 111)) mult = mult.times(upgradeEffect("re", 111));
     if (hasUpgrade("re", 112)) mult = mult.times(upgradeEffect("re", 112));
+    if (hasUpgrade("re", 121)) mult = mult.times(upgradeEffect("re", 121));
     return mult;
   },
 
@@ -481,6 +483,43 @@ addLayer("re", {
       },
 
       branches: ["102", "103"],
+
+    },
+    121: {
+
+      title: "Super Skills",
+
+      description:
+
+        "Boost Bee skill points based on Development time.",
+
+      cost: new OmegaNum(2000),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.dev.points.add(1).log(10).div(100).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 111) && hasUpgrade("re", 112)
+
+        );
+
+      },
+
+      branches: ["111", "112"],
 
     },
   },
