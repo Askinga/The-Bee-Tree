@@ -42,6 +42,7 @@ addLayer("re", {
         [101, 102, 103],
         [111, 112],
         [121],
+        [131, 132, 133]
       ],
     ],
   ],
@@ -72,6 +73,9 @@ addLayer("re", {
     if (hasUpgrade("re", 111)) mult = mult.times(upgradeEffect("re", 111));
     if (hasUpgrade("re", 112)) mult = mult.times(upgradeEffect("re", 112));
     if (hasUpgrade("re", 121)) mult = mult.times(upgradeEffect("re", 121));
+    if (hasUpgrade("re", 131)) mult = mult.times(upgradeEffect("re", 131));
+    if (hasUpgrade("re", 132)) mult = mult.times(upgradeEffect("re", 132));
+    if (hasUpgrade("re", 133)) mult = mult.times(upgradeEffect("re", 133));
     return mult;
   },
 
@@ -520,6 +524,117 @@ addLayer("re", {
       },
 
       branches: ["111", "112"],
+
+    },
+    131: {
+
+      title: "Skilled Beehives",
+
+      description:
+
+        "Boost Bee skill points based on Beehives.",
+
+      cost: new OmegaNum(10000),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.hi.points.add(3).log(10).log(10).div(8).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 121)
+
+        );
+
+      },
+
+      branches: ["121", "101"],
+
+    },
+    132: {
+
+      title: "Insane.",
+
+      description:
+
+        "Boost Bee skill points based on Flowers.",
+
+      cost: new OmegaNum(10000),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.f.points.add(3).log(10).log(10).div(20).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 121)
+
+        );
+
+      },
+
+      branches: ["121"],
+
+    },
+    133: {
+
+      title: "Pollinated Skills",
+
+      description:
+
+        "Boost Bee skill points based on Pollen.",
+
+      cost: new OmegaNum(10000),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.p.points.add(3).log(10).log(10).div(17).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 121)
+
+        );
+
+      },
+
+      branches: ["121", "103"],
 
     },
   },
