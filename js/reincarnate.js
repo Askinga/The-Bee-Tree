@@ -729,7 +729,7 @@ addLayer("re", {
       },
 
       display() {
-            return "Boost Reincarnated Bees by x1.25 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Reincarnated Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x1.25 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Reincarnated Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
         },
       canAfford() {
         return player[this.layer].reinBees.gte(this.cost());
@@ -753,6 +753,7 @@ addLayer("re", {
         let eff = base1.pow(OmegaNum.pow(base2, exp));
         return eff
       },
+      purchaseLimit: 1000
     },
     12: {
       unlocked(){ return hasUpgrade('re', 171)},
@@ -767,7 +768,7 @@ addLayer("re", {
 
       display() {
 
-            return "Boost Reincarnated Bees by x2 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Flowers" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x2 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Flowers" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
 
         },
 
@@ -810,7 +811,7 @@ addLayer("re", {
         return eff
 
       },
-
+      purchaseLimit: 1000
     },
     13: {
 
@@ -826,7 +827,7 @@ addLayer("re", {
 
       display() {
 
-            return "Boost Reincarnated Bees by x2.5 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Pollen" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x2.5 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Pollen" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
 
         },
 
@@ -869,7 +870,7 @@ addLayer("re", {
         return eff
 
       },
-      
+      purchaseLimit: 1000
     },
     21: {
 
@@ -885,7 +886,7 @@ addLayer("re", {
 
       display() {
 
-            return "Boost Reincarnated Bees by x3 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Beehives" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x3 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Beehives" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
 
         },
 
@@ -928,7 +929,7 @@ addLayer("re", {
         return eff
 
       },
-
+      purchaseLimit: 1000
     },
     22: {
 
@@ -938,13 +939,13 @@ addLayer("re", {
 
       cost(x) {
 
-        return new OmegaNum("250000").times(new OmegaNum(2.5).pow(x));
+        return new OmegaNum("500000").times(new OmegaNum(15).pow(x));
 
       },
 
       display() {
 
-            return "Boost Reincarnated Bees by x4 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Queen Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x4 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Queen Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
 
         },
 
@@ -987,7 +988,7 @@ addLayer("re", {
         return eff
 
       },
-
+      purchaseLimit: 1000
     },
   },
   update(diff) {
