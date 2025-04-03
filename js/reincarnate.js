@@ -10,44 +10,59 @@ addLayer("re", {
       unlocked: false,
 
       points: new OmegaNum(0),
+
+      reinBees: new OmegaNum(0),
+
+      reinBeesgain: new OmegaNum(0),
     };
   },
 
-  tabFormat: [
-    "main-display",
+  tabFormat: {
+    Main: {
+      content: [
+        "main-display",
 
-    "blank",
+        "blank",
 
-    "prestige-button",
+        "prestige-button",
 
-    "resource-display",
+        "resource-display",
 
-    [
-      "display-text",
-      "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 25 bee skill points for your first reset.",
-    ],
+        [
+          "display-text",
+          "Reincarnation will reset EVERYTHING in exchange for bee skill points. There will be a upgrade tree. You will gain 25 bee skill points for your first reset.",
+        ],
 
-    [
-      "upgrade-tree",
-      [
-        [11],
-        [21, 22],
-        [31, 32],
-        [41, 42],
-        [51],
-        [61, 62, 63, 64],
-        [71, 72],
-        [81, 82, 83],
-        [91],
-        [101, 102, 103],
-        [111, 112],
-        [121],
-        [131, 132, 133],
-        [141],
-        [151]
+        [
+          "upgrade-tree",
+          [
+            [11],
+            [21, 22],
+            [31, 32],
+            [41, 42],
+            [51],
+            [61, 62, 63, 64],
+            [71, 72],
+            [81, 82, 83],
+            [91],
+            [101, 102, 103],
+            [111, 112],
+            [121],
+            [131, 132, 133],
+            [141],
+            [151],
+            [161],
+          ],
+        ],
       ],
-    ],
-  ],
+    },
+    ReincarnatedBees: {
+      unlocked() {
+        return hasUpgrade("re", 161);
+      },
+      content: ["main-display", "blank"],
+    },
+  },
 
   color: "#32DD78",
 
@@ -105,6 +120,10 @@ addLayer("re", {
 
   layerShown() {
     return hasUpgrade("dev", 45) || player.re.unlocked;
+  },
+
+  reinBeesEffect() {
+    return player.reinBees.add(1).pow(0.5);
   },
 
   branches: ["hi", "dev", "queen"],
@@ -351,8 +370,8 @@ addLayer("re", {
       effect() {
         let pow = new OmegaNum(2);
 
-        if (hasUpgrade("re", 141)) pow = pow.add(upgradeEffect('re', 141))
-        
+        if (hasUpgrade("re", 141)) pow = pow.add(upgradeEffect("re", 141));
+
         return player.re.points.add(1).pow(pow);
       },
 
@@ -369,7 +388,6 @@ addLayer("re", {
       branches: ["81", "82", "83"],
     },
     101: {
-
       title: "QoL",
 
       description: "Max buy Queen Bees.",
@@ -377,16 +395,12 @@ addLayer("re", {
       cost: new OmegaNum(200),
 
       unlocked() {
-
         return hasUpgrade("re", 91);
-
       },
 
       branches: ["91"],
-
     },
     102: {
-
       title: "Bee Skills",
 
       description: "x2 Bee skill points",
@@ -394,16 +408,12 @@ addLayer("re", {
       cost: new OmegaNum(300),
 
       unlocked() {
-
         return hasUpgrade("re", 91);
-
       },
 
       branches: ["91"],
-
     },
     103: {
-
       title: "More Worker Bees",
 
       description: "x5 Development time.",
@@ -411,272 +421,183 @@ addLayer("re", {
       cost: new OmegaNum(200),
 
       unlocked() {
-
         return hasUpgrade("re", 91);
-
       },
 
       branches: ["91"],
-
     },
     111: {
-
       title: "Honey Skills",
 
-      description:
-
-        "Boost Bee skill points based on Honey.",
+      description: "Boost Bee skill points based on Honey.",
 
       cost: new OmegaNum(500),
 
       effect() {
-
         let pow = new OmegaNum(0.2);
 
         return player.h.points.add(1).log(10).add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
         return (
-
-          hasUpgrade("re", 101) && hasUpgrade("re", 102) && hasUpgrade("re", 103)
-
+          hasUpgrade("re", 101) &&
+          hasUpgrade("re", 102) &&
+          hasUpgrade("re", 103)
         );
-
       },
 
       branches: ["101", "102"],
-
     },
     112: {
-
       title: "Skilled",
 
-      description:
-
-        "Boost Bee skill points based on Bee Skill Points.",
+      description: "Boost Bee skill points based on Bee Skill Points.",
 
       cost: new OmegaNum(500),
 
       effect() {
-
         let pow = new OmegaNum(0.1);
 
         return player.re.points.add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
         return (
-
-          hasUpgrade("re", 101) && hasUpgrade("re", 102) && hasUpgrade("re", 103)
-
+          hasUpgrade("re", 101) &&
+          hasUpgrade("re", 102) &&
+          hasUpgrade("re", 103)
         );
-
       },
 
       branches: ["102", "103"],
-
     },
     121: {
-
       title: "Super Skills",
 
-      description:
-
-        "Boost Bee skill points based on Development time.",
+      description: "Boost Bee skill points based on Development time.",
 
       cost: new OmegaNum(2000),
 
       effect() {
-
         let pow = new OmegaNum(1);
 
         return player.dev.points.add(1).log(10).div(100).add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
-        return (
-
-          hasUpgrade("re", 111) && hasUpgrade("re", 112)
-
-        );
-
+        return hasUpgrade("re", 111) && hasUpgrade("re", 112);
       },
 
       branches: ["111", "112"],
-
     },
     131: {
-
       title: "Skilled Beehives",
 
-      description:
-
-        "Boost Bee skill points based on Beehives.",
+      description: "Boost Bee skill points based on Beehives.",
 
       cost: new OmegaNum(10000),
 
       effect() {
-
         let pow = new OmegaNum(1);
 
         return player.hi.points.add(3).log(10).log(10).div(8).add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
-        return (
-
-          hasUpgrade("re", 121)
-
-        );
-
+        return hasUpgrade("re", 121);
       },
 
       branches: ["121", "101"],
-
     },
     132: {
-
       title: "Insane.",
 
-      description:
-
-        "Boost Bee skill points based on Flowers.",
+      description: "Boost Bee skill points based on Flowers.",
 
       cost: new OmegaNum(10000),
 
       effect() {
-
         let pow = new OmegaNum(1);
 
         return player.f.points.add(3).log(10).log(10).div(20).add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
-        return (
-
-          hasUpgrade("re", 121)
-
-        );
-
+        return hasUpgrade("re", 121);
       },
 
       branches: ["121"],
-
     },
     133: {
-
       title: "Pollinated Skills",
 
-      description:
-
-        "Boost Bee skill points based on Pollen.",
+      description: "Boost Bee skill points based on Pollen.",
 
       cost: new OmegaNum(10000),
 
       effect() {
-
         let pow = new OmegaNum(1);
 
         return player.p.points.add(3).log(10).log(10).div(17).add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
-        return (
-
-          hasUpgrade("re", 121)
-
-        );
-
+        return hasUpgrade("re", 121);
       },
 
       branches: ["121", "103"],
-
     },
     141: {
-
       title: "Booster",
 
-      description:
-
-        "Boost 'Ultra Power' based on Bee skill points.",
+      description: "Boost 'Ultra Power' based on Bee skill points.",
 
       cost: new OmegaNum(150000),
 
       effect() {
-
         let pow = new OmegaNum(0.5);
 
         return player.re.points.add(1).log(10).div(10).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "Power +" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
         return (
-
-          hasUpgrade("re", 131) && hasUpgrade("re", 132) && hasUpgrade("re", 133)
-
+          hasUpgrade("re", 131) &&
+          hasUpgrade("re", 132) &&
+          hasUpgrade("re", 133)
         );
-
       },
 
       branches: ["131", "132", "133"],
-
     },
     151: {
       title: "Insane Pollen",
@@ -686,13 +607,23 @@ addLayer("re", {
       cost: new OmegaNum(175000),
 
       unlocked() {
-
         return hasUpgrade("re", 141);
-
       },
 
       branches: ["131", "141", "133"],
+    },
+    161: {
+      title: "Bees have reincarnated",
 
+      description: "Unlock something new.",
+
+      cost: new OmegaNum(400000),
+
+      unlocked() {
+        return hasUpgrade("re", 151);
+      },
+
+      branches: ["151"],
     },
   },
 });
