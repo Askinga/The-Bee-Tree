@@ -716,19 +716,19 @@ addLayer("re", {
 
       display() {
 
-            return "Boost Reincarnated Bees by x1.2 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Flowers" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x2 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Flowers" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
 
         },
 
       canAfford() {
 
-        return player[this.layer].reinBees.gte(this.cost());
+        return player.f.points.gte(this.cost());
 
       },
 
       buy() {
 
-        player[this.layer].reinBees = player[this.layer].reinBees.sub(
+        player.f.points = player.f.points.sub(
 
           this.cost()
 
@@ -748,7 +748,7 @@ addLayer("re", {
 
       effect(x) {
 
-        let base1 = new OmegaNum(1.2);
+        let base1 = new OmegaNum(2);
 
         let base2 = x;
 

@@ -46,12 +46,12 @@ addLayer("f", {
     if (hasUpgrade("f", 14)) p = p.times(6.5);
     if (hasUpgrade("f", 15)) p = p.times(2);
     if (hasUpgrade("f", 23) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 23));
-    if (hasUpgrade("f", 24) && !hasUpgrade("re", ) p = p.times(10);
+    if (hasUpgrade("f", 24)) p = p.times(10);
     if (hasUpgrade("f", 31)) p = p.times(1000);
     if (hasUpgrade("f", 42)) p = p.times(1e6);
-    if (hasUpgrade("f", 43)) p = p.times(upgradeEffect("f", 43));
-    if (hasUpgrade("f", 44)) p = p.times(upgradeEffect("f", 44));
-    if (hasUpgrade("f", 52)) p = p.times(upgradeEffect("f", 52));
+    if (hasUpgrade("f", 43) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 43));
+    if (hasUpgrade("f", 44) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 44));
+    if (hasUpgrade("f", 52) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 52));
     if (hasUpgrade("f", 53)) p = p.times(1e6);
     if (hasUpgrade("f", 54)) p = p.times(1e10);
     return p;
