@@ -655,7 +655,7 @@ addLayer("re", {
     11: {
       title: "Reincarnated Bees Upgrade",
       cost(x) {
-        return new OmegaNum(10).times(x.add(2).div(2));
+        return new OmegaNum(10).times(new OmegaNum(1.35).pow(x));
       },
 
       display() {
@@ -679,9 +679,18 @@ addLayer("re", {
       effect(x) {
         let base1 = new OmegaNum(1.25);
         let base2 = x;
-        let eff = base1.pow(OmegaNum.pow(base2));
+        let exp = new OmegaNum(1)
+        let eff = base1.pow(OmegaNum.pow(base2, exp));
         return eff
       },
     },
   },
+  update(diff) {
+    let gain = new OmegaNum(1)
+    gain = gain.times(buyableEffect('re', 11))
+    
+    player.re.reinBeesGain = gain
+    gain = gain.times(diff)
+    player.re.reinBees = player.re.reinBees.add(gain)
+    },
 });
