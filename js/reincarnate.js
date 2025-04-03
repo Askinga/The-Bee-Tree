@@ -1046,19 +1046,19 @@ addLayer("re", {
 
       display() {
 
-            return "Boost Reincarnated Bees by x10 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Queen Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+            return "Boost Reincarnated Bees by x10 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Bee skill points" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
 
         },
 
       canAfford() {
 
-        return player.queen.points.gte(this.cost());
+        return player.re.points.gte(this.cost());
 
       },
 
       buy() {
 
-        player.queen.points = player.queen.points.sub(
+        player.re.points = player.re.points.sub(
 
           this.cost()
 
