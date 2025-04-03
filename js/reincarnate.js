@@ -53,7 +53,7 @@ addLayer("re", {
             [151],
             [161],
             [171, 172, 173, 174],
-            [181],
+            [181, 182],
           ],
         ],
       ],
@@ -761,6 +761,41 @@ addLayer("re", {
       branches: ["171", "172"],
 
     },
+    182: {
+
+      title: "Rein Booster 2",
+
+      description: "Boost Reincarnated Bees based on Honey",
+
+      cost: new OmegaNum("1e1611"),
+
+      effect() {
+
+        let pow = new OmegaNum(0.2);
+
+        return player.h.points.add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "x" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 181)
+
+        );
+
+      },
+
+      branches: ["171", "172", "173", "174"],
+
+    },
   },
   buyables: {
     11: {
@@ -1103,7 +1138,7 @@ addLayer("re", {
     gain = gain.times(buyableEffect('re', 22))
     gain = gain.times(buyableEffect('re', 23))
     if(hasUpgrade('re', 181)) gain = gain.times(upgradeEffect('re', 181))
-    
+    if(hasUpgrade('re', 182)) gain = gain.times(upgradeEffect('re', 182))
     player.re.reinBeesGain = gain
     gain = gain.times(diff)
     player.re.reinBees = player.re.reinBees.add(gain)
