@@ -22,16 +22,27 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-  num: "0.0",
-  name: "",
+  num: "1.0.0",
+  name: "Release",
 };
 
 let changelog = `<h1>Changelog:</h1><br>
+  <h3>1.0.0<h3>
+    - Added a lot of upgrades
+    - Added 2 challenges
+    - Added 7 layers
+    - Added a bit of milestones
+    - Added 6 buyables
+    - Added 1 upgrade tree
+    - Added 2 options
+    - Changed page from substantial-pastoral-wormhole.glitch.me to bee-tree.glitch.me
+    - Thats all the dev remembers, possibly more
+    <br>
 	<h3>v0.0</h3><br>
 		- Added things.<br>
 		- Added stuff.`;
 
-let winText = `Congratulations! You have reached the end and beaten this game, but for now...`;
+let winText = `Congratulations! You have tooken over the world and beaten this game, but for now...`;
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -69,7 +80,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-  return false;
+  return player.re.perent.gte(100);
 }
 
 // Less important things beyond this point!

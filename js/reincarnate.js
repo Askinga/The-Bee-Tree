@@ -96,12 +96,13 @@ addLayer("re", {
 
   passiveGeneration(){
     let p = new OmegaNum(0)
-    if (hasUpgrade('re', 183)) p = p.add(1)
+    if (hasUpgrade('re', 183)) p = p.add(0)
     return p
   },
   
   percentEffect(){
-    return 
+    return player.re.points.add(1).log(10).div(86.3465)
+  },
   
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 
@@ -166,6 +167,10 @@ addLayer("re", {
 
   branches: ["hi", "dev", "queen"],
 
+  automate(){
+    player.re.percent = new OmegaNum(tmp.re.percentEffect)
+  },
+  
   upgrades: {
     11: {
       title: "First tree upgrade!",
