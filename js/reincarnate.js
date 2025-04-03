@@ -53,7 +53,7 @@ addLayer("re", {
             [151],
             [161],
             [171, 172, 173, 174],
-            [181, 182],
+            [181, 182, 183],
           ],
         ],
       ],
@@ -92,6 +92,12 @@ addLayer("re", {
 
   color: "#32DD78",
 
+  passiveGeneration(){
+    let p = new OmegaNum(0)
+    if (hasUpgrade('re', 183)) p = p.add(1)
+    return p
+  },
+  
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 
   resource: "bee skill points", // Name of prestige currency
@@ -794,6 +800,23 @@ addLayer("re", {
       },
 
       branches: ["171", "172", "173", "174"],
+
+    },
+    183: {
+
+      title: "I HATE GRINDING!",
+
+      description: "Well lucky for you this upgrade exists. 100% Bee skill points per second.",
+
+      cost: new OmegaNum("1e3650"),
+
+      unlocked() {
+
+        return hasUpgrade("re", 182);
+
+      },
+
+      branches: ["173", "174"],
 
     },
   },
