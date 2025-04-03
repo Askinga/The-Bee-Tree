@@ -187,7 +187,7 @@ addLayer("f", {
 
       description: "Make flower generation x6.5 quicker and x3.5 Flowers.",
 
-      cost: new OmegaNum("500"),
+      cost: new OmegaNum("150"),
 
       unlocked() {
         return hasUpgrade("f", 13);
@@ -198,7 +198,7 @@ addLayer("f", {
 
       description: "Make flower generation x2 quicker and x5 Flowers.",
 
-      cost: new OmegaNum("6000"),
+      cost: new OmegaNum("2000"),
 
       unlocked() {
         return hasUpgrade("f", 14);
@@ -209,7 +209,7 @@ addLayer("f", {
 
       description: "Boost Flowers based on Flowers",
 
-      cost: new OmegaNum("50000"),
+      cost: new OmegaNum("25000"),
 
       effect() {
         return player.f.points.add(1).pow(0.27);

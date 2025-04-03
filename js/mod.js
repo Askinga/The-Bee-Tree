@@ -27,16 +27,16 @@ let VERSION = {
 };
 
 let changelog = `<h1>Changelog:</h1><br>
-  <h3>1.0.0<h3>
-    - Added a lot of upgrades
-    - Added 2 challenges
-    - Added 7 layers
-    - Added a bit of milestones
-    - Added 6 buyables
-    - Added 1 upgrade tree
-    - Added 2 options
-    - Changed page from substantial-pastoral-wormhole.glitch.me to bee-tree.glitch.me
-    - Thats all the dev remembers, possibly more
+  <h3>v1.0.0</h3><br>
+    - Added a lot of upgrades<br>
+    - Added 2 challenges<br>
+    - Added 7 layers<br>
+    - Added a bit of milestones<br>
+    - Added 6 buyables<br>
+    - Added 1 upgrade tree<br>
+    - Added 2 options<br>
+    - Changed page from substantial-pastoral-wormhole.glitch.me to bee-tree.glitch.me<br>
+    - Thats all the dev remembers, possibly more<br>
     <br>
 	<h3>v0.0</h3><br>
 		- Added things.<br>
@@ -74,13 +74,13 @@ function addedPlayerData() {
 }
 
 // Display extra things at the top of the page
-var displayThings = [ 
-    () => "You are " + format(player.re.percent) + "% to taking over the world"
+var displayThings = [
+  () => "You are " + format(player.re.percent) + "% to taking over the world",
 ];
 
 // Determines when the game "ends"
 function isEndgame() {
-  return player.re.perent.gte(100);
+  return player.re.percent.gte(100);
 }
 
 // Less important things beyond this point!

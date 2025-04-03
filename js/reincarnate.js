@@ -14,7 +14,7 @@ addLayer("re", {
       reinBees: new OmegaNum(0),
 
       reinBeesGain: new OmegaNum(0),
-      
+
       percent: new OmegaNum(0),
     };
   },
@@ -94,16 +94,16 @@ addLayer("re", {
 
   color: "#32DD78",
 
-  passiveGeneration(){
-    let p = new OmegaNum(0)
-    if (hasUpgrade('re', 183)) p = p.add(0)
-    return p
+  passiveGeneration() {
+    let p = new OmegaNum(0);
+    if (hasUpgrade("re", 183)) p = p.add(1);
+    return p;
   },
-  
-  percentEffect(){
-    return player.re.points.add(1).log(10).div(86.3465)
+
+  percentEffect() {
+    return player.re.points.add(1).log(10).div(86.3465);
   },
-  
+
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 
   resource: "bee skill points", // Name of prestige currency
@@ -167,10 +167,10 @@ addLayer("re", {
 
   branches: ["hi", "dev", "queen"],
 
-  automate(){
-    player.re.percent = new OmegaNum(tmp.re.percentEffect)
+  automate() {
+    player.re.percent = new OmegaNum(tmp.re.percentEffect);
   },
-  
+
   upgrades: {
     11: {
       title: "First tree upgrade!",
@@ -669,24 +669,20 @@ addLayer("re", {
       branches: ["151"],
     },
     171: {
-
       title: "They get smarter",
 
-      description: "Unlock 1 buyable, but disable ALL flower generation upgrades with effects.",
+      description:
+        "Unlock 1 buyable, but disable ALL flower generation upgrades with effects.",
 
       cost: new OmegaNum(1e7),
 
       unlocked() {
-
         return hasUpgrade("re", 161);
-
       },
 
       branches: ["161"],
-
     },
     172: {
-
       title: "They get even smarter",
 
       description: "Unlock another buyable.",
@@ -694,16 +690,12 @@ addLayer("re", {
       cost: new OmegaNum(2.5e8),
 
       unlocked() {
-
         return hasUpgrade("re", 171);
-
       },
 
       branches: ["161"],
-
     },
     173: {
-
       title: "150IQ Bees",
 
       description: "Unlock another buyable.",
@@ -711,16 +703,12 @@ addLayer("re", {
       cost: new OmegaNum(1.5e9),
 
       unlocked() {
-
         return hasUpgrade("re", 172);
-
       },
 
       branches: ["161"],
-
     },
     174: {
-
       title: "175IQ Bees",
 
       description: "Unlock another buyable.",
@@ -728,57 +716,41 @@ addLayer("re", {
       cost: new OmegaNum(1.5e11),
 
       unlocked() {
-
         return hasUpgrade("re", 173);
-
       },
 
       branches: ["161"],
-
     },
     181: {
-
       title: "Rein Booster",
 
-      description: "Boost Reincarnated Bees based on Reincarnated Bees and unlock a new buyable.",
+      description:
+        "Boost Reincarnated Bees based on Reincarnated Bees and unlock a new buyable.",
 
       cost: new OmegaNum("1e1058"),
 
       effect() {
-
         let pow = new OmegaNum(0.25);
 
         return player.re.reinBees.add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
         return (
-
           hasUpgrade("re", 171) &&
-
           hasUpgrade("re", 172) &&
-
           hasUpgrade("re", 173) &&
-          
           hasUpgrade("re", 174)
-
         );
-
       },
 
       branches: ["171", "172"],
-
     },
     182: {
-
       title: "Rein Booster 2",
 
       description: "Boost Reincarnated Bees based on Honey",
@@ -786,61 +758,58 @@ addLayer("re", {
       cost: new OmegaNum("1e1611"),
 
       effect() {
-
         let pow = new OmegaNum(0.2);
 
         return player.h.points.add(1).pow(pow);
-
       },
 
       effectDisplay() {
-
         return "x" + format(upgradeEffect(this.layer, this.id));
-
       },
 
       unlocked() {
-
-        return (
-
-          hasUpgrade("re", 181)
-
-        );
-
+        return hasUpgrade("re", 181);
       },
 
       branches: ["171", "172", "173", "174"],
-
     },
     183: {
-
       title: "I HATE GRINDING!",
 
-      description: "Well lucky for you this upgrade exists. 100% Bee skill points per second.",
+      description:
+        "Well lucky for you this upgrade exists. 100% Bee skill points per second.",
 
       cost: new OmegaNum("1e3650"),
 
       unlocked() {
-
         return hasUpgrade("re", 182);
-
       },
 
       branches: ["173", "174"],
-
     },
   },
   buyables: {
     11: {
-      unlocked(){ return hasUpgrade('re', 161)},
+      unlocked() {
+        return hasUpgrade("re", 161);
+      },
       title: "Reincarnated Bees Upgrade",
       cost(x) {
         return new OmegaNum(10).times(new OmegaNum(1.35).pow(x));
       },
 
       display() {
-            return "Boost Reincarnated Bees by x1.25 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Reincarnated Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
-        },
+        return (
+          "Boost Reincarnated Bees by x1.25 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Reincarnated Bees" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Reincarnated Bee gain by x" +
+          format(buyableEffect(this.layer, this.id))
+        );
+      },
       canAfford() {
         return player[this.layer].reinBees.gte(this.cost());
       },
@@ -859,321 +828,291 @@ addLayer("re", {
       effect(x) {
         let base1 = new OmegaNum(1.25);
         let base2 = x;
-        let exp = new OmegaNum(1)
+        let exp = new OmegaNum(1);
         let eff = base1.pow(OmegaNum.pow(base2, exp));
-        return eff
+        return eff;
       },
-      purchaseLimit: 1000
+      purchaseLimit: 1000,
     },
     12: {
-      unlocked(){ return hasUpgrade('re', 171)},
-      
+      unlocked() {
+        return hasUpgrade("re", 171);
+      },
+
       title: "Flower Upgrade",
 
       cost(x) {
-
         return new OmegaNum("ee13").pow(new OmegaNum(2.5).pow(x));
-
       },
 
       display() {
-
-            return "Boost Reincarnated Bees by x2 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Flowers" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
-
-        },
+        return (
+          "Boost Reincarnated Bees by x2 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Flowers" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Reincarnated Bee gain by x" +
+          format(buyableEffect(this.layer, this.id))
+        );
+      },
 
       canAfford() {
-
         return player.f.points.gte(this.cost());
-
       },
 
       buy() {
-
-        player.f.points = player.f.points.sub(
-
-          this.cost()
-
-        );
+        player.f.points = player.f.points.sub(this.cost());
 
         setBuyableAmount(
-
           this.layer,
 
           this.id,
 
           getBuyableAmount(this.layer, this.id).add(1)
-
         );
-
       },
 
       effect(x) {
-
         let base1 = new OmegaNum(2);
 
         let base2 = x;
 
-        let exp = new OmegaNum(1)
+        let exp = new OmegaNum(1);
 
         let eff = base1.pow(OmegaNum.pow(base2, exp));
 
-        return eff
-
+        return eff;
       },
-      purchaseLimit: 1000
+      purchaseLimit: 1000,
     },
     13: {
-
-      unlocked(){ return hasUpgrade('re', 172)},
+      unlocked() {
+        return hasUpgrade("re", 172);
+      },
 
       title: "Pollen Upgrade",
 
       cost(x) {
-
         return new OmegaNum("e1.5e11").pow(new OmegaNum(2).pow(x));
-
       },
 
       display() {
-
-            return "Boost Reincarnated Bees by x2.5 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Pollen" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
-
-        },
+        return (
+          "Boost Reincarnated Bees by x2.5 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Pollen" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Reincarnated Bee gain by x" +
+          format(buyableEffect(this.layer, this.id))
+        );
+      },
 
       canAfford() {
-
         return player.p.points.gte(this.cost());
-
       },
 
       buy() {
-
-        player.p.points = player.p.points.sub(
-
-          this.cost()
-
-        );
+        player.p.points = player.p.points.sub(this.cost());
 
         setBuyableAmount(
-
           this.layer,
 
           this.id,
 
           getBuyableAmount(this.layer, this.id).add(1)
-
         );
-
       },
 
       effect(x) {
-
         let base1 = new OmegaNum(2.5);
 
         let base2 = x;
 
-        let exp = new OmegaNum(1)
+        let exp = new OmegaNum(1);
 
         let eff = base1.pow(OmegaNum.pow(base2, exp));
 
-        return eff
-
+        return eff;
       },
-      purchaseLimit: 1000
+      purchaseLimit: 1000,
     },
     21: {
-
-      unlocked(){ return hasUpgrade('re', 173)},
+      unlocked() {
+        return hasUpgrade("re", 173);
+      },
 
       title: "Beehive Upgrade",
 
       cost(x) {
-
         return new OmegaNum("e5e6").pow(new OmegaNum(5.5).pow(x));
-
       },
 
       display() {
-
-            return "Boost Reincarnated Bees by x3 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Beehives" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
-
-        },
+        return (
+          "Boost Reincarnated Bees by x3 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Beehives" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Reincarnated Bee gain by x" +
+          format(buyableEffect(this.layer, this.id))
+        );
+      },
 
       canAfford() {
-
         return player.hi.points.gte(this.cost());
-
       },
 
       buy() {
-
-        player.hi.points = player.hi.points.sub(
-
-          this.cost()
-
-        );
+        player.hi.points = player.hi.points.sub(this.cost());
 
         setBuyableAmount(
-
           this.layer,
 
           this.id,
 
           getBuyableAmount(this.layer, this.id).add(1)
-
         );
-
       },
 
       effect(x) {
-
         let base1 = new OmegaNum(3);
 
         let base2 = x;
 
-        let exp = new OmegaNum(1)
+        let exp = new OmegaNum(1);
 
         let eff = base1.pow(OmegaNum.pow(base2, exp));
 
-        return eff
-
+        return eff;
       },
-      purchaseLimit: 1000
+      purchaseLimit: 1000,
     },
     22: {
-
-      unlocked(){ return hasUpgrade('re', 174)},
+      unlocked() {
+        return hasUpgrade("re", 174);
+      },
 
       title: "Queen Bee Upgrade",
 
       cost(x) {
-
         return new OmegaNum("500000").times(new OmegaNum(15).pow(x));
-
       },
 
       display() {
-
-            return "Boost Reincarnated Bees by x4 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Queen Bees" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
-
-        },
+        return (
+          "Boost Reincarnated Bees by x4 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Queen Bees" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Reincarnated Bee gain by x" +
+          format(buyableEffect(this.layer, this.id))
+        );
+      },
 
       canAfford() {
-
         return player.queen.points.gte(this.cost());
-
       },
 
       buy() {
-
-        player.queen.points = player.queen.points.sub(
-
-          this.cost()
-
-        );
+        player.queen.points = player.queen.points.sub(this.cost());
 
         setBuyableAmount(
-
           this.layer,
 
           this.id,
 
           getBuyableAmount(this.layer, this.id).add(1)
-
         );
-
       },
 
       effect(x) {
-
         let base1 = new OmegaNum(4);
 
         let base2 = x;
 
-        let exp = new OmegaNum(1)
+        let exp = new OmegaNum(1);
 
         let eff = base1.pow(OmegaNum.pow(base2, exp));
 
-        return eff
-
+        return eff;
       },
-      purchaseLimit: 1000
+      purchaseLimit: 1000,
     },
     23: {
-
-      unlocked(){ return hasUpgrade('re', 181)},
+      unlocked() {
+        return hasUpgrade("re", 181);
+      },
 
       title: "Bee Skill Point Upgrade",
 
       cost(x) {
-
         return new OmegaNum("1e1058").times(new OmegaNum(100).pow(x));
-
       },
 
       display() {
-
-            return "Boost Reincarnated Bees by x10 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Bee skill points" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "/1000.<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
-
-        },
+        return (
+          "Boost Reincarnated Bees by x10 per purchase." +
+          "<br>Cost: " +
+          format(tmp[this.layer].buyables[this.id].cost) +
+          " Bee skill points" +
+          "<br>Bought: " +
+          getBuyableAmount(this.layer, this.id) +
+          "/1000.<br>Effect: Boost Reincarnated Bee gain by x" +
+          format(buyableEffect(this.layer, this.id))
+        );
+      },
 
       canAfford() {
-
         return player.re.points.gte(this.cost());
-
       },
 
       buy() {
-
-        player.re.points = player.re.points.sub(
-
-          this.cost()
-
-        );
+        player.re.points = player.re.points.sub(this.cost());
 
         setBuyableAmount(
-
           this.layer,
 
           this.id,
 
           getBuyableAmount(this.layer, this.id).add(1)
-
         );
-
       },
 
       effect(x) {
-
         let base1 = new OmegaNum(10);
 
         let base2 = x;
 
-        let exp = new OmegaNum(1)
+        let exp = new OmegaNum(1);
 
         let eff = base1.pow(OmegaNum.pow(base2, exp));
 
-        return eff
-
+        return eff;
       },
 
-      purchaseLimit: 1000
-
+      purchaseLimit: 1000,
     },
   },
   update(diff) {
-    let gain = new OmegaNum(1)
-    gain = gain.times(buyableEffect('re', 11))
-    gain = gain.times(buyableEffect('re', 12))
-    gain = gain.times(buyableEffect('re', 13))
-    gain = gain.times(buyableEffect('re', 21))
-    gain = gain.times(buyableEffect('re', 22))
-    gain = gain.times(buyableEffect('re', 23))
-    if(hasUpgrade('re', 181)) gain = gain.times(upgradeEffect('re', 181))
-    if(hasUpgrade('re', 182)) gain = gain.times(upgradeEffect('re', 182))
-    player.re.reinBeesGain = gain
-    gain = gain.times(diff)
-    player.re.reinBees = player.re.reinBees.add(gain)
-    },
+    let gain = new OmegaNum(1);
+    gain = gain.times(buyableEffect("re", 11));
+    gain = gain.times(buyableEffect("re", 12));
+    gain = gain.times(buyableEffect("re", 13));
+    gain = gain.times(buyableEffect("re", 21));
+    gain = gain.times(buyableEffect("re", 22));
+    gain = gain.times(buyableEffect("re", 23));
+    if (hasUpgrade("re", 181)) gain = gain.times(upgradeEffect("re", 181));
+    if (hasUpgrade("re", 182)) gain = gain.times(upgradeEffect("re", 182));
+    player.re.reinBeesGain = gain;
+    gain = gain.times(diff);
+    player.re.reinBees = player.re.reinBees.add(gain);
+  },
 });
