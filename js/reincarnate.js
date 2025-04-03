@@ -42,7 +42,8 @@ addLayer("re", {
         [101, 102, 103],
         [111, 112],
         [121],
-        [131, 132, 133]
+        [131, 132, 133],
+        [141]
       ],
     ],
   ],
@@ -349,6 +350,8 @@ addLayer("re", {
       effect() {
         let pow = new OmegaNum(2);
 
+        if (hasUpgrade("re", 141)) pow = pow.add(upgradeEffect('re', 141))
+        
         return player.re.points.add(1).pow(pow);
       },
 
@@ -635,6 +638,43 @@ addLayer("re", {
       },
 
       branches: ["121", "103"],
+
+    },
+    141: {
+
+      title: "Booster",
+
+      description:
+
+        "Boost 'Ultra Power' based on Bee skill points.",
+
+      cost: new OmegaNum(150000),
+
+      effect() {
+
+        let pow = new OmegaNum(1);
+
+        return player.re.points.add(1).log(10).div(10).add(1).pow(pow);
+
+      },
+
+      effectDisplay() {
+
+        return "+" + format(upgradeEffect(this.layer, this.id));
+
+      },
+
+      unlocked() {
+
+        return (
+
+          hasUpgrade("re", 131) && hasUpgrade("re", 132) && hasUpgrade("re", 133)
+
+        );
+
+      },
+
+      branches: ["131", "132", "133"],
 
     },
   },
