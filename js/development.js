@@ -134,6 +134,10 @@ addLayer("dev", {
     return hasUpgrade("re", 63);
   },
 
+  automate(){
+    if(hasUpgrade('hi', 65)) player.dev.unlocked = true
+  },
+  
   clickables: {
     11: {
       title: "Start the Development",

@@ -57,9 +57,14 @@ addLayer("re", {
       ],
     },
     "Reincarnated Bees": {
+      unlocked(){ return hasUpgrade('re', 161)},
       content: [
         "main-display", 
-        "blank"
+        "blank",
+        "prestige-button",
+        "blank",
+        ["display-text", function() { return "You have " + format(player.re.reinBees) + "Reincarnated Bees, boostng Bee skill points by x" + format(tmp.re.reinBeesEffect) }],
+        ["display-text", function() { return "(" + format(player.re.reinBeesGain) + "/sec)"}]
         ],
     },
   },
