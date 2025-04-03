@@ -52,7 +52,7 @@ addLayer("re", {
             [141],
             [151],
             [161],
-            [171, 172, 173],
+            [171, 172, 173, 174],
           ],
         ],
       ],
@@ -689,13 +689,30 @@ addLayer("re", {
 
       title: "150IQ Bees",
 
-      description: "Unlock 1 buyable.",
+      description: "Unlock another buyable.",
 
       cost: new OmegaNum(1.5e9),
 
       unlocked() {
 
         return hasUpgrade("re", 172);
+
+      },
+
+      branches: ["161"],
+
+    },
+    174: {
+
+      title: "175IQ Bees",
+
+      description: "Unlock another buyable.",
+
+      cost: new OmegaNum(2.5e10),
+
+      unlocked() {
+
+        return hasUpgrade("re", 173);
 
       },
 
@@ -854,12 +871,74 @@ addLayer("re", {
       },
       
     },
+    21: {
+
+      unlocked(){ return hasUpgrade('re', 173)},
+
+      title: "Beehive Upgrade",
+
+      cost(x) {
+
+        return new OmegaNum("e5e6").pow(new OmegaNum(5.5).pow(x));
+
+      },
+
+      display() {
+
+            return "Boost Reincarnated Bees by x3 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Beehives" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+
+        },
+
+      canAfford() {
+
+        return player.hi.points.gte(this.cost());
+
+      },
+
+      buy() {
+
+        player.hi.points = player.hi.points.sub(
+
+          this.cost()
+
+        );
+
+        setBuyableAmount(
+
+          this.layer,
+
+          this.id,
+
+          getBuyableAmount(this.layer, this.id).add(1)
+
+        );
+
+      },
+
+      effect(x) {
+
+        let base1 = new OmegaNum(3);
+
+        let base2 = x;
+
+        let exp = new OmegaNum(1)
+
+        let eff = base1.pow(OmegaNum.pow(base2, exp));
+
+        return eff
+
+      },
+
+      
+
+    },
   },
   update(diff) {
     let gain = new OmegaNum(1)
     gain = gain.times(buyableEffect('re', 11))
     gain = gain.times(buyableEffect('re', 12))
     gain = gain.times(buyableEffect('re', 13))
+    gain = gain.times(buyableEffect('re', 21))
     
     player.re.reinBeesGain = gain
     gain = gain.times(diff)
