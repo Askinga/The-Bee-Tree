@@ -16,7 +16,7 @@ let modInfo = {
 
   discordName: "",
   discordLink: "",
-  initialStartPoints: new OmegaNum(10), // Used for hard resets and new players
+  initialStartPoints: new OmegaNum(0), // Used for hard resets and new players
   offlineLimit: 1, // In hours
 };
 

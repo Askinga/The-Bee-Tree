@@ -14,6 +14,7 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
     honeyPopups: true,
+    hivePopups: true,
 	}
 }
 

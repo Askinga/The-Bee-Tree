@@ -42,7 +42,8 @@ addLayer("f", {
 
     },
   passiveGeneration() {
-    let p = new OmegaNum(1);
+    let p = new OmegaNum(0);
+    if (hasUpgrade("f", 11)) p = p.add(1)
     if (hasUpgrade("f", 14)) p = p.times(6.5);
     if (hasUpgrade("f", 15)) p = p.times(2);
     if (hasUpgrade("f", 23) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 23));
@@ -142,7 +143,7 @@ addLayer("f", {
   upgrades: {
     11: {
       title: "More Bees",
-      description: "Boost Bees by *10",
+      description: "Boost Bees by *10 and 100% of Flowers per second.",
       cost: new OmegaNum(1),
     },
     12: {
@@ -307,7 +308,7 @@ addLayer("f", {
 
       description: "Boost Flowers based on Flowers again",
 
-      cost: new OmegaNum("1e22"),
+      cost: new OmegaNum("1e23"),
 
       effect() {
         return player.f.points.add(1).log(10).add(1).pow(5);
@@ -326,7 +327,7 @@ addLayer("f", {
 
       description: "Boost Flowers based on Flowers again",
 
-      cost: new OmegaNum("1e27"),
+      cost: new OmegaNum("1e38"),
 
       effect() {
         return player.f.points.add(1).log(10).add(1).pow(3);
@@ -345,7 +346,7 @@ addLayer("f", {
 
       description: "Boost Flowers based on Flowers again",
 
-      cost: new OmegaNum("2e37"),
+      cost: new OmegaNum("1e48"),
 
       effect() {
         return player.f.points.add(1).log(10).add(1).pow(1.5);
@@ -364,7 +365,7 @@ addLayer("f", {
 
       description: "Boost Flowers based on Flowers again",
 
-      cost: new OmegaNum("1.5e43"),
+      cost: new OmegaNum("1.5e53"),
 
       effect() {
         return player.f.points.add(1).log(10).add(1).pow(1.25);
@@ -383,7 +384,7 @@ addLayer("f", {
 
       description: "Boost Flowers based on Flowers again",
 
-      cost: new OmegaNum("1e49"),
+      cost: new OmegaNum("2.5e57"),
 
       effect() {
         return player.f.points.add(1).log(10).add(1).pow(4);

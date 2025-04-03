@@ -33,6 +33,8 @@ addLayer("hi", {
 
   type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 
+  milestonePopups(){ return options.hivePopups },
+  
   exponent: 0.5, // Prestige currency exponent
 
   autoUpgrade() {

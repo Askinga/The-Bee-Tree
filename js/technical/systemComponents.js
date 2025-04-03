@@ -172,7 +172,7 @@ var systemComponents = {
                 </tr> 
       <tr>
       <td><button class="opt" onclick="toggleOpt('honeyPopups')">Honey Milestone Popups: {{ options.honeyPopups?"SHOWN":"HIDDEN" }}</button></td>
-      
+      <td><button class="opt" onclick="toggleOpt('hivePopups')">Beehive Milestone Popups: {{ options.hivePopups?"SHOWN":"HIDDEN" }}</button></td>
         </table>`
     },
 
