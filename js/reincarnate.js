@@ -98,6 +98,7 @@ addLayer("re", {
     if (hasUpgrade("re", 131)) mult = mult.times(upgradeEffect("re", 131));
     if (hasUpgrade("re", 132)) mult = mult.times(upgradeEffect("re", 132));
     if (hasUpgrade("re", 133)) mult = mult.times(upgradeEffect("re", 133));
+    mult= multtimes()
     return mult;
   },
 
