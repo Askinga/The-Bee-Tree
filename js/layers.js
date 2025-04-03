@@ -45,8 +45,8 @@ addLayer("f", {
     let p = new OmegaNum(1);
     if (hasUpgrade("f", 14)) p = p.times(6.5);
     if (hasUpgrade("f", 15)) p = p.times(2);
-    if (hasUpgrade("f", 23)) p = p.times(upgradeEffect("f", 23));
-    if (hasUpgrade("f", 24)) p = p.times(10);
+    if (hasUpgrade("f", 23) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 23));
+    if (hasUpgrade("f", 24) && !hasUpgrade("re", ) p = p.times(10);
     if (hasUpgrade("f", 31)) p = p.times(1000);
     if (hasUpgrade("f", 42)) p = p.times(1e6);
     if (hasUpgrade("f", 43)) p = p.times(upgradeEffect("f", 43));
