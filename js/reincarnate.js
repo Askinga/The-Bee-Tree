@@ -626,20 +626,7 @@ addLayer("re", {
 
       branches: ["131", "132", "133"],
     },
-    151: {
-      title: "Insane Pollen",
-
-      description: "xe25000 Pollen.",
-
-      cost: new OmegaNum(175000),
-
-      unlocked() {
-        return hasUpgrade("re", 141);
-      },
-
-      branches: ["131", "141", "133"],
-    },
-    161: {
+    y{
       title: "Bees have reincarnated",
 
       description: "Unlock something new. And 1 buyable",
