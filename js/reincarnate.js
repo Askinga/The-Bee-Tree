@@ -652,15 +652,15 @@ addLayer("re", {
 
       effect() {
 
-        let pow = new OmegaNum(1);
+        let pow = new OmegaNum(0.5);
 
-        return player.re.points.add(1).log(10).div(10).add(1).pow(pow);
+        return player.re.points.add(1).log(10).div(10).pow(pow);
 
       },
 
       effectDisplay() {
 
-        return "+" + format(upgradeEffect(this.layer, this.id));
+        return "Power +" + format(upgradeEffect(this.layer, this.id));
 
       },
 
