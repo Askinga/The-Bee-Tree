@@ -57,17 +57,34 @@ addLayer("re", {
       ],
     },
     "Reincarnated Bees": {
-      unlocked(){ return hasUpgrade('re', 161)},
+      unlocked() {
+        return hasUpgrade("re", 161);
+      },
       content: [
-        "main-display", 
+        "main-display",
         "blank",
         "prestige-button",
         "blank",
-        ["display-text", function() { return "You have " + format(player.re.reinBees) + " Reincarnated Bees, boostng Bee skill points by x" + format(tmp.re.reinBeesEffect) }],
-        ["display-text", function() { return "(" + format(player.re.reinBeesGain) + "/sec)"}],
-        "blank",
-        "buyables"
+        [
+          "display-text",
+          function () {
+            return (
+              "You have " +
+              format(player.re.reinBees) +
+              " Reincarnated Bees, boostng Bee skill points by x" +
+              format(tmp.re.reinBeesEffect)
+            );
+          },
         ],
+        [
+          "display-text",
+          function () {
+            return "(" + format(player.re.reinBeesGain) + "/sec)";
+          },
+        ],
+        "blank",
+        "buyables",
+      ],
     },
   },
 
@@ -100,7 +117,7 @@ addLayer("re", {
     if (hasUpgrade("re", 131)) mult = mult.times(upgradeEffect("re", 131));
     if (hasUpgrade("re", 132)) mult = mult.times(upgradeEffect("re", 132));
     if (hasUpgrade("re", 133)) mult = mult.times(upgradeEffect("re", 133));
-    mult = mult.times(tmp.re.reinBeesEffect)
+    mult = mult.times(tmp.re.reinBeesEffect);
     return mult;
   },
 
@@ -635,28 +652,42 @@ addLayer("re", {
     },
   },
   buyables: {
-
     11: {
+      cost(x) {
+        return new OmegaNum(10).pow(x.div(2));
+      },
 
-        cost(x) { return new Decimal(10).pow(x.div(2)) },
+      display() {
+        return (
+          "Boost Reincarnated Bee gain by x1.25. Currently: " +
+          format(buyableEffect(this.layer, this.id)) +
+          "<br> Bought: " +
+          format(getBuyableAmount(this.layer, this.id)) +
+          "<br>Cost: " +
+          format(this.cost())
+        );
+      },
 
-        display() { return "Boost Reincarnated Bee gain by x1.25. Currently: " + format},
+      canAfford() {
+        return player[this.layer].points.gte(this.cost());
+      },
 
-        canAfford() { return player[this.layer].points.gte(this.cost()) },
+      buy() {
+        player[this.layer].reinBees = player[this.layer].reinBees.sub(
+          this.cost()
+        );
 
-        buy() {
-
-            player[this.layer].reinBees = player[this.layer].reinBees.sub(this.cost())
-
-            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-
-        },
-        effect() {
-          let base1 = 1.25
-          let base2 = x
-          return base1.pow(base2)
-    
+        setBuyableAmount(
+          this.layer,
+          this.id,
+          getBuyableAmount(this.layer, this.id).add(1)
+        );
+      },
+      effect(x) {
+        let base1 = 1.25;
+        let base2 = x;
+        return base1.pow(base2);
+      },
     },
-
-}
+  },
 });
