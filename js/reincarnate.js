@@ -52,7 +52,7 @@ addLayer("re", {
             [141],
             [151],
             [161],
-            [171, 172],
+            [171, 172, 173],
           ],
         ],
       ],
@@ -685,6 +685,23 @@ addLayer("re", {
       branches: ["161"],
 
     },
+    173: {
+
+      title: "150IQ Bees",
+
+      description: "Unlock 1 buyable.",
+
+      cost: new OmegaNum(1.5e9),
+
+      unlocked() {
+
+        return hasUpgrade("re", 172);
+
+      },
+
+      branches: ["161"],
+
+    },
   },
   buyables: {
     11: {
@@ -835,7 +852,7 @@ addLayer("re", {
         return eff
 
       },
-
+      
     },
   },
   update(diff) {
