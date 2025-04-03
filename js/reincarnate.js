@@ -13,12 +13,12 @@ addLayer("re", {
 
       reinBees: new OmegaNum(0),
 
-      reinBeesgain: new OmegaNum(0),
+      reinBeesain: new OmegaNum(0),
     };
   },
 
   tabFormat: {
-    Main: {
+    "Reincarnation Tree": {
       content: [
         "main-display",
 
@@ -56,11 +56,11 @@ addLayer("re", {
         ],
       ],
     },
-    ReincarnatedBees: {
-      unlocked() {
-        return hasUpgrade("re", 161);
-      },
-      content: ["main-display", "blank"],
+    "Reincarnated Bees": {
+      content: [
+        "main-display", 
+        "blank"
+        ],
     },
   },
 
@@ -123,7 +123,7 @@ addLayer("re", {
   },
 
   reinBeesEffect() {
-    return player.reinBees.add(1).pow(0.5);
+    return player.re.reinBees.add(1).pow(0.5);
   },
 
   branches: ["hi", "dev", "queen"],
