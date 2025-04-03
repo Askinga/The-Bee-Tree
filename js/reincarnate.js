@@ -52,7 +52,7 @@ addLayer("re", {
             [141],
             [151],
             [161],
-            [171],
+            [171, 172],
           ],
         ],
       ],
@@ -668,6 +668,23 @@ addLayer("re", {
       branches: ["161"],
 
     },
+    172: {
+
+      title: "They get even smarter",
+
+      description: "Unlock another buyable.",
+
+      cost: new OmegaNum(2.5e8),
+
+      unlocked() {
+
+        return hasUpgrade("re", 171);
+
+      },
+
+      branches: ["161"],
+
+    },
   },
   buyables: {
     11: {
@@ -761,11 +778,71 @@ addLayer("re", {
       },
 
     },
+    13: {
+
+      unlocked(){ return hasUpgrade('re', 172)},
+
+      title: "Pollen Upgrade",
+
+      cost(x) {
+
+        return new OmegaNum("e1.5e11").pow(new OmegaNum(2).pow(x));
+
+      },
+
+      display() {
+
+            return "Boost Reincarnated Bees by x2.5 per purchase." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Pollen" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Reincarnated Bee gain by x" + format(buyableEffect(this.layer, this.id))
+
+        },
+
+      canAfford() {
+
+        return player.p.points.gte(this.cost());
+
+      },
+
+      buy() {
+
+        player.p.points = player.p.points.sub(
+
+          this.cost()
+
+        );
+
+        setBuyableAmount(
+
+          this.layer,
+
+          this.id,
+
+          getBuyableAmount(this.layer, this.id).add(1)
+
+        );
+
+      },
+
+      effect(x) {
+
+        let base1 = new OmegaNum(2.5);
+
+        let base2 = x;
+
+        let exp = new OmegaNum(1)
+
+        let eff = base1.pow(OmegaNum.pow(base2, exp));
+
+        return eff
+
+      },
+
+    },
   },
   update(diff) {
     let gain = new OmegaNum(1)
     gain = gain.times(buyableEffect('re', 11))
     gain = gain.times(buyableEffect('re', 12))
+    gain = gain.times(buyableEffect('re', 13))
     
     player.re.reinBeesGain = gain
     gain = gain.times(diff)
