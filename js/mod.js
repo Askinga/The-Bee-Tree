@@ -63,7 +63,9 @@ function addedPlayerData() {
 }
 
 // Display extra things at the top of the page
-var displayThings = [];
+var displayThings = [ 
+    () => "You are " + format(player.re.percent) + "% to taking over the world"
+];
 
 // Determines when the game "ends"
 function isEndgame() {

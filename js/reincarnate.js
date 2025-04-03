@@ -14,6 +14,8 @@ addLayer("re", {
       reinBees: new OmegaNum(0),
 
       reinBeesGain: new OmegaNum(0),
+      
+      percent: new OmegaNum(0),
     };
   },
 
@@ -97,6 +99,9 @@ addLayer("re", {
     if (hasUpgrade('re', 183)) p = p.add(1)
     return p
   },
+  
+  percentEffect(){
+    return 
   
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
 
