@@ -26,7 +26,7 @@ addLayer("f", {
 
         let keep = [];
 
-        if (hasUpgrade('hi', 13)) keep.push("upgrades");
+        if (hasUpgrade('hi', 13) || hasMilestone("h", 7)) keep.push("upgrades");
 
     
 

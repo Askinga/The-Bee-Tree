@@ -203,7 +203,7 @@ addLayer("h", {
   milestones: {
     0: {
       requirementDescription: "1 Honey",
-      effectDescription: "x10 Flowers and keep Flower Upgrade Automation.",
+      effectDescription: "x10 Flowers, x100 Bees and keep Flower Upgrade Automation.",
       done() {
         return player.h.points.gte("1");
       },
@@ -296,7 +296,7 @@ addLayer("h", {
     7: {
       requirementDescription: "69 Honey",
 
-      effectDescription: "Unlock a challenge.",
+      effectDescription: "Unlock a challenge and keep Flower upgrades.",
 
       done() {
         return player.h.points.gte("69");
