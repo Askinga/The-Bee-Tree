@@ -101,7 +101,7 @@ addLayer("re", {
   },
 
   percentEffect() {
-    return player.re.points.add(1).log(10).div(86.3465);
+    return player.re.points.add(1).log(10).div(86.334);
   },
 
   requires: new OmegaNum(1e66), // Can be a function that takes requirement increases into account
