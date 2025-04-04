@@ -1102,7 +1102,8 @@ addLayer("re", {
     },
   },
   update(diff) {
-    let gain = new OmegaNum(1);
+    let gain = new OmegaNum(0);
+    if (hasUpgrade('re', 161)) gain = gain.add(1)
     gain = gain.times(buyableEffect("re", 11));
     gain = gain.times(buyableEffect("re", 12));
     gain = gain.times(buyableEffect("re", 13));
