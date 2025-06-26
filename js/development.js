@@ -167,7 +167,7 @@ addLayer("dev", {
       title: "Queens get happy",
       description:
         "Boost Queen Bees in the Queen Bee Effect based on Development Time and x2 Development time.",
-      cost: new OmegaNum(60),
+      cost: new OmegaNum(45),
       effect() {
         return player.dev.points.add(1).pow(0.01);
       },
@@ -180,7 +180,7 @@ addLayer("dev", {
 
       description: "x2.5 Development time.",
 
-      cost: new OmegaNum(125),
+      cost: new OmegaNum(110),
 
       unlocked() {
         return hasUpgrade("dev", 11);
@@ -191,7 +191,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Queen Bees.",
 
-      cost: new OmegaNum(300),
+      cost: new OmegaNum(250),
 
       effect() {
         return player.queen.points.add(1).pow(0.5);
@@ -210,7 +210,7 @@ addLayer("dev", {
 
       description: "BUMP IT UP! x5 Development time.",
 
-      cost: new OmegaNum(1750),
+      cost: new OmegaNum(1400),
 
       unlocked() {
         return hasUpgrade("dev", 13);
@@ -221,7 +221,7 @@ addLayer("dev", {
 
       description: "x3 Development time.",
 
-      cost: new OmegaNum(10000),
+      cost: new OmegaNum(8000),
 
       unlocked() {
         return hasUpgrade("dev", 14);
@@ -232,7 +232,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time.",
 
-      cost: new OmegaNum(32500),
+      cost: new OmegaNum(29000),
 
       effect() {
         return player.dev.points.add(1).pow(0.2);
@@ -251,7 +251,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(1e6),
+      cost: new OmegaNum(8e5),
 
       effect() {
         return player.dev.points.add(1).log(10).add(1).pow(1.25);
@@ -270,7 +270,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(1e8),
+      cost: new OmegaNum(8.5e7),
 
       effect() {
         return player.dev.points.add(1).log(10).add(1).pow(1.3);
@@ -289,7 +289,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(2.5e10),
+      cost: new OmegaNum(1.75e10),
 
       effect() {
         return player.dev.points.add(1).log(10).add(1).pow(1.4);
@@ -308,7 +308,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(2.5e13),
+      cost: new OmegaNum(1.8e13),
 
       effect() {
         return player.dev.points.add(1).log(10).add(1).pow(1.5);
@@ -327,7 +327,7 @@ addLayer("dev", {
 
       description: "x10000 Development time.",
 
-      cost: new OmegaNum(1e17),
+      cost: new OmegaNum(8e16),
 
       unlocked() {
         return hasUpgrade("dev", 25);
@@ -338,7 +338,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(1e23),
+      cost: new OmegaNum(8e22),
 
       effect() {
         return player.dev.points.add(1).pow(0.1);
@@ -357,7 +357,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(5e26),
+      cost: new OmegaNum(3.5e26),
 
       effect() {
         return player.dev.points.add(1).pow(0.075);
@@ -376,7 +376,7 @@ addLayer("dev", {
 
       description: "Boost Development time based on Development time again.",
 
-      cost: new OmegaNum(2.5e30),
+      cost: new OmegaNum(2e30),
 
       effect() {
         return player.dev.points.add(1).pow(0.06);
@@ -395,7 +395,7 @@ addLayer("dev", {
 
       description: "x1000 Development time.",
 
-      cost: new OmegaNum(1e34),
+      cost: new OmegaNum(8e33),
 
       unlocked() {
         return hasUpgrade("dev", 34);
@@ -406,7 +406,7 @@ addLayer("dev", {
 
       description: "x500 Development time.",
 
-      cost: new OmegaNum(1e40),
+      cost: new OmegaNum(8e39),
 
       unlocked() {
         return hasUpgrade("dev", 35);
@@ -417,7 +417,7 @@ addLayer("dev", {
 
       description: "Boost Beehive Upgrade 25 based on Development time.",
 
-      cost: new OmegaNum(2.5e45),
+      cost: new OmegaNum(2e45),
 
       effect() {
         return player.dev.points.add(1).pow(0.0005);
@@ -439,7 +439,7 @@ addLayer("dev", {
 
       description: "x1000 Development time.",
 
-      cost: new OmegaNum(3e45),
+      cost: new OmegaNum(2.5e45),
 
       unlocked() {
         return hasUpgrade("dev", 42);
@@ -450,7 +450,7 @@ addLayer("dev", {
 
       description: "x5000 Development time.",
 
-      cost: new OmegaNum(2.5e51),
+      cost: new OmegaNum(2e51),
 
       unlocked() {
         return hasUpgrade("dev", 43);
