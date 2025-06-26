@@ -157,7 +157,7 @@ addLayer("p", {
     14: {
       title: "More Pollen and Flowers",
 
-      description: "Boost Flowers based on Pollen and x3 Pollen",
+      description: "Boost Flowers based on Pollen and x3 Pollen and x100 Bees and keep Flower Upgrade 1 effect",
 
       cost: new OmegaNum("4"),
 
