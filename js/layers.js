@@ -43,7 +43,7 @@ addLayer("f", {
     },
   passiveGeneration() {
     let p = new OmegaNum(0);
-    if (hasUpgrade("f", 11)) p = p.add(1)
+    if (hasUpgrade("f", 11) || hasUpgrade('p', 14)) p = p.add(1)
     if (hasUpgrade("f", 14)) p = p.times(6.5);
     if (hasUpgrade("f", 15)) p = p.times(2);
     if (hasUpgrade("f", 23) && !hasUpgrade("re", 171)) p = p.times(upgradeEffect("f", 23));
