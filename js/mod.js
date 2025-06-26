@@ -22,12 +22,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-  num: "1.0.0",
+  num: "1.0.1",
   name: "Release",
 };
 
 let changelog = `<h1>Changelog:</h1><br>
-  <h3>v1.0.0</h3><br>
+  <h3>v1.0.1</h3><br>
+    - Reduced the number of timewalls<br>
+  <br>
+  <h2>v1.0.0</h2><br>
     - Added a lot of upgrades<br>
     - Added 2 challenges<br>
     - Added 7 layers<br>
